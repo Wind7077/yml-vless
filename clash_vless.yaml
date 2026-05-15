@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-05-15 05:42:55.610108+00:00
-# proxies: 70
+# updated: 2026-05-15 08:33:42.403105+00:00
+# proxies: 42
 
 mixed-port: 7890
 allow-lan: false
@@ -28,49 +28,19 @@ dns:
     geosite:ru: 114.114.114.114
     geosite:private: direct
 proxies:
-- name: 🇪🇪 Estonia, Tallinn | [BL]
+- name: 🇱🇹 Lithuania, Vilnius | [BL]
   type: vless
-  server: 138.124.100.237
+  server: lithnode.lumixnet.com
   port: 443
-  uuid: f5a3bf49-07ca-0021-a96b-9606781e3600
+  uuid: b406ff54-96f2-45ce-9179-e4e00bff1cf6
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: www.amd.com
+  servername: lithnode.lumixnet.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: b4n1pcO8ST3JkGtj8YymXVrW17LEe2EHec5wY7hMMR4
-    short-id: 4c8d1e0f
-  skip-cert-verify: false
-  network: tcp
-- name: 🇱🇻 Latvia, Riga | [BL]
-  type: vless
-  server: lv.connect-iskra.cv
-  port: 8443
-  uuid: ba1581d2-d399-41e0-857b-82151ac0e040
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: mediarush.xyz
-  client-fingerprint: qq
-  reality-opts:
-    public-key: Xhw97dnfriknd-7X9PeeTfcYW1a-CP-atu_EcGNWFiY
-    short-id: 3fde628f5ea2ba6f
-  skip-cert-verify: false
-  network: tcp
-- name: 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
-  type: vless
-  server: fi-hel-1.blook.network
-  port: 443
-  uuid: 73cd0d97-6b0e-4a9d-b938-7404355a3bc1
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: fi-hel-1.blook.network
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: My4NYF1x_I4nnRhgQXjpKl6BQVtgBWklHP6a3ejmOxU
-    short-id: 1a66e6ad
+    public-key: 8K4cnpy__grgZ9mQG0qdUg1JUYc0bz3wwrpXO9VXVXQ
+    short-id: 4e7082cd83ad9df5
   skip-cert-verify: false
   network: tcp
 - name: 🇫🇮 Finland, Helsinki | [BL]
@@ -104,18 +74,19 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: grpc
-- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
+- name: 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   type: vless
-  server: 72.56.127.52
+  server: pivo5.ikisky.com
   port: 443
-  uuid: 37d3a4c5-974b-4624-9a64-6b47f5af83c1
+  uuid: b9d56e59-02ee-4af0-9963-b3650f8a1387
   udp: true
+  flow: xtls-rprx-vision
   tls: true
-  servername: yahoo.com
+  servername: pivo5.ikisky.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: kBav5OwqoBdhVdOsAgWBWvA1CN5LNPFMGow9ll06WHU
-    short-id: 48a3
+    public-key: hOUwTtuq2-jG7uKSgnrKIWxj3HdPYvvL7Kj3nrFTKA4
+    short-id: 49c667cd18477438
   skip-cert-verify: false
   network: tcp
 - name: 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
@@ -133,30 +104,29 @@ proxies:
     short-id: 49c667cd18477438
   skip-cert-verify: false
   network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
+- name: 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
   type: vless
-  server: pivo2.ikisky.com
+  server: de.sbrf-cdn342.ru
   port: 443
-  uuid: b9d56e59-02ee-4af0-9963-b3650f8a1387
+  uuid: 85b5cb2e-2617-4930-b6a4-4aeaf3b7b9aa
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: pivo2.ikisky.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: hOUwTtuq2-jG7uKSgnrKIWxj3HdPYvvL7Kj3nrFTKA4
-    short-id: 49c667cd18477438
+  servername: sub.sbrf-cdn342.ru
+  client-fingerprint: qq
+  alpn:
+  - http/1.1
   skip-cert-verify: false
   network: tcp
 - name: 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   type: vless
-  server: germ9.api3-max.ru
+  server: germ8.api3-max.ru
   port: 443
   uuid: b9d56e59-02ee-4af0-9963-b3650f8a1387
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: germ9.api3-max.ru
+  servername: germ8.api3-max.ru
   client-fingerprint: chrome
   reality-opts:
     public-key: hOUwTtuq2-jG7uKSgnrKIWxj3HdPYvvL7Kj3nrFTKA4
@@ -180,21 +150,6 @@ proxies:
   network: tcp
 - name: 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   type: vless
-  server: pivo5.ikisky.com
-  port: 443
-  uuid: b9d56e59-02ee-4af0-9963-b3650f8a1387
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: pivo5.ikisky.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: hOUwTtuq2-jG7uKSgnrKIWxj3HdPYvvL7Kj3nrFTKA4
-    short-id: 49c667cd18477438
-  skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
-  type: vless
   server: pivo4.ikisky.com
   port: 443
   uuid: b9d56e59-02ee-4af0-9963-b3650f8a1387
@@ -208,92 +163,49 @@ proxies:
     short-id: 49c667cd18477438
   skip-cert-verify: false
   network: tcp
+- name: 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
+  type: vless
+  server: pivo3.ikisky.com
+  port: 443
+  uuid: b9d56e59-02ee-4af0-9963-b3650f8a1387
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: pivo3.ikisky.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: hOUwTtuq2-jG7uKSgnrKIWxj3HdPYvvL7Kj3nrFTKA4
+    short-id: 49c667cd18477438
+  skip-cert-verify: false
+  network: tcp
+- name: 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
+  type: vless
+  server: germ9.api3-max.ru
+  port: 443
+  uuid: b9d56e59-02ee-4af0-9963-b3650f8a1387
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: germ9.api3-max.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: hOUwTtuq2-jG7uKSgnrKIWxj3HdPYvvL7Kj3nrFTKA4
+    short-id: 49c667cd18477438
+  skip-cert-verify: false
+  network: tcp
 - name: 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
   type: vless
-  server: de.sbrf-cdn342.ru
+  server: de-fra-6.blook.network
   port: 443
-  uuid: 85b5cb2e-2617-4930-b6a4-4aeaf3b7b9aa
+  uuid: 4274c038-d2ab-4ab7-98f8-c8ecf679a596
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: sub.sbrf-cdn342.ru
-  client-fingerprint: qq
-  alpn:
-  - http/1.1
-  skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
-  type: vless
-  server: germ10.api3-max.ru
-  port: 443
-  uuid: b9d56e59-02ee-4af0-9963-b3650f8a1387
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: germ10.api3-max.ru
+  servername: de-fra-6.blook.network
   client-fingerprint: chrome
   reality-opts:
-    public-key: hOUwTtuq2-jG7uKSgnrKIWxj3HdPYvvL7Kj3nrFTKA4
-    short-id: 49c667cd18477438
-  skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
-  type: vless
-  server: germ8.api3-max.ru
-  port: 443
-  uuid: b9d56e59-02ee-4af0-9963-b3650f8a1387
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: germ8.api3-max.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: hOUwTtuq2-jG7uKSgnrKIWxj3HdPYvvL7Kj3nrFTKA4
-    short-id: 49c667cd18477438
-  skip-cert-verify: false
-  network: tcp
-- name: 🇸🇪 Sweden, Tällberg | [BL]
-  type: vless
-  server: 78.40.116.172
-  port: 443
-  uuid: 3c81c716-4fd5-11f1-8a2c-525400a7149e
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.blocket.se
-  client-fingerprint: randomized
-  reality-opts:
-    public-key: Drg3RJ1fsmdl-mHJg2XAz8sBri58W_xGSA-3ewWcfBU
-    short-id: ''
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
-  type: vless
-  server: 212.162.152.48
-  port: 443
-  uuid: 91a3f712-c4e0-42a0-9475-bdd551a06e73
-  udp: true
-  tls: true
-  servername: maps.apple.com
-  client-fingerprint: random
-  reality-opts:
-    public-key: fS59W37_i8457GqkbB9_kdCfLCtWbl14qmVRnm2ty2I
-    short-id: 2da4299da566b7
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
-  type: vless
-  server: nl3.wireguardvpnbotik.com
-  port: 443
-  uuid: 501a2da5-cb22-4a3f-915e-e3b821d1d62d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: avito.audi-media.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: -nM75h7hxtz4EXzU5S8xgTtfP6TL_RXSPLZRNcPFmSg
-    short-id: 4d8c6b170c050e7b
+    public-key: w-JRwet1gOByae5kmQQSUpynuu10HLk4Zb3n1mioGWs
+    short-id: d19c1cbb
   skip-cert-verify: false
   network: tcp
 - name: 🇳🇱 The Netherlands, Eindhoven | [BL]
@@ -311,31 +223,16 @@ proxies:
     short-id: 49c667cd18477438
   skip-cert-verify: false
   network: tcp
-- name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
+- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
   type: vless
-  server: nl-as.connect-iskra.cv
-  port: 443
-  uuid: ba1581d2-d399-41e0-857b-82151ac0e040
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: hello.opengate.tech
-  client-fingerprint: qq
-  reality-opts:
-    public-key: pJZdgXS61oBi-VKn1QQ59cJTLn3pRNUryhKGWw2q6gM
-    short-id: 37cc8cff6df6108c
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands | 🌐 | [IPv6] | [BL]
-  type: vless
-  server: nl-tx.sbrf-cdn342.ru
+  server: uae.sbrf-cdn342.ru
   port: 443
   uuid: 85b5cb2e-2617-4930-b6a4-4aeaf3b7b9aa
   udp: true
   flow: xtls-rprx-vision
   tls: true
   servername: sub.sbrf-cdn342.ru
-  client-fingerprint: qq
+  client-fingerprint: random
   alpn:
   - http/1.1
   skip-cert-verify: false
@@ -360,14 +257,28 @@ proxies:
   port: 443
   uuid: 7bd29cac-f692-48a3-88d1-505f7e55f0d0
   udp: true
-  flow: xtls-rprx-vision-udp443
+  flow: xtls-rprx-vision
   tls: true
   servername: sub.sbrf-cdn342.ru
-  client-fingerprint: random
-  alpn:
-  - http/1.1
+  client-fingerprint: chrome
   skip-cert-verify: false
   network: tcp
+- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
+  type: vless
+  server: fr-2.spectrum.vu
+  port: 443
+  uuid: 76713d07-5a6b-49c2-abd8-bc450a2fa7fc
+  udp: true
+  tls: true
+  servername: fr-2.spectrum.vu
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: ckd_LwbbFo8BYf9vT84B20P6EL1n6vl2yMxoXc6X4SA
+    short-id: f2a6d1c1e4b8
+  skip-cert-verify: false
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless
 - name: 🇳🇱 The Netherlands, Amsterdam | [BL]
   type: vless
   server: usa77.freednet.org
@@ -382,32 +293,16 @@ proxies:
   network: tcp
 - name: 🇳🇱 The Netherlands, Amsterdam | [BL]
   type: vless
-  server: pro2.api3-max.ru
+  server: uae.sbrf-cdn342.ru
   port: 443
-  uuid: b9d56e59-02ee-4af0-9963-b3650f8a1387
+  uuid: 7bd29cac-f692-48a3-88d1-505f7e55f0d0
   udp: true
-  flow: xtls-rprx-vision
+  flow: xtls-rprx-vision-udp443
   tls: true
-  servername: pro2.api3-max.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: hOUwTtuq2-jG7uKSgnrKIWxj3HdPYvvL7Kj3nrFTKA4
-    short-id: 49c667cd18477438
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
-  type: vless
-  server: pro1.api3-max.ru
-  port: 443
-  uuid: b9d56e59-02ee-4af0-9963-b3650f8a1387
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: pro1.api3-max.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: hOUwTtuq2-jG7uKSgnrKIWxj3HdPYvvL7Kj3nrFTKA4
-    short-id: 49c667cd18477438
+  servername: sub.sbrf-cdn342.ru
+  client-fingerprint: random
+  alpn:
+  - http/1.1
   skip-cert-verify: false
   network: tcp
 - name: 🇵🇱 Poland, Warsaw | [BL]
@@ -425,298 +320,39 @@ proxies:
     short-id: 22bf188b62fa255f
   skip-cert-verify: false
   network: tcp
-- name: 🇵🇱 Poland, Warsaw (Mokotów) | 🌐 | [IPv6] | [BL]
+- name: 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] YA
   type: vless
-  server: pl1.astrocore.cloud
-  port: 443
-  uuid: b1b24586-cccf-458d-b125-d621c3710676
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: pl1.astrocore.cloud
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: X2Sb6CKcI_yEV4gu9KUAmL9mcL-xpC1Ngks06NYIaxw
-    short-id: f129f93e
-  skip-cert-verify: false
-  network: tcp
-- name: 🇫🇮 Finland [*CIDR] VK
-  type: vless
-  server: 217.16.27.155
-  port: 6445
-  uuid: 8a7cf26f-20c1-4d6f-a8a3-481d818dd613
-  udp: true
-  tls: true
-  servername: ads.x5.ru
-  client-fingerprint: qq
-  reality-opts:
-    public-key: lU1yF2A1b0lM9DZbXWPpLfoU7_KQpXOYX0NFrPEIJy8
-    short-id: bad5722c72a0
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc
-- name: 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] CDN
-  type: vless
-  server: 46.243.232.186
-  port: 443
-  uuid: 1f1e4b75-9196-4ddc-8040-323783a69686
-  udp: true
-  tls: true
-  servername: ads.x5.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: OoPqWo20Aq1LsqmZCnGxcvLHun7S1d6F4Bx6PbxpOVE
-    short-id: 5FA44664f6a566d3
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: vless-grpc
-- name: 🇩🇪 Germany | 🌐 | [IPv6] [*CIDR] CDN
-  type: vless
-  server: 46.243.234.151
+  server: 158.160.50.116
   port: 8443
-  uuid: 0e3a9376-1bf0-4b9e-a328-f28083bf6c34
+  uuid: c286cb84-1a5c-4543-bc9e-d7727a0ad823
   udp: true
-  flow: xtls-rprx-vision
   tls: true
-  servername: sun9-38.userapi.com
-  client-fingerprint: random
-  reality-opts:
-    public-key: 4iuR2mv0RnnPZbwvQuZ4L07Bois8hMUczEbMeDF0iRc
-    short-id: fb38c1c83009e1
-  skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany [*CIDR] Beeline
-  type: vless
-  server: 78.159.250.11
-  port: 443
-  uuid: e68c1261-cd7d-4c00-bdf8-66dcc82033d3
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: x5.ru
+  servername: e.genesis1780.ru
   client-fingerprint: chrome
-  reality-opts:
-    public-key: VEQ1aFtLMHgfLcZ2yIugry8JzVXPE5ZXz72L10RUXVs
-    short-id: f4e2b8971d5c3a9f
   skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany [*CIDR] Beeline
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: e.genesis1780.ru
+- name: 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] YA
   type: vless
-  server: 78.159.246.239
-  port: 443
-  uuid: e68c1261-cd7d-4c00-bdf8-66dcc82033d3
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: x5.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: VEQ1aFtLMHgfLcZ2yIugry8JzVXPE5ZXz72L10RUXVs
-    short-id: f4e2b8971d5c3a9f
-  skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany | 🌐 | [IPv6] [*CIDR] CDN
-  type: vless
-  server: ob2.skysafe.online
+  server: 158.160.224.147
   port: 8443
-  uuid: 0e3a9376-1bf0-4b9e-a328-f28083bf6c34
+  uuid: c286cb84-1a5c-4543-bc9e-d7727a0ad823
   udp: true
-  flow: xtls-rprx-vision
   tls: true
-  servername: sun9-38.userapi.com
-  client-fingerprint: random
-  reality-opts:
-    public-key: 4iuR2mv0RnnPZbwvQuZ4L07Bois8hMUczEbMeDF0iRc
-    short-id: fb38c1c83009e1
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands [*CIDR] YA
-  type: vless
-  server: 178.154.204.218
-  port: 443
-  uuid: d91dc9d4-477b-4acb-8674-48fcd384f468
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: wl-4-5.nodes.ac
+  servername: e.genesis1780.ru
   client-fingerprint: chrome
-  reality-opts:
-    public-key: ymfAk3W8rkjPYqsb5LTZePsR7GazEk4tBGTrAn-44Ro
-    short-id: 3f7738018d03aebe
   skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands [*CIDR] YA
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: e.genesis1780.ru
+- name: 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] VK
   type: vless
-  server: 178.154.204.65
-  port: 443
-  uuid: d91dc9d4-477b-4acb-8674-48fcd384f468
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: wl-4-4.nodes.ac
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: FVceIo73-WJfacwis9bRlQ7wEYbQuN4N25oWQlmdwl0
-    short-id: bfb16f73e35be2da
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands [*CIDR] YA
-  type: vless
-  server: 178.154.204.55
-  port: 443
-  uuid: d91dc9d4-477b-4acb-8674-48fcd384f468
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: wl-4-3.nodes.ac
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: ljUVISw0FlRCXDz6xRTVnmms_IfVrIFLJ5bg81MDNQY
-    short-id: 7171871f66279d10
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands [*CIDR] YA
-  type: vless
-  server: 158.160.106.23
-  port: 443
-  uuid: d91dc9d4-477b-4acb-8674-48fcd384f468
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: wl-3-1.legendary-vpn.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: -5N6BJPDvTQm7vVOFpNnoJrZDaOsPccu6SeZGPGKEkI
-    short-id: 3626b118a6e54d7b
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands [*CIDR] YA
-  type: vless
-  server: 158.160.233.50
-  port: 443
-  uuid: d91dc9d4-477b-4acb-8674-48fcd384f468
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: wl-3-3.nodes.ac
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: m5iF8IAFKw52ODQqdBE4fycHj5bAm6zTmnG3P7Mn2G8
-    short-id: d8d3d1d87555e842
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands [*CIDR] YA
-  type: vless
-  server: 51.250.31.232
-  port: 443
-  uuid: d91dc9d4-477b-4acb-8674-48fcd384f468
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: wl-6-5.nodes.ac
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: c8Sx7-8OcvtHEbVU59r-9DQrNdSI91GbMaHR-du4BxA
-    short-id: b7b3ff64ca530808
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands [*CIDR] YA
-  type: vless
-  server: 51.250.39.162
-  port: 443
-  uuid: d91dc9d4-477b-4acb-8674-48fcd384f468
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: wl-6-1.legendary.ac
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: uofZM1SG_RthhSONWy50U6cQ5m3kXy-sglwY0CANfi8
-    short-id: 468d8ab371f8f563
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands [*CIDR] YA
-  type: vless
-  server: 130.193.56.208
-  port: 443
-  uuid: d91dc9d4-477b-4acb-8674-48fcd384f468
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: wl-11-2.nodes.ac
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: UfrA4c5fjRVKJTtAiDOd9lEdmkgfZBSTm9bSMzC4zCg
-    short-id: c792be29a38dbefe
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands [*CIDR] YA
-  type: vless
-  server: 130.193.56.148
-  port: 443
-  uuid: d91dc9d4-477b-4acb-8674-48fcd384f468
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: wl-11-1.nodes.ac
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: aslw-Ex_i_q59e0eu126qM7UnEHhlpKuz8vMN-ibjkw
-    short-id: 3130197867c23edb
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands [*CIDR] YA
-  type: vless
-  server: 51.250.90.34
-  port: 443
-  uuid: d91dc9d4-477b-4acb-8674-48fcd384f468
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: wl-6-4.legendary.ac
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: UZcUXcDWwIkPoLsqflKMGiFx50MERRpum96y-y5Dv1Q
-    short-id: ffd676bc2a2657ef
-  skip-cert-verify: false
-  network: tcp
-- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] CDN
-  type: vless
-  server: ob2.skysafe.online
-  port: 443
-  uuid: 0e3a9376-1bf0-4b9e-a328-f28083bf6c34
-  udp: true
-  tls: true
-  servername: eh.vk.com
-  client-fingerprint: random
-  reality-opts:
-    public-key: 4iuR2mv0RnnPZbwvQuZ4L07Bois8hMUczEbMeDF0iRc
-    short-id: fb38c1c83009e1
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc
-- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] CDN
-  type: vless
-  server: 46.243.234.151
-  port: 443
-  uuid: 0e3a9376-1bf0-4b9e-a328-f28083bf6c34
-  udp: true
-  tls: true
-  servername: eh.vk.com
-  client-fingerprint: random
-  reality-opts:
-    public-key: 4iuR2mv0RnnPZbwvQuZ4L07Bois8hMUczEbMeDF0iRc
-    short-id: fb38c1c83009e1
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc
-- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  type: vless
-  server: 89.208.231.52
+  server: 5.188.140.166
   port: 443
   uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
   udp: true
@@ -725,15 +361,15 @@ proxies:
   servername: max.ru
   client-fingerprint: chrome
   alpn:
-  - http%252F1.1
+  - http%252525252525252F1.1
   reality-opts:
     public-key: mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4
     short-id: ad7dab462a323acb
   skip-cert-verify: false
   network: tcp
-- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
+- name: 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] VK
   type: vless
-  server: 89.208.231.52
+  server: 5.188.140.166
   port: 443
   uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
   udp: true
@@ -748,9 +384,9 @@ proxies:
     short-id: ad7dab462a323acb
   skip-cert-verify: false
   network: tcp
-- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
+- name: 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] VK
   type: vless
-  server: 89.208.231.52
+  server: 5.188.140.166
   port: 443
   uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
   udp: true
@@ -759,108 +395,130 @@ proxies:
   servername: max.ru
   client-fingerprint: chrome
   alpn:
-  - http%25252525252F1.1
+  - http%252F1.1
   reality-opts:
     public-key: mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4
     short-id: ad7dab462a323acb
   skip-cert-verify: false
   network: tcp
-- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
+- name: 🇳🇱 The Netherlands [*CIDR] YA
   type: vless
-  server: 89.208.231.52
+  server: most-nl3.harknmav.fun
   port: 443
-  uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
+  uuid: 0a4967cd-8e4b-4d02-9774-dc33b78e40a5
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: max.ru
-  client-fingerprint: chrome
-  alpn:
-  - http/1.1
-  reality-opts:
-    public-key: mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4
-    short-id: ad7dab462a323acb
-  skip-cert-verify: false
-  network: tcp
-- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  type: vless
-  server: 89.208.231.52
-  port: 443
-  uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: max.ru
+  servername: yandex.ru
   client-fingerprint: chrome
   reality-opts:
-    public-key: mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4
-    short-id: ad7dab462a323acb
+    public-key: DmkNQaONUdiSPAyao_ivr6XO3I0g-pMqQwNIwUTUHHk
+    short-id: 28ec10761480dce4
   skip-cert-verify: false
   network: tcp
-- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
+- name: 🇳🇱 The Netherlands [*CIDR] VK
   type: vless
-  server: 89.208.231.81
+  server: most-nl2.harknmav.fun
   port: 443
-  uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: ozon.ru
-  client-fingerprint: chrome
-  alpn:
-  - http%2525252F1.1
-  reality-opts:
-    public-key: mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4
-    short-id: ad7dab462a323acb
-  skip-cert-verify: false
-  network: tcp
-- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  type: vless
-  server: 89.208.231.81
-  port: 443
-  uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: ozon.ru
-  client-fingerprint: chrome
-  alpn:
-  - http%2F1.1
-  reality-opts:
-    public-key: mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4
-    short-id: ad7dab462a323acb
-  skip-cert-verify: false
-  network: tcp
-- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  type: vless
-  server: 89.208.231.81
-  port: 443
-  uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: ozon.ru
-  client-fingerprint: chrome
-  alpn:
-  - http%252525252F1.1
-  reality-opts:
-    public-key: mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4
-    short-id: ad7dab462a323acb
-  skip-cert-verify: false
-  network: tcp
-- name: 🇬🇧 United Kingdom [*CIDR] VK
-  type: vless
-  server: 37.139.43.164
-  port: 443
-  uuid: 30f00fcd-ca71-4df9-8d0f-c10cedf74f32
+  uuid: 0a4967cd-8e4b-4d02-9774-dc33b78e40a5
   udp: true
   flow: xtls-rprx-vision
   tls: true
   servername: eh.vk.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: RiSs_VVhep71TZU8buuMedhJ9wenvWJ2sSp8HfaYnGw
-    short-id: ''
+    public-key: BGW71GlS7ucRWEx-tYF0n2JKvo8uBSLnKdtMMdwBNDY
+    short-id: 88ec10761480dce4
+  skip-cert-verify: false
+  network: tcp
+- name: 🇵🇱 Poland [*CIDR] VK
+  type: vless
+  server: vk-most-pl.harknmav.fun
+  port: 8443
+  uuid: 0a4967cd-8e4b-4d02-9774-dc33b78e40a5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: eh.vk.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: zWeCf20jRIFNaeSWo_028sR92X_Of9UEJGMZWRLhiHc
+    short-id: be3c4c10ca44241a
+  skip-cert-verify: false
+  network: tcp
+- name: 🇨🇦 Canada [*CIDR] VK
+  type: vless
+  server: most-ca.harknmav.fun
+  port: 443
+  uuid: 0a4967cd-8e4b-4d02-9774-dc33b78e40a5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: eh.vk.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 3YCEhvsamGdAd2-A9Iw2zOg4AIvnB-7rE3ZYZz4RQmQ
+    short-id: 4e352b0d4d15e0f9
+  skip-cert-verify: false
+  network: tcp
+- name: 🇮🇳 India [*CIDR] YA
+  type: vless
+  server: most-in.harknmav.fun
+  port: 443
+  uuid: 0a4967cd-8e4b-4d02-9774-dc33b78e40a5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: max.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: g6sT2b5vXWhCZx2e5xpbi8fyolCh81SdKA-4KLWvaAU
+    short-id: 2a752b0d4d15e0f9
+  skip-cert-verify: false
+  network: tcp
+- name: 🇰🇷 South Korea [*CIDR] YA
+  type: vless
+  server: most-kr.harknmav.fun
+  port: 443
+  uuid: 0a4967cd-8e4b-4d02-9774-dc33b78e40a5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: max.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: n9XslamkJc8BMOhxI1xOEzrGHX5NsVUbyiOe2zYNhUA
+    short-id: 2e752b0e4d15e0f9
+  skip-cert-verify: false
+  network: tcp
+- name: 🇺🇸 United States [*CIDR] VK
+  type: vless
+  server: most-by.harknmav.fun
+  port: 443
+  uuid: 0a4967cd-8e4b-4d02-9774-dc33b78e40a5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: bcs.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: g3E2YYA0b8upu_-XVyYTYH1NnHElk6o273YQtJ0hhAo
+    short-id: 746655b57cc78a17
+  skip-cert-verify: false
+  network: tcp
+- name: 🇰🇿 Kazakhstan [*CIDR] VK
+  type: vless
+  server: most-kz.harknmav.fun
+  port: 443
+  uuid: 0a4967cd-8e4b-4d02-9774-dc33b78e40a5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: eh.vk.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: eiz24a6yDleJ94u--ArglngqJdqQp55u2uW1rsO3vx0
+    short-id: 946655b57cc58a17
   skip-cert-verify: false
   network: tcp
 - name: 🇺🇸 United States [*CIDR] YA
@@ -878,128 +536,86 @@ proxies:
     short-id: 1a1e145c
   skip-cert-verify: false
   network: tcp
-- name: 🌐 Anycast-IP | [IPv6] [*CIDR] VK
+- name: 🇹🇷 Turkey [*CIDR] YA
   type: vless
-  server: 5.188.140.166
+  server: most-tr.harknmav.fun
   port: 443
-  uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
+  uuid: 0a4967cd-8e4b-4d02-9774-dc33b78e40a5
   udp: true
   flow: xtls-rprx-vision
   tls: true
   servername: max.ru
-  client-fingerprint: chrome
-  alpn:
-  - http/1.1
+  client-fingerprint: firefox
   reality-opts:
-    public-key: mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4
-    short-id: ad7dab462a323acb
+    public-key: zbYv3t9VgzBeh9kTydhdi7u9niwh-_LHa4xYc9Zl_1U
+    short-id: 2e752b0d4d15e0f9
   skip-cert-verify: false
   network: tcp
-- name: 🌐 Anycast-IP | [IPv6] [*CIDR] VK
+- name: 🇨🇭 Switzerland [*CIDR] VK
   type: vless
-  server: 5.188.140.166
+  server: most-sw.harknmav.fun
   port: 443
-  uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
+  uuid: 0a4967cd-8e4b-4d02-9774-dc33b78e40a5
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: max.ru
+  servername: eh.vk.com
   client-fingerprint: chrome
-  alpn:
-  - http%2F1.1
   reality-opts:
-    public-key: mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4
-    short-id: ad7dab462a323acb
+    public-key: OXhQDFxzuGySr_2ljWiaW4-jyF6GHQ-tYz4xvLujmBc
+    short-id: 2a752b0d4d15e0f9
   skip-cert-verify: false
   network: tcp
-- name: 🌐 Anycast-IP | [IPv6] [*CIDR] VK
+- name: 🇫🇷 France [*CIDR] VK
   type: vless
-  server: 5.188.140.166
+  server: most-fr.harknmav.fun
   port: 443
-  uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
+  uuid: 0a4967cd-8e4b-4d02-9774-dc33b78e40a5
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: max.ru
+  servername: eh.vk.com
   client-fingerprint: chrome
-  alpn:
-  - http%2525252F1.1
   reality-opts:
-    public-key: mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4
-    short-id: ad7dab462a323acb
-  skip-cert-verify: false
-  network: tcp
-- name: 🌐 Anycast-IP | [IPv6] [*CIDR] VK
-  type: vless
-  server: 5.188.140.166
-  port: 443
-  uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: max.ru
-  client-fingerprint: chrome
-  alpn:
-  - http%25252F1.1
-  reality-opts:
-    public-key: mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4
-    short-id: ad7dab462a323acb
-  skip-cert-verify: false
-  network: tcp
-- name: 🌐 Anycast-IP | [IPv6] [*CIDR] VK
-  type: vless
-  server: 5.188.140.166
-  port: 443
-  uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: max.ru
-  client-fingerprint: chrome
-  alpn:
-  - http%2525252525252F1.1
-  reality-opts:
-    public-key: mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4
-    short-id: ad7dab462a323acb
-  skip-cert-verify: false
-  network: tcp
-- name: 🌐 Anycast-IP | [IPv6] [*CIDR] VK
-  type: vless
-  server: 5.188.140.166
-  port: 443
-  uuid: b6ce8a51-19b9-4979-91ba-b4298c26d5fc
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: max.ru
-  client-fingerprint: chrome
-  alpn:
-  - http%25252F1.1
-  reality-opts:
-    public-key: mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4
-    short-id: ad7dab462a323acb
+    public-key: 29Nj1TexJekHKphyU1kpPxV_VKMz2pgAZ96V1VKmYn0
+    short-id: bd1c2c12ca44261a
   skip-cert-verify: false
   network: tcp
 - name: 🇷🇺 Russia [*CIDR] VK
   type: vless
-  server: 146.185.243.104
+  server: most-cloud-gaming.harknmav.fun
   port: 443
-  uuid: 735f24ba-65e2-4244-b2d5-420af6ff28de
+  uuid: 0a4967cd-8e4b-4d02-9774-dc33b78e40a5
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: max.ru
-  client-fingerprint: chrome
+  servername: eh.vk.com
+  client-fingerprint: firefox
   reality-opts:
-    public-key: 0t6b8m_PBAG3rF2HPOEL4yiyb-2JglciiANPKvyb2Ho
-    short-id: ''
+    public-key: ZJcIRk3tkkvpe-n4Zzz7938AQG4FmBSzN9gwXcJ8mg4
+    short-id: 4a752b0d4d15e0f7
+  skip-cert-verify: false
+  network: tcp
+- name: 🇷🇺 Russia [*CIDR] VK
+  type: vless
+  server: vk-youtube.harknmav.fun
+  port: 8443
+  uuid: 0a4967cd-8e4b-4d02-9774-dc33b78e40a5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: eh.vk.com
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: yKKs5x3f2ZGuPSnFlWPvskiQywmjSvu2CI06Jw67UyI
+    short-id: ffdbaa7f996dd0e9
   skip-cert-verify: false
   network: tcp
 - name: 🇷🇺 Russia [*CIDR] VK
   type: vless
   server: cloud1.ummaadmin.cloud
   port: 443
-  uuid: 735f24ba-65e2-4244-b2d5-420af6ff28de
+  uuid: 280cebf8-116e-4f73-ac4e-ef108343a6cd
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -1027,154 +643,65 @@ proxies:
   network: tcp
 - name: 🇷🇺 Russia [*CIDR] VK
   type: vless
-  server: cloud1.ummaadmin.cloud
+  server: 146.185.243.104
   port: 443
-  uuid: 735f24ba-65e2-4244-b2d5-420af6ff28de
+  uuid: 280cebf8-116e-4f73-ac4e-ef108343a6cd
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: st.ozone.ru
+  servername: eh.vk.com
   client-fingerprint: chrome
   reality-opts:
     public-key: 0t6b8m_PBAG3rF2HPOEL4yiyb-2JglciiANPKvyb2Ho
     short-id: ''
   skip-cert-verify: false
   network: tcp
-- name: 🇷🇺 Russia [*CIDR] VK
-  type: vless
-  server: 213.219.214.178
-  port: 8443
-  uuid: e53ec87d-53c2-47c8-b92a-42973a484c40
-  udp: true
-  tls: true
-  servername: ads.x5.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: QOd6O4cs6JCjelp0DVkWR_vRezRXjh_smH9kKfRDLUg
-    short-id: 789197fa845607d3
-  skip-cert-verify: false
-  network: tcp
-- name: 🇷🇺 Russia [*CIDR] VK
-  type: vless
-  server: 109.120.189.170
-  port: 5445
-  uuid: 8b86c505-0622-4cdf-adfb-29793e2c6ed5
-  udp: true
-  tls: true
-  servername: ads.x5.ru
-  client-fingerprint: qq
-  reality-opts:
-    public-key: cSQW3a_64jadi8uInU7XKZzTDyYKBxWj7c5MgIesIws
-    short-id: bad5722c72a0
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc
-- name: 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
-  type: vless
-  server: ob4.skysafe.online
-  port: 2083
-  uuid: 0e3a9376-1bf0-4b9e-a328-f28083bf6c34
-  udp: true
-  tls: true
-  servername: ads.x5.ru
-  client-fingerprint: random
-  reality-opts:
-    public-key: FARqAvdBdAqPJGFpjGVY4GWwgGl_afQ8ArDlfVs7-Ck
-    short-id: 5fb06f1e4d8f
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc
-- name: 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
-  type: vless
-  server: ob5.skysafe.online
-  port: 2082
-  uuid: 0e3a9376-1bf0-4b9e-a328-f28083bf6c34
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: eh1.vk.com
-  client-fingerprint: random
-  reality-opts:
-    public-key: o6zlxOHBtqwPdJNatvbmEHH_Ar6SJjJQqUViymfxHmo
-    short-id: cead3d22ec
-  skip-cert-verify: false
-  network: tcp
 proxy-groups:
 - name: 🚀 Авто (лучший пинг)
   type: url-test
   proxies: &id001
-  - 🇪🇪 Estonia, Tallinn | [BL]
-  - 🇱🇻 Latvia, Riga | [BL]
-  - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
+  - 🇱🇹 Lithuania, Vilnius | [BL]
   - 🇫🇮 Finland, Helsinki | [BL]
   - 🇫🇮 Finland, Helsinki | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
+  - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
+  - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
-  - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
-  - 🇸🇪 Sweden, Tällberg | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Eindhoven | [BL]
-  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
-  - 🇳🇱 The Netherlands | 🌐 | [IPv6] | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇵🇱 Poland, Warsaw | [BL]
-  - 🇵🇱 Poland, Warsaw (Mokotów) | 🌐 | [IPv6] | [BL]
-  - 🇫🇮 Finland [*CIDR] VK
-  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] CDN
-  - 🇩🇪 Germany | 🌐 | [IPv6] [*CIDR] CDN
-  - 🇩🇪 Germany [*CIDR] Beeline
-  - 🇩🇪 Germany [*CIDR] Beeline
-  - 🇩🇪 Germany | 🌐 | [IPv6] [*CIDR] CDN
+  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] YA
+  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] YA
+  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] VK
+  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] VK
+  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] VK
   - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] CDN
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] CDN
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇬🇧 United Kingdom [*CIDR] VK
+  - 🇳🇱 The Netherlands [*CIDR] VK
+  - 🇵🇱 Poland [*CIDR] VK
+  - 🇨🇦 Canada [*CIDR] VK
+  - 🇮🇳 India [*CIDR] YA
+  - 🇰🇷 South Korea [*CIDR] YA
+  - 🇺🇸 United States [*CIDR] VK
+  - 🇰🇿 Kazakhstan [*CIDR] VK
   - 🇺🇸 United States [*CIDR] YA
-  - 🌐 Anycast-IP | [IPv6] [*CIDR] VK
-  - 🌐 Anycast-IP | [IPv6] [*CIDR] VK
-  - 🌐 Anycast-IP | [IPv6] [*CIDR] VK
-  - 🌐 Anycast-IP | [IPv6] [*CIDR] VK
-  - 🌐 Anycast-IP | [IPv6] [*CIDR] VK
-  - 🌐 Anycast-IP | [IPv6] [*CIDR] VK
+  - 🇹🇷 Turkey [*CIDR] YA
+  - 🇨🇭 Switzerland [*CIDR] VK
+  - 🇫🇷 France [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] VK
-  - 🇷🇺 Russia [*CIDR] VK
-  - 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
-  - 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
   url: https://api.telegram.org
   interval: 300
   tolerance: 50
@@ -1183,76 +710,48 @@ proxy-groups:
   type: select
   proxies:
   - 🚀 Авто (лучший пинг)
-  - 🇪🇪 Estonia, Tallinn | [BL]
-  - 🇱🇻 Latvia, Riga | [BL]
-  - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
+  - 🇱🇹 Lithuania, Vilnius | [BL]
   - 🇫🇮 Finland, Helsinki | [BL]
   - 🇫🇮 Finland, Helsinki | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
+  - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
+  - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
-  - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
-  - 🇸🇪 Sweden, Tällberg | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Eindhoven | [BL]
-  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
-  - 🇳🇱 The Netherlands | 🌐 | [IPv6] | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇵🇱 Poland, Warsaw | [BL]
-  - 🇵🇱 Poland, Warsaw (Mokotów) | 🌐 | [IPv6] | [BL]
-  - 🇫🇮 Finland [*CIDR] VK
-  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] CDN
-  - 🇩🇪 Germany | 🌐 | [IPv6] [*CIDR] CDN
-  - 🇩🇪 Germany [*CIDR] Beeline
-  - 🇩🇪 Germany [*CIDR] Beeline
-  - 🇩🇪 Germany | 🌐 | [IPv6] [*CIDR] CDN
+  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] YA
+  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] YA
+  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] VK
+  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] VK
+  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] VK
   - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇳🇱 The Netherlands [*CIDR] YA
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] CDN
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] CDN
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇬🇧 United Kingdom [*CIDR] VK
+  - 🇳🇱 The Netherlands [*CIDR] VK
+  - 🇵🇱 Poland [*CIDR] VK
+  - 🇨🇦 Canada [*CIDR] VK
+  - 🇮🇳 India [*CIDR] YA
+  - 🇰🇷 South Korea [*CIDR] YA
+  - 🇺🇸 United States [*CIDR] VK
+  - 🇰🇿 Kazakhstan [*CIDR] VK
   - 🇺🇸 United States [*CIDR] YA
-  - 🌐 Anycast-IP | [IPv6] [*CIDR] VK
-  - 🌐 Anycast-IP | [IPv6] [*CIDR] VK
-  - 🌐 Anycast-IP | [IPv6] [*CIDR] VK
-  - 🌐 Anycast-IP | [IPv6] [*CIDR] VK
-  - 🌐 Anycast-IP | [IPv6] [*CIDR] VK
-  - 🌐 Anycast-IP | [IPv6] [*CIDR] VK
+  - 🇹🇷 Turkey [*CIDR] YA
+  - 🇨🇭 Switzerland [*CIDR] VK
+  - 🇫🇷 France [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] VK
-  - 🇷🇺 Russia [*CIDR] VK
-  - 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
-  - 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
 - name: 🔄 Fallback
   type: fallback
   proxies: *id001
