@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-05-18 17:49:45.510800+00:00
-# proxies: 4
+# updated: 2026-05-18 19:19:18.485125+00:00
+# proxies: 5
 
 mixed-port: 7890
 allow-lan: false
@@ -28,18 +28,62 @@ dns:
     geosite:ru: 114.114.114.114
     geosite:private: direct
 proxies:
-- name: 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
+- name: 🇱🇹 Lithuania, Vilnius | [BL]
   type: vless
-  server: de.auto.duckfree.online
+  server: lt.safepass.click
   port: 443
-  uuid: 9d444061-93fc-4b85-bc12-5b5bdbe08048
+  uuid: 3e4694ad-c0f8-4ddc-ba03-6222cbe5f988
+  udp: true
+  tls: true
+  servername: www.samsung.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: ELp9PUvVnkoFJYiscWrbnPXRnsYdELSCbIz9wNmMRRw
+    short-id: ''
+  skip-cert-verify: false
+  network: tcp
+- name: 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
+  type: vless
+  server: login.xwhiteness.site
+  port: 443
+  uuid: a2b2a4fb-7b34-472b-b4c0-e206fef1edfc
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: sun1-16.userapi.com
+  servername: login.xwhiteness.site
   client-fingerprint: chrome
   reality-opts:
-    public-key: wY_MYPJUx849su3BlowuxnwnUaj25iLfRw2LooQfPAY
+    public-key: _4UuX1REaRypO-PGfiKkq6ZHd-qaMKySdsDpzie7FRk
+    short-id: ''
+  skip-cert-verify: false
+  network: tcp
+- name: 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
+  type: vless
+  server: api-maps.xwhiteness.top
+  port: 443
+  uuid: a2b2a4fb-7b34-472b-b4c0-e206fef1edfc
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: api-maps.xwhiteness.top
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: JJFio7WT6anKV5WIkUNkXdzC_wzb0Ih3OWsRJ1HwKAI
+    short-id: ''
+  skip-cert-verify: false
+  network: tcp
+- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
+  type: vless
+  server: deepl.xwhiteness.site
+  port: 443
+  uuid: a2b2a4fb-7b34-472b-b4c0-e206fef1edfc
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: deepl.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: K5Ieju2pjOSjg0xU6xIUbFpzGUJutArqNEzEaPB0ySQ
     short-id: ''
   skip-cert-verify: false
   network: tcp
@@ -52,44 +96,15 @@ proxies:
   tls: false
   skip-cert-verify: false
   network: tcp
-- name: 🇵🇱 Poland, Warsaw | [BL]
-  type: vless
-  server: p3.hdlowstream.com
-  port: 443
-  uuid: 1a17fbd6-a54f-456c-8e71-5282893e2b69
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: p3.hdlowstream.com
-  client-fingerprint: randomized
-  reality-opts:
-    public-key: mTuT_isp316_u36EzJ2uqBdcj6VCD8LSq39mTO2vrzM
-    short-id: 93ed7d916252d203
-  skip-cert-verify: false
-  network: tcp
-- name: 🇵🇱 Poland, Warsaw | [BL]
-  type: vless
-  server: p9.hdlowstream.com
-  port: 443
-  uuid: 1a17fbd6-a54f-456c-8e71-5282893e2b69
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: p9.hdlowstream.com
-  client-fingerprint: randomized
-  reality-opts:
-    public-key: mTuT_isp316_u36EzJ2uqBdcj6VCD8LSq39mTO2vrzM
-    short-id: 93ed7d916252d203
-  skip-cert-verify: false
-  network: tcp
 proxy-groups:
 - name: 🚀 Авто (лучший пинг)
   type: url-test
   proxies: &id001
+  - 🇱🇹 Lithuania, Vilnius | [BL]
+  - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇵🇱 Poland, Warsaw | [BL]
-  - 🇵🇱 Poland, Warsaw | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
   url: https://api.telegram.org
   interval: 300
   tolerance: 50
@@ -98,10 +113,11 @@ proxy-groups:
   type: select
   proxies:
   - 🚀 Авто (лучший пинг)
+  - 🇱🇹 Lithuania, Vilnius | [BL]
+  - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇵🇱 Poland, Warsaw | [BL]
-  - 🇵🇱 Poland, Warsaw | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
 - name: 🔄 Fallback
   type: fallback
   proxies: *id001
