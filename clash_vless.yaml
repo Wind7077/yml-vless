@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-05-18 19:19:18.485125+00:00
-# proxies: 5
+# updated: 2026-05-18 20:59:16.720176+00:00
+# proxies: 9
 
 mixed-port: 7890
 allow-lan: false
@@ -57,21 +57,6 @@ proxies:
     short-id: ''
   skip-cert-verify: false
   network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
-  type: vless
-  server: api-maps.xwhiteness.top
-  port: 443
-  uuid: a2b2a4fb-7b34-472b-b4c0-e206fef1edfc
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: api-maps.xwhiteness.top
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: JJFio7WT6anKV5WIkUNkXdzC_wzb0Ih3OWsRJ1HwKAI
-    short-id: ''
-  skip-cert-verify: false
-  network: tcp
 - name: 🇩🇪 Germany, Frankfurt am Main | [BL]
   type: vless
   server: deepl.xwhiteness.site
@@ -96,15 +81,94 @@ proxies:
   tls: false
   skip-cert-verify: false
   network: tcp
+- name: 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
+  type: vless
+  server: api-maps.xwhiteness.top
+  port: 443
+  uuid: a2b2a4fb-7b34-472b-b4c0-e206fef1edfc
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: api-maps.xwhiteness.top
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: JJFio7WT6anKV5WIkUNkXdzC_wzb0Ih3OWsRJ1HwKAI
+    short-id: ''
+  skip-cert-verify: false
+  network: tcp
+- name: 🇩🇪 Germany [*CIDR] VK
+  type: vless
+  server: 90.156.218.105
+  port: 910
+  uuid: dc012b63-b466-4360-b06c-67d9b27c5410
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: rutube.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: dSX3CIrk2aNtPfJA8vczRFPWiV_OZWyQXxfLaOfGOBc
+    short-id: fd7d43c72d53f688
+  skip-cert-verify: false
+  network: tcp
+- name: 🇩🇪 Germany [*CIDR] VK
+  type: vless
+  server: 90.156.218.105
+  port: 920
+  uuid: dc012b63-b466-4360-b06c-67d9b27c5410
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: 5post-gate.x5.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: dSX3CIrk2aNtPfJA8vczRFPWiV_OZWyQXxfLaOfGOBc
+    short-id: fd7d43c72d53f688
+  skip-cert-verify: false
+  network: tcp
+- name: 🇩🇪 Germany [*CIDR] VK
+  type: vless
+  server: 90.156.218.105
+  port: 222
+  uuid: dc012b63-b466-4360-b06c-67d9b27c5410
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: max.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: dSX3CIrk2aNtPfJA8vczRFPWiV_OZWyQXxfLaOfGOBc
+    short-id: fd7d43c72d53f688
+  skip-cert-verify: false
+  network: tcp
+- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
+  type: vless
+  server: 95.163.183.11
+  port: 2087
+  uuid: b1e4bfe2-2b12-11f1-92cb-12ba70109d32
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: vk.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: OMQ1V_lJL1tgssEepG7BkCjBdt6sleZivAHiBPALlGc
+    short-id: ce59797defddc5e7
+  skip-cert-verify: false
+  network: tcp
 proxy-groups:
 - name: 🚀 Авто (лучший пинг)
   type: url-test
   proxies: &id001
   - 🇱🇹 Lithuania, Vilnius | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
+  - 🇩🇪 Germany [*CIDR] VK
+  - 🇩🇪 Germany [*CIDR] VK
+  - 🇩🇪 Germany [*CIDR] VK
+  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
   url: https://api.telegram.org
   interval: 300
   tolerance: 50
@@ -115,9 +179,13 @@ proxy-groups:
   - 🚀 Авто (лучший пинг)
   - 🇱🇹 Lithuania, Vilnius | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
+  - 🇩🇪 Germany [*CIDR] VK
+  - 🇩🇪 Germany [*CIDR] VK
+  - 🇩🇪 Germany [*CIDR] VK
+  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
 - name: 🔄 Fallback
   type: fallback
   proxies: *id001
