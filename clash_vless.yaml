@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-05-19 12:31:59.958092+00:00
-# proxies: 11
+# updated: 2026-05-19 16:42:11.071056+00:00
+# proxies: 9
 
 mixed-port: 7890
 allow-lan: false
@@ -28,115 +28,90 @@ dns:
     geosite:ru: 114.114.114.114
     geosite:private: direct
 proxies:
-- name: 🇱🇹 Lithuania, Vilnius | [BL]
+- name: 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
   type: vless
-  server: lt.safepass.click
+  server: login.xwhiteness.site
   port: 443
-  uuid: 3e4694ad-c0f8-4ddc-ba03-6222cbe5f988
+  uuid: a2b2a4fb-7b34-472b-b4c0-e206fef1edfc
   udp: true
+  flow: xtls-rprx-vision
   tls: true
-  servername: www.samsung.com
+  servername: login.xwhiteness.site
   client-fingerprint: chrome
   reality-opts:
-    public-key: ELp9PUvVnkoFJYiscWrbnPXRnsYdELSCbIz9wNmMRRw
+    public-key: _4UuX1REaRypO-PGfiKkq6ZHd-qaMKySdsDpzie7FRk
     short-id: ''
   skip-cert-verify: false
   network: tcp
-- name: 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
+- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
   type: vless
-  server: 144.31.82.47
-  port: 18038
-  uuid: a42c8b66-d0a7-4b49-9143-b98f1c84edba
+  server: srv163.towersflowerss.com
+  port: 443
+  uuid: f1233103-f7a8-42f1-b003-26c6dd391229
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: tcp
+- name: 🇸🇪 Sweden, Stockholm | 🌐 | [IPv6] | [BL]
+  type: vless
+  server: swe-8t.freeonline.pro
+  port: 443
+  uuid: '8546145579'
   udp: true
   flow: xtls-rprx-vision
   tls: true
   servername: www.microsoft.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: UDLhjunZjP-5A6KBMeuWe3qp_FusLAshcQIcCF7EZh8
-    short-id: ce9f790791426d83
+    public-key: 978-Yxgtd3AWTVfiXEQqCstdwrT1qgsgleGPIRGQDl8
+    short-id: bdac121c7debdaba
   skip-cert-verify: false
   network: tcp
-- name: 🇫🇮 Finland, Helsinki | [BL]
+- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
   type: vless
-  server: 95.143.111.137
-  port: 2053
-  uuid: 7e5f3794-b417-4107-9b5f-91c5a69e850f
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: FmtVYIw9yUE9KI49FH4c01AzRWqh4VNfCvaSXY8rtFA
-    short-id: a1b2c3d4e5f6a7b8
-  skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
-  type: vless
-  server: de6.safepass.click
-  port: 443
-  uuid: 9d59677e-df00-4918-bb03-e428cfc7c606
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.samsung.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: ELp9PUvVnkoFJYiscWrbnPXRnsYdELSCbIz9wNmMRRw
-    short-id: ''
-  skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
-  type: vless
-  server: 45.134.15.103
-  port: 2053
-  uuid: 7e5f3794-b417-4107-9b5f-91c5a69e850f
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.cloudflare.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: FmtVYIw9yUE9KI49FH4c01AzRWqh4VNfCvaSXY8rtFA
-    short-id: a1b2c3d4e5f6a7b8
-  skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
-  type: vless
-  server: srv163.towersflowerss.com
-  port: 443
+  server: srv187.towersflowerss.com
+  port: 64534
   uuid: f1233103-f7a8-42f1-b003-26c6dd391229
   udp: true
   tls: false
   skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: srv187.towersflowerss.com
+- name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
   type: vless
-  server: srv163.towersflowerss.com
-  port: 443
-  uuid: f1233103-f7a8-42f1-b003-26c6dd391229
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: tcp
-- name: 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] CDN
-  type: vless
-  server: 37.18.15.150
-  port: 8000
-  uuid: b4186875-7023-4f20-88b2-125a04943b2b
+  server: 147.45.50.243
+  port: 2443
+  uuid: bc0857ac-a3d1-47f7-8c35-fb81ac8ae769
   udp: true
   tls: true
-  servername: max.ru
+  servername: academy.nvidia.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: n5P9loBH9eKY7Lj6uVi2CMh7vZcAclKWYjbSOWG0mkU
-    short-id: 54c7c13b52eea5f3
+    public-key: ZMvMtsHKNd39qVM9CuPLMEXUL19ViL4Qqqk1y5mMjko
+    short-id: a1b2c3d4
+  skip-cert-verify: false
+  network: grpc
+  grpc-opts:
+    grpc-service-name: TestChatGRPC
+- name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
+  type: vless
+  server: 147.45.50.243
+  port: 3443
+  uuid: bc0857ac-a3d1-47f7-8c35-fb81ac8ae769
+  udp: true
+  tls: true
+  servername: vpnnl1.potatosubge20.org
+  client-fingerprint: chrome
+  alpn:
+  - h2
   skip-cert-verify: false
   network: tcp
 - name: 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
   type: vless
-  server: 46.243.232.174
+  server: 37.18.15.150
   port: 443
   uuid: b4186875-7023-4f20-88b2-125a04943b2b
   udp: true
@@ -150,7 +125,7 @@ proxies:
   network: tcp
 - name: 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
   type: vless
-  server: 37.18.15.150
+  server: 46.243.232.174
   port: 443
   uuid: b4186875-7023-4f20-88b2-125a04943b2b
   udp: true
@@ -180,14 +155,12 @@ proxy-groups:
 - name: 🚀 Авто (лучший пинг)
   type: url-test
   proxies: &id001
-  - 🇱🇹 Lithuania, Vilnius | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
-  - 🇫🇮 Finland, Helsinki | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] CDN
+  - 🇸🇪 Sweden, Stockholm | 🌐 | [IPv6] | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
+  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
   - 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
   - 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
   - 🇷🇺 Russia [*CIDR] YA
@@ -199,14 +172,12 @@ proxy-groups:
   type: select
   proxies:
   - 🚀 Авто (лучший пинг)
-  - 🇱🇹 Lithuania, Vilnius | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
-  - 🇫🇮 Finland, Helsinki | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇫🇮 Finland | 🌐 | [IPv6] [*CIDR] CDN
+  - 🇸🇪 Sweden, Stockholm | 🌐 | [IPv6] | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
+  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
   - 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
   - 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
   - 🇷🇺 Russia [*CIDR] YA
