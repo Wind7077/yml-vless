@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-05-19 16:42:11.071056+00:00
-# proxies: 9
+# updated: 2026-05-19 19:30:15.112710+00:00
+# proxies: 7
 
 mixed-port: 7890
 allow-lan: false
@@ -30,113 +30,94 @@ dns:
 proxies:
 - name: 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
   type: vless
-  server: login.xwhiteness.site
-  port: 443
-  uuid: a2b2a4fb-7b34-472b-b4c0-e206fef1edfc
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: login.xwhiteness.site
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: _4UuX1REaRypO-PGfiKkq6ZHd-qaMKySdsDpzie7FRk
-    short-id: ''
-  skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
-  type: vless
-  server: srv163.towersflowerss.com
-  port: 443
-  uuid: f1233103-f7a8-42f1-b003-26c6dd391229
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: tcp
-- name: 🇸🇪 Sweden, Stockholm | 🌐 | [IPv6] | [BL]
-  type: vless
-  server: swe-8t.freeonline.pro
-  port: 443
-  uuid: '8546145579'
+  server: 144.31.82.47
+  port: 18038
+  uuid: a42c8b66-d0a7-4b49-9143-b98f1c84edba
   udp: true
   flow: xtls-rprx-vision
   tls: true
   servername: www.microsoft.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: 978-Yxgtd3AWTVfiXEQqCstdwrT1qgsgleGPIRGQDl8
-    short-id: bdac121c7debdaba
+    public-key: UDLhjunZjP-5A6KBMeuWe3qp_FusLAshcQIcCF7EZh8
+    short-id: ce9f790791426d83
   skip-cert-verify: false
   network: tcp
-- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
+- name: 🇸🇪 Sweden, Stockholm | [BL]
   type: vless
-  server: srv187.towersflowerss.com
-  port: 64534
-  uuid: f1233103-f7a8-42f1-b003-26c6dd391229
+  server: sw.musicperec.ru
+  port: 443
+  uuid: 31216f81-3139-0021-bac4-646680314264
   udp: true
-  tls: false
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.amd.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: b4n1pcO8ST3JkGtj8YymXVrW17LEe2EHec5wY7hMMR4
+    short-id: 6a2b5c9d
+  skip-cert-verify: false
+  network: tcp
+- name: 🇩🇪 Germany [*CIDR] Beeline
+  type: vless
+  server: 78.159.250.11
+  port: 443
+  uuid: a151a97c-b94e-48eb-929c-f62c2439bcae
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: x5.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: VEQ1aFtLMHgfLcZ2yIugry8JzVXPE5ZXz72L10RUXVs
+    short-id: f4e2b8971d5c3a9f
+  skip-cert-verify: false
+  network: tcp
+- name: 🇵🇱 Poland [*CIDR] VK
+  type: vless
+  server: 146.185.241.45
+  port: 443
+  uuid: 92f3b80e-90a2-2040-b766-2e5cdeffbfa0
+  udp: true
+  tls: true
+  servername: w1ws.listwhite.cc
+  client-fingerprint: chrome
   skip-cert-verify: false
   network: ws
   ws-opts:
-    path: /
+    path: /upload/session
     headers:
-      Host: srv187.towersflowerss.com
-- name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
+      Host: s1.ws.listwhite.cc
+- name: 🇵🇱 Poland [*CIDR] VK
   type: vless
-  server: 147.45.50.243
-  port: 2443
-  uuid: bc0857ac-a3d1-47f7-8c35-fb81ac8ae769
-  udp: true
-  tls: true
-  servername: academy.nvidia.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: ZMvMtsHKNd39qVM9CuPLMEXUL19ViL4Qqqk1y5mMjko
-    short-id: a1b2c3d4
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: TestChatGRPC
-- name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
-  type: vless
-  server: 147.45.50.243
-  port: 3443
-  uuid: bc0857ac-a3d1-47f7-8c35-fb81ac8ae769
-  udp: true
-  tls: true
-  servername: vpnnl1.potatosubge20.org
-  client-fingerprint: chrome
-  alpn:
-  - h2
-  skip-cert-verify: false
-  network: tcp
-- name: 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
-  type: vless
-  server: 37.18.15.150
+  server: 146.185.241.40
   port: 443
-  uuid: b4186875-7023-4f20-88b2-125a04943b2b
+  uuid: 92f3b80e-90a2-2040-b766-2e5cdeffbfa0
   udp: true
   tls: true
-  servername: max.ru
-  client-fingerprint: random
-  reality-opts:
-    public-key: n5P9loBH9eKY7Lj6uVi2CMh7vZcAclKWYjbSOWG0mkU
-    short-id: 54c7c13b52eea5f3
+  servername: w2ws.listwhite.cc
+  client-fingerprint: chrome
   skip-cert-verify: false
-  network: tcp
-- name: 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
+  network: ws
+  ws-opts:
+    path: /upload/session
+    headers:
+      Host: s2.ws.listwhite.cc
+- name: 🇵🇱 Poland [*CIDR] VK
   type: vless
-  server: 46.243.232.174
+  server: 146.185.243.233
   port: 443
-  uuid: b4186875-7023-4f20-88b2-125a04943b2b
+  uuid: 92f3b80e-90a2-2040-b766-2e5cdeffbfa0
   udp: true
   tls: true
-  servername: max.ru
-  client-fingerprint: random
-  reality-opts:
-    public-key: n5P9loBH9eKY7Lj6uVi2CMh7vZcAclKWYjbSOWG0mkU
-    short-id: 54c7c13b52eea5f3
+  servername: s3.listwhite.cc
+  client-fingerprint: chrome
   skip-cert-verify: false
-  network: tcp
+  network: ws
+  ws-opts:
+    path: /upload/session
+    headers:
+      Host: s2.ws.listwhite.cc
 - name: 🇷🇺 Russia [*CIDR] YA
   type: vless
   server: 158.160.2.84
@@ -156,13 +137,11 @@ proxy-groups:
   type: url-test
   proxies: &id001
   - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇸🇪 Sweden, Stockholm | 🌐 | [IPv6] | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
-  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
-  - 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
-  - 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
+  - 🇸🇪 Sweden, Stockholm | [BL]
+  - 🇩🇪 Germany [*CIDR] Beeline
+  - 🇵🇱 Poland [*CIDR] VK
+  - 🇵🇱 Poland [*CIDR] VK
+  - 🇵🇱 Poland [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] YA
   url: https://api.telegram.org
   interval: 300
@@ -173,13 +152,11 @@ proxy-groups:
   proxies:
   - 🚀 Авто (лучший пинг)
   - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇸🇪 Sweden, Stockholm | 🌐 | [IPv6] | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
-  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
-  - 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
-  - 🇷🇺 Russia | 🌐 | [IPv6] [*CIDR] CDN
+  - 🇸🇪 Sweden, Stockholm | [BL]
+  - 🇩🇪 Germany [*CIDR] Beeline
+  - 🇵🇱 Poland [*CIDR] VK
+  - 🇵🇱 Poland [*CIDR] VK
+  - 🇵🇱 Poland [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] YA
 - name: 🔄 Fallback
   type: fallback
