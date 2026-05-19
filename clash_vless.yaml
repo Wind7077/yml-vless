@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-05-19 21:08:57.342911+00:00
-# proxies: 13
+# updated: 2026-05-19 22:54:25.265570+00:00
+# proxies: 14
 
 mixed-port: 7890
 allow-lan: false
@@ -113,6 +113,21 @@ proxies:
     short-id: '23'
   skip-cert-verify: false
   network: tcp
+- name: 🇸🇪 Sweden, Stockholm | 🌐 | [IPv6] | [BL]
+  type: vless
+  server: swe-8t.freeonline.pro
+  port: 443
+  uuid: '8546145579'
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: www.microsoft.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 978-Yxgtd3AWTVfiXEQqCstdwrT1qgsgleGPIRGQDl8
+    short-id: bdac121c7debdaba
+  skip-cert-verify: false
+  network: tcp
 - name: 🇳🇱 The Netherlands, Amsterdam | [BL]
   type: vless
   server: srv186.towersflowerss.com
@@ -156,21 +171,6 @@ proxies:
     path: /upload/session
     headers:
       Host: s1.ws.listwhite.cc
-- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  type: vless
-  server: 84.23.53.16
-  port: 443
-  uuid: 76491f61-c8fe-4a42-a2d1-06b9415d54e6
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: max.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: SHIYN7zN9aFVxwKK-bIvDbhUgtHvlBhDi1qSl2sWwRw
-    short-id: bcda713784d56483
-  skip-cert-verify: false
-  network: tcp
 - name: 🇵🇱 Poland [*CIDR] VK
   type: vless
   server: 146.185.243.233
@@ -186,6 +186,21 @@ proxies:
     path: /upload/session
     headers:
       Host: s2.ws.listwhite.cc
+- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
+  type: vless
+  server: 84.23.53.16
+  port: 443
+  uuid: 76491f61-c8fe-4a42-a2d1-06b9415d54e6
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: max.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: SHIYN7zN9aFVxwKK-bIvDbhUgtHvlBhDi1qSl2sWwRw
+    short-id: bcda713784d56483
+  skip-cert-verify: false
+  network: tcp
 - name: 🇷🇺 Russia [*CIDR] YA
   type: vless
   server: 158.160.2.84
@@ -225,11 +240,12 @@ proxy-groups:
   - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
   - 🇩🇪 Germany, Limburg an der Lahn | [BL]
+  - 🇸🇪 Sweden, Stockholm | 🌐 | [IPv6] | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇵🇱 Poland [*CIDR] VK
   - 🇵🇱 Poland [*CIDR] VK
   - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] YA
   - 🇷🇺 Russia [*CIDR] VK
   url: https://api.telegram.org
@@ -246,11 +262,12 @@ proxy-groups:
   - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
   - 🇩🇪 Germany, Limburg an der Lahn | [BL]
+  - 🇸🇪 Sweden, Stockholm | 🌐 | [IPv6] | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇵🇱 Poland [*CIDR] VK
   - 🇵🇱 Poland [*CIDR] VK
   - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
-  - 🇵🇱 Poland [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] YA
   - 🇷🇺 Russia [*CIDR] VK
 - name: 🔄 Fallback
