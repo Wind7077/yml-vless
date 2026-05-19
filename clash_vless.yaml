@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-05-19 19:30:15.112710+00:00
-# proxies: 7
+# updated: 2026-05-19 21:08:57.342911+00:00
+# proxies: 13
 
 mixed-port: 7890
 allow-lan: false
@@ -28,6 +28,49 @@ dns:
     geosite:ru: 114.114.114.114
     geosite:private: direct
 proxies:
+- name: 🇪🇪 Estonia, Tallinn | [BL]
+  type: vless
+  server: eeshka.api.dznn.net
+  port: 443
+  uuid: 92f3b80e-90a2-457f-b766-2e5cdeffbfa0
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: eeshka.api.dznn.net
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 9F7JxyyP-TNLt0dY2xOB0_34I8W0xXIpFY7rZ7-L0Gg
+    short-id: 0a6ba2716a409da6
+  skip-cert-verify: false
+  network: tcp
+- name: 🇱🇻 Latvia, Riga | 🌐 | [IPv6] | [BL]
+  type: vless
+  server: latv1.ggisopi.su
+  port: 443
+  uuid: 6bcc0a8a-a7cc-46b7-8448-14ec5e516912
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: latv1.ggisopi.su
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: HYKy4FK5lRc1Lv1lbJSew6xmpbg-Hp9IREnObxTf6kU
+    short-id: ''
+  skip-cert-verify: false
+  network: tcp
+- name: 🇫🇮 Finland, Helsinki | [BL]
+  type: vless
+  server: free05.tunnely.ru
+  port: 8080
+  uuid: b0d7663d-4590-41e8-906e-460f04499a4a
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /ws/
+    headers:
+      Host: free05.tunnely.ru
 - name: 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
   type: vless
   server: 144.31.82.47
@@ -43,34 +86,59 @@ proxies:
     short-id: ce9f790791426d83
   skip-cert-verify: false
   network: tcp
-- name: 🇸🇪 Sweden, Stockholm | [BL]
+- name: 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
   type: vless
-  server: sw.musicperec.ru
+  server: de.love-list-server.com
   port: 443
-  uuid: 31216f81-3139-0021-bac4-646680314264
+  uuid: a77198e2-9cf7-44c7-a97f-319f6f0e5b07
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: www.amd.com
+  servername: de.great-server-list.co.uk
   client-fingerprint: chrome
-  reality-opts:
-    public-key: b4n1pcO8ST3JkGtj8YymXVrW17LEe2EHec5wY7hMMR4
-    short-id: 6a2b5c9d
   skip-cert-verify: false
   network: tcp
-- name: 🇩🇪 Germany [*CIDR] Beeline
+- name: 🇩🇪 Germany, Limburg an der Lahn | [BL]
   type: vless
-  server: 78.159.250.11
+  server: lav1.pineappled.org.alexanderoff.ru
   port: 443
-  uuid: a151a97c-b94e-48eb-929c-f62c2439bcae
+  uuid: b931b922-6129-42bb-9c1c-d51371d18980
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: x5.ru
+  servername: www.apple.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: VEQ1aFtLMHgfLcZ2yIugry8JzVXPE5ZXz72L10RUXVs
-    short-id: f4e2b8971d5c3a9f
+    public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
+    short-id: '23'
+  skip-cert-verify: false
+  network: tcp
+- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
+  type: vless
+  server: srv186.towersflowerss.com
+  port: 64534
+  uuid: b43a13be-150c-4a6a-8501-b71c1b6476fb
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: srv186.towersflowerss.com
+- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
+  type: vless
+  server: nl.freekeysh110.online
+  port: 443
+  uuid: fcb2c219-71f9-4dc2-b21d-2a6adf76d012
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: nl.freekeysh110.online
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: xoJg4Yjw9uC7_fU2-KTZEI80T2BMyohQtP8ZvtRIpxM
+    short-id: 39212a0fd9ef8f3e
   skip-cert-verify: false
   network: tcp
 - name: 🇵🇱 Poland [*CIDR] VK
@@ -88,21 +156,21 @@ proxies:
     path: /upload/session
     headers:
       Host: s1.ws.listwhite.cc
-- name: 🇵🇱 Poland [*CIDR] VK
+- name: 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
   type: vless
-  server: 146.185.241.40
+  server: 84.23.53.16
   port: 443
-  uuid: 92f3b80e-90a2-2040-b766-2e5cdeffbfa0
+  uuid: 76491f61-c8fe-4a42-a2d1-06b9415d54e6
   udp: true
+  flow: xtls-rprx-vision
   tls: true
-  servername: w2ws.listwhite.cc
+  servername: max.ru
   client-fingerprint: chrome
+  reality-opts:
+    public-key: SHIYN7zN9aFVxwKK-bIvDbhUgtHvlBhDi1qSl2sWwRw
+    short-id: bcda713784d56483
   skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /upload/session
-    headers:
-      Host: s2.ws.listwhite.cc
+  network: tcp
 - name: 🇵🇱 Poland [*CIDR] VK
   type: vless
   server: 146.185.243.233
@@ -132,17 +200,38 @@ proxies:
     short-id: 54c7c13b52eea5f3
   skip-cert-verify: false
   network: tcp
+- name: 🇷🇺 Russia [*CIDR] VK
+  type: vless
+  server: 89.208.86.239
+  port: 5987
+  uuid: 41990152-3b7f-40a2-b692-49148d7053a5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: surfvpn24.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: L4kWgoTxqQc4kAGLrF_ARMRVMPy3_WInhjwt_8OPenU
+    short-id: c19de8fa
+  skip-cert-verify: false
+  network: tcp
 proxy-groups:
 - name: 🚀 Авто (лучший пинг)
   type: url-test
   proxies: &id001
+  - 🇪🇪 Estonia, Tallinn | [BL]
+  - 🇱🇻 Latvia, Riga | 🌐 | [IPv6] | [BL]
+  - 🇫🇮 Finland, Helsinki | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
-  - 🇸🇪 Sweden, Stockholm | [BL]
-  - 🇩🇪 Germany [*CIDR] Beeline
+  - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
+  - 🇩🇪 Germany, Limburg an der Lahn | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇵🇱 Poland [*CIDR] VK
-  - 🇵🇱 Poland [*CIDR] VK
+  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
   - 🇵🇱 Poland [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] YA
+  - 🇷🇺 Russia [*CIDR] VK
   url: https://api.telegram.org
   interval: 300
   tolerance: 50
@@ -151,13 +240,19 @@ proxy-groups:
   type: select
   proxies:
   - 🚀 Авто (лучший пинг)
+  - 🇪🇪 Estonia, Tallinn | [BL]
+  - 🇱🇻 Latvia, Riga | 🌐 | [IPv6] | [BL]
+  - 🇫🇮 Finland, Helsinki | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [IPv6] | [BL]
-  - 🇸🇪 Sweden, Stockholm | [BL]
-  - 🇩🇪 Germany [*CIDR] Beeline
+  - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [IPv6] | [BL]
+  - 🇩🇪 Germany, Limburg an der Lahn | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇵🇱 Poland [*CIDR] VK
-  - 🇵🇱 Poland [*CIDR] VK
+  - 🇵🇱 Poland | 🌐 | [IPv6] [*CIDR] VK
   - 🇵🇱 Poland [*CIDR] VK
   - 🇷🇺 Russia [*CIDR] YA
+  - 🇷🇺 Russia [*CIDR] VK
 - name: 🔄 Fallback
   type: fallback
   proxies: *id001
