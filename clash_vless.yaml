@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-05-23 14:52:16.937591+00:00
-# proxies: 25
+# updated: 2026-05-23 16:44:17.718278+00:00
+# proxies: 21
 
 mixed-port: 7890
 allow-lan: false
@@ -57,15 +57,6 @@ proxies:
     short-id: ''
   skip-cert-verify: false
   network: tcp
-- name: 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
-  type: vless
-  server: 89.19.223.149
-  port: 8443
-  uuid: d7790b85-9659-4558-a405-e0ab57d32984
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: tcp
 - name: 🇱🇻 Latvia, Riga | 🌐 | [BL]
   type: vless
   server: ru7.aimodelhub.top
@@ -78,6 +69,15 @@ proxies:
   reality-opts:
     public-key: Fe5PnOaERhhHbBXhGBEsQaRUBpSM8hCc03zOEpHz218
     short-id: 51b784e13468
+  skip-cert-verify: false
+  network: tcp
+- name: 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
+  type: vless
+  server: 89.19.223.149
+  port: 8443
+  uuid: d7790b85-9659-4558-a405-e0ab57d32984
+  udp: true
+  tls: false
   skip-cert-verify: false
   network: tcp
 - name: 🇫🇮 Finland, Helsinki | [BL]
@@ -158,16 +158,46 @@ proxies:
   network: tcp
 - name: 🇳🇱 The Netherlands, Amsterdam | [BL]
   type: vless
-  server: 194.87.115.225
+  server: nl5.safepass.click
   port: 443
-  uuid: f6ca4401-06cb-476a-ae12-c039781fef51
+  uuid: 9d59677e-df00-4918-bb03-e428cfc7c606
   udp: true
   tls: true
-  servername: yahoo.com
+  servername: www.samsung.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: DkDoSniuiRGJmHe2eHvS5-JAxOCLe3pIWHk7PHfmojk
-    short-id: c1a9
+    public-key: ELp9PUvVnkoFJYiscWrbnPXRnsYdELSCbIz9wNmMRRw
+    short-id: 965af8960474c29c
+  skip-cert-verify: false
+  network: tcp
+- name: 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
+  type: vless
+  server: metro.xwhiteness.site
+  port: 443
+  uuid: 73b7ea7f-2e71-4ced-8e0f-0f441d08960b
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: metro.xwhiteness.site
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: 0RG_lkW1p68H8ijrs42kiVbS30ADTh6fDQ9i6P6Jryg
+    short-id: ''
+  skip-cert-verify: false
+  network: tcp
+- name: 🇳🇱 The Netherlands, Amsterdam (Amsterdam-Zuidoost)
+  type: vless
+  server: nid.hatvpn.org
+  port: 443
+  uuid: 9cdba376-d1a1-4317-8770-a1b6f155bdc3
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: nid.hatvpn.org
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: PfG1V1-ODHD8CegoTVg8m4G4mw5S1QiA751yWKCkhBc
+    short-id: 054602d818379876
   skip-cert-verify: false
   network: tcp
 - name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
@@ -186,31 +216,18 @@ proxies:
   network: tcp
 - name: 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
   type: vless
-  server: metro.xwhiteness.site
+  server: 79.141.164.174
   port: 443
-  uuid: 73b7ea7f-2e71-4ced-8e0f-0f441d08960b
+  uuid: 6d1b6391-c4ba-431e-9c3a-148a8f392c8b
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: metro.xwhiteness.site
+  servername: nl174.mechvpn.online
   client-fingerprint: chrome
-  reality-opts:
-    public-key: 0RG_lkW1p68H8ijrs42kiVbS30ADTh6fDQ9i6P6Jryg
-    short-id: ''
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
-  type: vless
-  server: nl5.safepass.click
-  port: 443
-  uuid: 9d59677e-df00-4918-bb03-e428cfc7c606
-  udp: true
-  tls: true
-  servername: www.samsung.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: ELp9PUvVnkoFJYiscWrbnPXRnsYdELSCbIz9wNmMRRw
-    short-id: 965af8960474c29c
+  alpn:
+  - h3
+  - h2
+  - http/1.1
   skip-cert-verify: false
   network: tcp
 - name: 🇳🇱 The Netherlands, Amsterdam | [BL]
@@ -222,37 +239,6 @@ proxies:
   flow: xtls-rprx-vision
   tls: true
   servername: node194.mechvpn.online
-  client-fingerprint: chrome
-  alpn:
-  - h3
-  - h2
-  - http/1.1
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands, Amsterdam (Amsterdam-Zuidoost)
-  type: vless
-  server: nid.hatvpn.org
-  port: 443
-  uuid: 9cdba376-d1a1-4317-8770-a1b6f155bdc3
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: nid.hatvpn.org
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: PfG1V1-ODHD8CegoTVg8m4G4mw5S1QiA751yWKCkhBc
-    short-id: 054602d818379876
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
-  type: vless
-  server: 79.141.164.174
-  port: 443
-  uuid: 6d1b6391-c4ba-431e-9c3a-148a8f392c8b
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: nl174.mechvpn.online
   client-fingerprint: chrome
   alpn:
   - h3
@@ -286,6 +272,22 @@ proxies:
     short-id: 6f9ae5be33ead6f9
   skip-cert-verify: false
   network: tcp
+- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
+  type: vless
+  server: 171.22.180.35
+  port: 443
+  uuid: 76713d07-5a6b-49c2-abd8-bc450a2fa7fc
+  udp: true
+  tls: true
+  servername: q3r6s9t2u5v.spectrumproxy.shop
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: zpxbyw3Y0c--G-zox99d_W0cFCDOUoL50bK70DCY_x8
+    short-id: a1c1e5f7b9d0
+  skip-cert-verify: false
+  network: grpc
+  grpc-opts:
+    grpc-service-name: vless
 - name: 🇵🇱 Poland, Warsaw (Mokotów) | 🌐 | [BL]
   type: vless
   server: pl.nodes.rocketnetwork.ru
@@ -301,81 +303,22 @@ proxies:
     short-id: 428ef87fd47a3a32
   skip-cert-verify: false
   network: tcp
-- name: 🇬🇧 United Kingdom [*CIDR] CDN
+- name: 🇵🇱 Poland | 🌐 [*CIDR] Beeline
   type: vless
-  server: 46.243.234.181
-  port: 27015
-  uuid: 885206fc-bf57-4c19-9b01-b38fb7568c01
+  server: 78.159.246.194
+  port: 10443
+  uuid: 65036345-3132-4d3a-a0ba-c4560c3e671c
   udp: true
-  flow: xtls-rprx-vision
   tls: true
-  servername: adaptation.sfera.x5.ru
-  client-fingerprint: qq
-  reality-opts:
-    public-key: gXormNFH1ALjMoyAybpx9oLvTok6lmMdR5b4Flnif3s
-    short-id: ''
-  skip-cert-verify: false
-  network: tcp
-- name: 🇬🇧 United Kingdom [*CIDR] CDN
-  type: vless
-  server: 46.243.235.41
-  port: 25567
-  uuid: 885206fc-bf57-4c19-9b01-b38fb7568c01
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: iv.kommersant.ru
-  client-fingerprint: qq
-  reality-opts:
-    public-key: tsxzBG6xHNl1Nu8XPpd3hWk_zPGrpFrv2Z-difc3nGY
-    short-id: a5bd715847213387
-  skip-cert-verify: false
-  network: tcp
-- name: 🇬🇧 United Kingdom [*CIDR] CDN
-  type: vless
-  server: 37.18.14.79
-  port: 25565
-  uuid: 885206fc-bf57-4c19-9b01-b38fb7568c01
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: img.perekrestok.ru
-  client-fingerprint: qq
-  reality-opts:
-    public-key: Pw1EUU1hud5uvtfySGyGy5vV38bYIiQzDx-cDQoAdk0
-    short-id: a5bd715847213387
-  skip-cert-verify: false
-  network: tcp
-- name: 🇬🇧 United Kingdom [*CIDR] CDN
-  type: vless
-  server: 46.243.232.28
-  port: 25567
-  uuid: 885206fc-bf57-4c19-9b01-b38fb7568c01
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: iv.kommersant.ru
-  client-fingerprint: qq
-  reality-opts:
-    public-key: tsxzBG6xHNl1Nu8XPpd3hWk_zPGrpFrv2Z-difc3nGY
-    short-id: a5bd715847213387
-  skip-cert-verify: false
-  network: tcp
-- name: 🇷🇺 Russia [*CIDR] VK
-  type: vless
-  server: 37.139.33.17
-  port: 1505
-  uuid: 885206fc-bf57-4c19-9b01-b38fb7568c01
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: gp.x5.ru
+  servername: max.ru
   client-fingerprint: chrome
   reality-opts:
-    public-key: 2YCYnPqsLgEgKPyjwE0MJJ0xV13Daeg3WN7wDrAdD3I
+    public-key: KONaLFa2_5efdUtXz0TDfj8DZf65Lqli1935Mr36DnU
     short-id: ''
   skip-cert-verify: false
-  network: tcp
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
 - name: 🇷🇺 Russia [*CIDR] VK
   type: vless
   server: 37.139.33.8
@@ -397,28 +340,24 @@ proxy-groups:
   proxies: &id001
   - 🇱🇻 Latvia, Riga | 🌐 | [BL]
   - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
-  - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
   - 🇱🇻 Latvia, Riga | 🌐 | [BL]
+  - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
   - 🇫🇮 Finland, Helsinki | [BL]
   - 🇫🇮 Finland, Helsinki | [BL]
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | 🌐 |
   - 🇸🇪 Sweden, Stockholm | [BL]
   - 🇳🇱 The Netherlands | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam (Amsterdam-Zuidoost)
   - 🇳🇱 The Netherlands, Eygelshoven | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam (Amsterdam-Zuidoost)
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam (Amsterdam-Zuidoost)
-  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam (Amsterdam-Zuidoost)
   - 🇵🇱 Poland, Warsaw (Mokotów) | 🌐 | [BL]
-  - 🇬🇧 United Kingdom [*CIDR] CDN
-  - 🇬🇧 United Kingdom [*CIDR] CDN
-  - 🇬🇧 United Kingdom [*CIDR] CDN
-  - 🇬🇧 United Kingdom [*CIDR] CDN
-  - 🇷🇺 Russia [*CIDR] VK
+  - 🇵🇱 Poland | 🌐 [*CIDR] Beeline
   - 🇷🇺 Russia [*CIDR] VK
   url: https://api.telegram.org
   interval: 300
@@ -430,28 +369,24 @@ proxy-groups:
   - 🚀 Авто (лучший пинг)
   - 🇱🇻 Latvia, Riga | 🌐 | [BL]
   - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
-  - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
   - 🇱🇻 Latvia, Riga | 🌐 | [BL]
+  - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
   - 🇫🇮 Finland, Helsinki | [BL]
   - 🇫🇮 Finland, Helsinki | [BL]
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | 🌐 |
   - 🇸🇪 Sweden, Stockholm | [BL]
   - 🇳🇱 The Netherlands | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam (Amsterdam-Zuidoost)
   - 🇳🇱 The Netherlands, Eygelshoven | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam (Amsterdam-Zuidoost)
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam (Amsterdam-Zuidoost)
-  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam (Amsterdam-Zuidoost)
   - 🇵🇱 Poland, Warsaw (Mokotów) | 🌐 | [BL]
-  - 🇬🇧 United Kingdom [*CIDR] CDN
-  - 🇬🇧 United Kingdom [*CIDR] CDN
-  - 🇬🇧 United Kingdom [*CIDR] CDN
-  - 🇬🇧 United Kingdom [*CIDR] CDN
-  - 🇷🇺 Russia [*CIDR] VK
+  - 🇵🇱 Poland | 🌐 [*CIDR] Beeline
   - 🇷🇺 Russia [*CIDR] VK
 - name: 🔄 Fallback
   type: fallback
