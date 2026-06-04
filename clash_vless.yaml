@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-06-04 19:51:04.573946+00:00
-# proxies: 19
+# updated: 2026-06-04 21:19:50.150029+00:00
+# proxies: 14
 
 mixed-port: 7890
 allow-lan: false
@@ -28,21 +28,6 @@ dns:
     geosite:ru: 114.114.114.114
     geosite:private: direct
 proxies:
-- name: 🇪🇪 Estonia, Tallinn | [BL]
-  type: vless
-  server: b02.connectv.net
-  port: 443
-  uuid: c4c9bfd7-4bdc-0007-ae64-185ffb553ae6
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: b02.connectv.net
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: 0RegtdcQHk9Fg95kgn5jmRglN6N3sdk3ZhrFXvmbrgk
-    short-id: ''
-  skip-cert-verify: false
-  network: tcp
 - name: 🇱🇻 Latvia, Riga | 🌐 | [BL]
   type: vless
   server: 2.26.88.118
@@ -59,24 +44,9 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: max.ru
-- name: 🇪🇪 Estonia, Tallinn | [BL]
-  type: vless
-  server: b02.connectv.net
-  port: 443
-  uuid: c4c9bfd7-4bdc-0007-ae64-185ffb553ae6
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: b02.connectv.net
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: 0RegtdcQHk9Fg95kgn5jmRglN6N3sdk3ZhrFXvmbrgk
-    short-id: ''
-  skip-cert-verify: false
-  network: tcp
 - name: 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   type: vless
-  server: 213.165.57.223
+  server: bc-de-wc.ray-balance.space
   port: 4443
   uuid: 0eca1f22-e5a1-4888-a0fa-c2345e87cf2f
   udp: true
@@ -87,7 +57,7 @@ proxies:
     grpc-service-name: ''
 - name: 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   type: vless
-  server: bc-de-wc.ray-balance.space
+  server: 213.165.57.223
   port: 4443
   uuid: 0eca1f22-e5a1-4888-a0fa-c2345e87cf2f
   udp: true
@@ -120,143 +90,101 @@ proxies:
     path: /@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia
     headers:
       Host: play.google.com
-- name: 🇳🇱 The Netherlands, Dronten | [BL]
+- name: 🇧🇷 Brazil | 🌐 [*CIDR] VK
   type: vless
-  server: food.artmisserver.site
-  port: 8443
-  uuid: 3e809b21-e29b-49ec-a7fb-5301ec7c1cee
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: ap.isowli.ir
-- name: 🇳🇱 The Netherlands, Dronten | [BL]
-  type: vless
-  server: 91.198.77.242
-  port: 8443
-  uuid: 3e809b21-e29b-49ec-a7fb-5301ec7c1cee
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: ap.isowli.ir
-- name: 🇬🇧 United Kingdom [*CIDR] YA
-  type: vless
-  server: 178.154.204.65
-  port: 443
-  uuid: ea7f64ed-64b5-453f-b5ab-dbc50c558209
+  server: 146.185.211.107
+  port: 8459
+  uuid: 63a16ebb-8687-42ac-972a-5914cafad1d5
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: wl-4-4.nodes.ac
+  servername: yandex.ru
+  client-fingerprint: qq
+  reality-opts:
+    public-key: GNj7M0lwNAeGm9DJBbGgzIS7eTqb1dsCzVDInE2vUCc
+    short-id: d4b8a3e6f1c97205
+  skip-cert-verify: false
+  network: tcp
+- name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
+  type: vless
+  server: 89.208.208.92
+  port: 9443
+  uuid: cbc27e56-38a1-4b0d-bce3-f9e7dcb807a4
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: loadtest.dev.urent.ru
   client-fingerprint: chrome
   reality-opts:
-    public-key: FVceIo73-WJfacwis9bRlQ7wEYbQuN4N25oWQlmdwl0
-    short-id: bfb16f73e35be2da
+    public-key: aVu6XB9_RKR1xLtusyQ1_YOWCs4Ofi9GEJd6oERNH2Q
+    short-id: 689def22fcb54e86
+  skip-cert-verify: false
+  network: tcp
+- name: 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+  type: vless
+  server: 51.250.97.18
+  port: 443
+  uuid: b635ecff-3b46-440f-be44-dd85ab63ee7d
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: cdp.x5.ru
+  client-fingerprint: safari
+  reality-opts:
+    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
+    short-id: 8ec792bfd725be8a
+  skip-cert-verify: false
+  network: tcp
+- name: 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+  type: vless
+  server: 51.250.103.104
+  port: 443
+  uuid: 06778d23-024a-4897-8d30-44d48a996487
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: cdp.x5.ru
+  client-fingerprint: safari
+  reality-opts:
+    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
+    short-id: 8ec792bfd725be8a
+  skip-cert-verify: false
+  network: tcp
+- name: 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+  type: vless
+  server: 51.250.97.18
+  port: 443
+  uuid: 06778d23-024a-4897-8d30-44d48a996487
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: cdp.x5.ru
+  client-fingerprint: safari
+  reality-opts:
+    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
+    short-id: 8ec792bfd725be8a
+  skip-cert-verify: false
+  network: tcp
+- name: 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+  type: vless
+  server: 51.250.24.222
+  port: 443
+  uuid: 06778d23-024a-4897-8d30-44d48a996487
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: cdp.x5.ru
+  client-fingerprint: safari
+  reality-opts:
+    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
+    short-id: 8ec792bfd725be8a
   skip-cert-verify: false
   network: tcp
 - name: 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
   type: vless
   server: 51.250.106.87
   port: 443
-  uuid: 8c3ea797-4532-4d19-8999-c8e243bba638
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
-  skip-cert-verify: false
-  network: tcp
-- name: 🇬🇧 United Kingdom [*CIDR] YA
-  type: vless
-  server: 178.154.204.55
-  port: 443
-  uuid: ea7f64ed-64b5-453f-b5ab-dbc50c558209
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: wl-4-3.nodes.ac
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: ljUVISw0FlRCXDz6xRTVnmms_IfVrIFLJ5bg81MDNQY
-    short-id: 7171871f66279d10
-  skip-cert-verify: false
-  network: tcp
-- name: 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
-  type: vless
-  server: 51.250.103.104
-  port: 443
-  uuid: fdb3e2d8-b33e-448b-b9da-a7c1d3a5203e
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
-  skip-cert-verify: false
-  network: tcp
-- name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
-  type: vless
-  server: 89.208.208.92
-  port: 7443
-  uuid: cbc27e56-38a1-4b0d-bce3-f9e7dcb807a4
-  udp: true
-  tls: true
-  servername: loadtest.dev.urent.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: _AXs-QnufIq918tbb2pwM3MDbe7kQ6i0cIHDMLwPmGs
-    short-id: 3210e0eee6605048
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: grpc
-- name: 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
-  type: vless
-  server: 51.250.24.222
-  port: 443
-  uuid: fdb3e2d8-b33e-448b-b9da-a7c1d3a5203e
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
-  skip-cert-verify: false
-  network: tcp
-- name: 🇬🇧 United Kingdom [*CIDR] YA
-  type: vless
-  server: 178.154.215.113
-  port: 443
-  uuid: ea7f64ed-64b5-453f-b5ab-dbc50c558209
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: wl-4-1.legendary.ac
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: E-nzKjkLlehnOE5Lub_r6tCOQcvnxVaSAETjFHESciw
-    short-id: 30e93292b543f308
-  skip-cert-verify: false
-  network: tcp
-- name: 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
-  type: vless
-  server: 51.250.102.69
-  port: 443
-  uuid: 8c3ea797-4532-4d19-8999-c8e243bba638
+  uuid: 06778d23-024a-4897-8d30-44d48a996487
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -271,7 +199,7 @@ proxies:
   type: vless
   server: 51.250.102.69
   port: 443
-  uuid: fdb3e2d8-b33e-448b-b9da-a7c1d3a5203e
+  uuid: 06778d23-024a-4897-8d30-44d48a996487
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -284,9 +212,9 @@ proxies:
   network: tcp
 - name: 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
   type: vless
-  server: 51.250.103.104
+  server: 51.250.102.69
   port: 443
-  uuid: 8c3ea797-4532-4d19-8999-c8e243bba638
+  uuid: b635ecff-3b46-440f-be44-dd85ab63ee7d
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -301,22 +229,17 @@ proxy-groups:
 - name: 🚀 Авто (лучший пинг)
   type: url-test
   proxies: &id001
-  - 🇪🇪 Estonia, Tallinn | [BL]
   - 🇱🇻 Latvia, Riga | 🌐 | [BL]
-  - 🇪🇪 Estonia, Tallinn | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Dronten | [BL]
-  - 🇳🇱 The Netherlands, Dronten | [BL]
-  - 🇬🇧 United Kingdom [*CIDR] YA
-  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
-  - 🇬🇧 United Kingdom [*CIDR] YA
-  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+  - 🇧🇷 Brazil | 🌐 [*CIDR] VK
   - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
   - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
-  - 🇬🇧 United Kingdom [*CIDR] YA
+  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
@@ -328,22 +251,17 @@ proxy-groups:
   type: select
   proxies:
   - 🚀 Авто (лучший пинг)
-  - 🇪🇪 Estonia, Tallinn | [BL]
   - 🇱🇻 Latvia, Riga | 🌐 | [BL]
-  - 🇪🇪 Estonia, Tallinn | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Dronten | [BL]
-  - 🇳🇱 The Netherlands, Dronten | [BL]
-  - 🇬🇧 United Kingdom [*CIDR] YA
-  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
-  - 🇬🇧 United Kingdom [*CIDR] YA
-  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+  - 🇧🇷 Brazil | 🌐 [*CIDR] VK
   - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
   - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
-  - 🇬🇧 United Kingdom [*CIDR] YA
+  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
