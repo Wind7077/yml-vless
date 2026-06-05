@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-06-05 11:00:54.778699+00:00
-# proxies: 22
+# updated: 2026-06-05 14:15:32.623828+00:00
+# proxies: 13
 
 mixed-port: 7890
 allow-lan: false
@@ -28,60 +28,45 @@ dns:
     geosite:ru: 114.114.114.114
     geosite:private: direct
 proxies:
-- name: 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
+- name: 🇱🇻 Latvia, Riga | 🌐 | [BL]
   type: vless
-  server: tal.odavpn.online
-  port: 443
-  uuid: fb7fe921-1032-45fe-ae9d-20090976e572
+  server: 2.26.88.118
+  port: 8443
+  uuid: 785c7771-8d7f-48ca-bbc2-1a22e360d4d0
   udp: true
   tls: true
-  servername: www.amd.com
+  servername: 2.26.88.118
   client-fingerprint: chrome
   reality-opts:
-    public-key: _5YItXYM7SPX7baBG4Fl1MDBE7UvDC8sOx8-0VVueBA
-    short-id: 41774dc9dc721e
+    public-key: TdT90qbeyM7WO0QCztOhKDGKOi2qaFFif0hO0cfK1E4
+    short-id: ea1058117be12087
+  skip-cert-verify: false
+  network: grpc
+  grpc-opts:
+    grpc-service-name: max.ru
+- name: 🇫🇮 Finland, Helsinki | 🌐 | [BL]
+  type: vless
+  server: 5.144.179.56
+  port: 45466
+  uuid: 6a8233fe-6fc0-4dd8-aab2-d4063c16089c
+  udp: true
+  tls: true
+  servername: 5.144.179.56
+  client-fingerprint: chrome
+  alpn:
+  - h2
+  - http/1.1
   skip-cert-verify: false
   network: tcp
 - name: 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   type: vless
-  server: 213.165.57.224
-  port: 4443
-  uuid: 0eca1f22-e5a1-4888-a0fa-c2345e87cf2f
+  server: 5.144.179.56
+  port: 45466
+  uuid: 6a8233fe-6fc0-4dd8-aab2-d4063c16089c
   udp: true
-  tls: false
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: ''
-- name: 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  type: vless
-  server: 213.165.57.223
-  port: 4443
-  uuid: 0eca1f22-e5a1-4888-a0fa-c2345e87cf2f
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: ''
-- name: 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  type: vless
-  server: bc-de-wc.ray-balance.space
-  port: 4443
-  uuid: 0eca1f22-e5a1-4888-a0fa-c2345e87cf2f
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: ''
-- name: 🇩🇪 Germany, Nuremberg | 🌐 | [BL]
-  type: vless
-  server: speedtest.net
-  port: 80
-  uuid: 08633db1-df68-48c6-90d7-5cbf7e1465bc
-  udp: true
-  tls: false
+  tls: true
+  servername: 5.144.179.56
+  client-fingerprint: chrome
   skip-cert-verify: false
   network: tcp
 - name: 🇩🇪 Germany, Frankfurt am Main | [BL]
@@ -109,6 +94,19 @@ proxies:
   - h3
   skip-cert-verify: false
   network: tcp
+- name: 🇩🇪 Germany, Eschborn | 🌐 | [BL]
+  type: vless
+  server: blit11.hamrahcore.ir
+  port: 719
+  uuid: 1d2c102a-486f-4d2d-8b87-f40d307200e5
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /api/v2/xtrnwqjbkr?ed=2560
+    headers:
+      Host: play.google.com
 - name: 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
   type: vless
   server: backend.xwhiteness.site
@@ -124,27 +122,11 @@ proxies:
     short-id: ''
   skip-cert-verify: false
   network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
+- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
   type: vless
-  server: de2.unoix.co
-  port: 38148
-  uuid: a0b7c251-a27c-410a-89a7-73a31e4e6af9
-  udp: true
-  tls: true
-  servername: www.yahoo.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: CqnP5lpBUqGXHo1aqkUi4HuqD7SC3c27u0LqXQTSJGM
-    short-id: '40'
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: ''
-- name: 🇩🇪 Germany, Berlin | [BL]
-  type: vless
-  server: 82.165.133.113
+  server: de7.niekotin.de
   port: 80
-  uuid: f9558e6a-0447-48a0-94e9-cd69fc638d73
+  uuid: 64297ec6-f701-49a7-8337-31af0561debc
   udp: true
   tls: false
   skip-cert-verify: false
@@ -152,128 +134,42 @@ proxies:
   ws-opts:
     path: /vless
     headers:
-      Host: de2.niekotin.de
+      Host: de7.niekotin.de
 - name: 🇸🇪 Sweden, Stockholm | [BL]
   type: vless
-  server: grok.sempai.site
+  server: sw.musicperec.ru
   port: 443
-  uuid: 73a27a6d-a111-4576-a6b3-e8594aeac2f2
+  uuid: 31216f81-3139-0021-bac4-646680314264
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: deepl.com
+  servername: www.amd.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: qEUU6oGBD_rjO0319EK4rAnsPhlqrb-ecCgQsT4JUmI
-    short-id: ''
+    public-key: b4n1pcO8ST3JkGtj8YymXVrW17LEe2EHec5wY7hMMR4
+    short-id: 6a2b5c9d
   skip-cert-verify: false
   network: tcp
-- name: 🇸🇪 Sweden, Stockholm | [BL]
+- name: 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
   type: vless
-  server: 132.243.231.82
+  server: 51.250.106.87
   port: 443
-  uuid: 73a27a6d-a111-4576-a6b3-e8594aeac2f2
+  uuid: 46b654eb-0229-4c4d-92d6-e5736ba8c4b5
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: deepl.com
-  client-fingerprint: firefox
+  servername: cdp.x5.ru
+  client-fingerprint: safari
   reality-opts:
-    public-key: qEUU6oGBD_rjO0319EK4rAnsPhlqrb-ecCgQsT4JUmI
-    short-id: ''
-  skip-cert-verify: false
-  network: tcp
-- name: 🇸🇪 Sweden, Stockholm | [BL]
-  type: vless
-  server: grok.sempai.site
-  port: 443
-  uuid: 73a27a6d-a111-4576-a6b3-e8594aeac2f2
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: deepl.com
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: qEUU6oGBD_rjO0319EK4rAnsPhlqrb-ecCgQsT4JUmI
-    short-id: ''
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
-  type: vless
-  server: 89.124.69.82
-  port: 1310
-  uuid: v2raydia
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia
-    headers:
-      Host: play.google.com
-- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
-  type: vless
-  server: 89.124.69.82
-  port: 1310
-  uuid: 33bb6880-03c0-5ada-b3fe-4c5300cbd8b4
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia
-    headers:
-      Host: play.google.com
-- name: 🇵🇱 Poland, Warsaw (Śródmieście) | 🌐 | [BL]
-  type: vless
-  server: 147.45.187.210
-  port: 10443
-  uuid: 6ca66fa1-0bac-458e-8483-6662378c2a60
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: sun1-56.userapi.com
-  client-fingerprint: random
-  reality-opts:
-    public-key: rK6mCfx5GOI6HGvwilJAiYA7N52D2lsxtrYijkFPnwU
-    short-id: 6d2f
-  skip-cert-verify: false
-  network: tcp
-- name: 🇵🇱 Poland, Warsaw | 🌐 | [BL]
-  type: vless
-  server: login.sempai.site
-  port: 443
-  uuid: 73a27a6d-a111-4576-a6b3-e8594aeac2f2
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: front.xwhiteness.site
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: HSxmRrAGkb_RPkm7rLyqr9tVCGzd9thesrdcgENYShA
-    short-id: ''
-  skip-cert-verify: false
-  network: tcp
-- name: 🇵🇱 Poland, Warsaw | 🌐 | [BL]
-  type: vless
-  server: 150.241.93.194
-  port: 443
-  uuid: 73a27a6d-a111-4576-a6b3-e8594aeac2f2
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: front.xwhiteness.site
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: HSxmRrAGkb_RPkm7rLyqr9tVCGzd9thesrdcgENYShA
-    short-id: ''
+    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
+    short-id: 8ec792bfd725be8a
   skip-cert-verify: false
   network: tcp
 - name: 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
   type: vless
   server: 51.250.108.162
   port: 443
-  uuid: 231e089f-60eb-41d5-bc1f-a98334fbacb5
+  uuid: 46b654eb-0229-4c4d-92d6-e5736ba8c4b5
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -284,11 +180,11 @@ proxies:
     short-id: 8ec792bfd725be8a
   skip-cert-verify: false
   network: tcp
-- name: 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+- name: 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
   type: vless
   server: 51.250.24.222
   port: 443
-  uuid: 231e089f-60eb-41d5-bc1f-a98334fbacb5
+  uuid: 46b654eb-0229-4c4d-92d6-e5736ba8c4b5
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -299,26 +195,11 @@ proxies:
     short-id: 8ec792bfd725be8a
   skip-cert-verify: false
   network: tcp
-- name: 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+- name: 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
   type: vless
-  server: 51.250.104.246
+  server: 51.250.97.18
   port: 443
-  uuid: 231e089f-60eb-41d5-bc1f-a98334fbacb5
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
-  skip-cert-verify: false
-  network: tcp
-- name: 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
-  type: vless
-  server: 51.250.106.87
-  port: 443
-  uuid: 231e089f-60eb-41d5-bc1f-a98334fbacb5
+  uuid: 46b654eb-0229-4c4d-92d6-e5736ba8c4b5
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -333,28 +214,19 @@ proxy-groups:
 - name: 🚀 Авто (лучший пинг)
   type: url-test
   proxies: &id001
-  - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
+  - 🇱🇻 Latvia, Riga | 🌐 | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  - 🇩🇪 Germany, Nuremberg | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇩🇪 Germany | 🌐 | [BL]
+  - 🇩🇪 Germany, Eschborn | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
-  - 🇩🇪 Germany, Berlin | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇸🇪 Sweden, Stockholm | [BL]
-  - 🇸🇪 Sweden, Stockholm | [BL]
-  - 🇸🇪 Sweden, Stockholm | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇵🇱 Poland, Warsaw (Śródmieście) | 🌐 | [BL]
-  - 🇵🇱 Poland, Warsaw | 🌐 | [BL]
-  - 🇵🇱 Poland, Warsaw | 🌐 | [BL]
   - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
+  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
+  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
   url: https://api.telegram.org
   interval: 300
   tolerance: 50
@@ -363,28 +235,19 @@ proxy-groups:
   type: select
   proxies:
   - 🚀 Авто (лучший пинг)
-  - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
+  - 🇱🇻 Latvia, Riga | 🌐 | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  - 🇩🇪 Germany, Nuremberg | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇩🇪 Germany | 🌐 | [BL]
+  - 🇩🇪 Germany, Eschborn | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
-  - 🇩🇪 Germany, Berlin | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇸🇪 Sweden, Stockholm | [BL]
-  - 🇸🇪 Sweden, Stockholm | [BL]
-  - 🇸🇪 Sweden, Stockholm | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇵🇱 Poland, Warsaw (Śródmieście) | 🌐 | [BL]
-  - 🇵🇱 Poland, Warsaw | 🌐 | [BL]
-  - 🇵🇱 Poland, Warsaw | 🌐 | [BL]
   - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇫🇷 🇬🇧 [*CIDR] YA
+  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
+  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
+  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
 - name: 🔄 Fallback
   type: fallback
   proxies: *id001
