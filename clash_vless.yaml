@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-06-05 14:15:32.623828+00:00
-# proxies: 13
+# updated: 2026-06-05 17:43:42.708854+00:00
+# proxies: 6
 
 mixed-port: 7890
 allow-lan: false
@@ -44,31 +44,6 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: max.ru
-- name: 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  type: vless
-  server: 5.144.179.56
-  port: 45466
-  uuid: 6a8233fe-6fc0-4dd8-aab2-d4063c16089c
-  udp: true
-  tls: true
-  servername: 5.144.179.56
-  client-fingerprint: chrome
-  alpn:
-  - h2
-  - http/1.1
-  skip-cert-verify: false
-  network: tcp
-- name: 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  type: vless
-  server: 5.144.179.56
-  port: 45466
-  uuid: 6a8233fe-6fc0-4dd8-aab2-d4063c16089c
-  udp: true
-  tls: true
-  servername: 5.144.179.56
-  client-fingerprint: chrome
-  skip-cert-verify: false
-  network: tcp
 - name: 🇩🇪 Germany, Frankfurt am Main | [BL]
   type: vless
   server: vip-srv-for-you.xn--5d3ak5w.com
@@ -83,50 +58,25 @@ proxies:
     host: crj0p2x3yug5d5lv13en.1x.up.xn--1tq578b.com
 - name: 🇩🇪 Germany | 🌐 | [BL]
   type: vless
-  server: 151.101.71.220
-  port: 443
-  uuid: c2d7ef90-1d72-4c10-a694-fac554d17829
+  server: l1-2.l-itx.info
+  port: 7443
+  uuid: f1a44ae4-20f9-4dd7-b60e-b4f2acecfdb4
   udp: true
   tls: true
-  servername: www.fastly.com
-  client-fingerprint: chrome
-  alpn:
-  - h3
-  skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany, Eschborn | 🌐 | [BL]
-  type: vless
-  server: blit11.hamrahcore.ir
-  port: 719
-  uuid: 1d2c102a-486f-4d2d-8b87-f40d307200e5
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /api/v2/xtrnwqjbkr?ed=2560
-    headers:
-      Host: play.google.com
-- name: 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
-  type: vless
-  server: backend.xwhiteness.site
-  port: 443
-  uuid: 73a27a6d-a111-4576-a6b3-e8594aeac2f2
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: backend.xwhiteness.site
+  servername: colorlib.com
   client-fingerprint: firefox
   reality-opts:
-    public-key: gifIrcPX_n54pgouOfegoOXfTtQTE3DUHjjrVqF0qGY
+    public-key: F2MKDw5CCtP1oXIej2EgNxB01k3eyNu7tKCFfucgnRA
     short-id: ''
   skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
+  network: grpc
+  grpc-opts:
+    grpc-service-name: xyz
+- name: 🇩🇪 Germany, Berlin | [BL]
   type: vless
-  server: de7.niekotin.de
+  server: 82.165.133.113
   port: 80
-  uuid: 64297ec6-f701-49a7-8337-31af0561debc
+  uuid: f9558e6a-0447-48a0-94e9-cd69fc638d73
   udp: true
   tls: false
   skip-cert-verify: false
@@ -134,72 +84,12 @@ proxies:
   ws-opts:
     path: /vless
     headers:
-      Host: de7.niekotin.de
-- name: 🇸🇪 Sweden, Stockholm | [BL]
-  type: vless
-  server: sw.musicperec.ru
-  port: 443
-  uuid: 31216f81-3139-0021-bac4-646680314264
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.amd.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: b4n1pcO8ST3JkGtj8YymXVrW17LEe2EHec5wY7hMMR4
-    short-id: 6a2b5c9d
-  skip-cert-verify: false
-  network: tcp
-- name: 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  type: vless
-  server: 51.250.106.87
-  port: 443
-  uuid: 46b654eb-0229-4c4d-92d6-e5736ba8c4b5
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
-  skip-cert-verify: false
-  network: tcp
-- name: 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  type: vless
-  server: 51.250.108.162
-  port: 443
-  uuid: 46b654eb-0229-4c4d-92d6-e5736ba8c4b5
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
-  skip-cert-verify: false
-  network: tcp
-- name: 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  type: vless
-  server: 51.250.24.222
-  port: 443
-  uuid: 46b654eb-0229-4c4d-92d6-e5736ba8c4b5
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
-  skip-cert-verify: false
-  network: tcp
+      Host: de2.niekotin.de
 - name: 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
   type: vless
   server: 51.250.97.18
   port: 443
-  uuid: 46b654eb-0229-4c4d-92d6-e5736ba8c4b5
+  uuid: b8d300c6-057d-4ac8-9bee-7c66f94778c8
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -208,6 +98,21 @@ proxies:
   reality-opts:
     public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
     short-id: 8ec792bfd725be8a
+  skip-cert-verify: false
+  network: tcp
+- name: 🇨🇿 Czechia [*CIDR] VK
+  type: vless
+  server: 146.185.211.107
+  port: 8444
+  uuid: 63a16ebb-8687-42ac-972a-5914cafad1d5
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: yandex.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: hL6rNCNtquIMhYV8V3WOrowSgIwko61yQIX2o1w6_lY
+    short-id: 0d62c138f2bf1ba8
   skip-cert-verify: false
   network: tcp
 proxy-groups:
@@ -215,18 +120,11 @@ proxy-groups:
   type: url-test
   proxies: &id001
   - 🇱🇻 Latvia, Riga | 🌐 | [BL]
-  - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇩🇪 Germany | 🌐 | [BL]
-  - 🇩🇪 Germany, Eschborn | 🌐 | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇸🇪 Sweden, Stockholm | [BL]
+  - 🇩🇪 Germany, Berlin | [BL]
   - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
+  - 🇨🇿 Czechia [*CIDR] VK
   url: https://api.telegram.org
   interval: 300
   tolerance: 50
@@ -236,18 +134,11 @@ proxy-groups:
   proxies:
   - 🚀 Авто (лучший пинг)
   - 🇱🇻 Latvia, Riga | 🌐 | [BL]
-  - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇩🇪 Germany | 🌐 | [BL]
-  - 🇩🇪 Germany, Eschborn | 🌐 | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇸🇪 Sweden, Stockholm | [BL]
+  - 🇩🇪 Germany, Berlin | [BL]
   - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
+  - 🇨🇿 Czechia [*CIDR] VK
 - name: 🔄 Fallback
   type: fallback
   proxies: *id001
