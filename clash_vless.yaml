@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-06-05 19:26:03.462411+00:00
-# proxies: 14
+# updated: 2026-06-05 21:13:23.314223+00:00
+# proxies: 12
 
 mixed-port: 7890
 allow-lan: false
@@ -28,21 +28,6 @@ dns:
     geosite:ru: 114.114.114.114
     geosite:private: direct
 proxies:
-- name: 🇱🇻 Latvia | 🌐 | [BL]
-  type: vless
-  server: ru-lv.illusion-vpn.ru
-  port: 443
-  uuid: bee8df77-2780-5a7b-b005-9da84fcb7aaf
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: ru-lv.illusion-vpn.ru
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: 86DiKd_LyZ_9L4WyaADZsNJH5wnaTGoZyywz0CGFYwg
-    short-id: 9ec378e393a94f
-  skip-cert-verify: false
-  network: tcp
 - name: 🇱🇻 Latvia, Riga | 🌐 | [BL]
   type: vless
   server: 2.26.88.118
@@ -61,33 +46,6 @@ proxies:
     grpc-service-name: max.ru
 - name: 🇩🇪 Germany, Frankfurt am Main | [BL]
   type: vless
-  server: panel.zanjirbor.digital
-  port: 2083
-  uuid: ad8d9411-f61b-4bc1-9a0a-55eb5971279e
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /vless
-    headers:
-      Host: v.zanjirbor.digital
-- name: 🇩🇪 Germany | 🌐 | [BL]
-  type: vless
-  server: de1.gamelistak.com
-  port: 443
-  uuid: 182aae32-6108-40e8-8fb4-a9068afa0cb6
-  udp: true
-  tls: true
-  servername: de1.gamelistak.com
-  client-fingerprint: chrome
-  alpn:
-  - h2
-  - http/1.1
-  skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
-  type: vless
   server: vip-srv-for-you.xn--5d3ak5w.com
   port: 2052
   uuid: 3f714544-cb38-49cf-9b5d-e4ddf08e22c4
@@ -98,22 +56,62 @@ proxies:
   httpupgrade-opts:
     path: /phpMyAdmin?q=一位處女在孫先生的農場工作。
     host: crj0p2x3yug5d5lv13en.1x.up.xn--1tq578b.com
-- name: 🇳🇱 The Netherlands, Doetinchem | [BL]
+- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
   type: vless
-  server: g7.steptofsvo.com
-  port: 443
-  uuid: 4550993c-2191-493a-a612-aaba4a4ec083
+  server: de7.niekotin.de
+  port: 80
+  uuid: 64297ec6-f701-49a7-8337-31af0561debc
   udp: true
-  flow: xtls-rprx-vision
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /vless
+    headers:
+      Host: de7.niekotin.de
+- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
+  type: vless
+  server: 78.17.103.57.blanesik.space
+  port: 443
+  uuid: ab268dc7-510f-4fb9-ace4-b7305a59c7bb
+  udp: true
   tls: true
-  servername: g7.steptofsvo.com
-  client-fingerprint: randomized
+  servername: 78.17.103.57.blanesik.space
+  client-fingerprint: safari
+  alpn:
+  - h2
+  skip-cert-verify: false
+  network: grpc
+  grpc-opts:
+    grpc-service-name: /sequre/grpc
+- name: 🇩🇪 Germany, Berlin | [BL]
+  type: vless
+  server: de2.niekotin.de
+  port: 80
+  uuid: f9558e6a-0447-48a0-94e9-cd69fc638d73
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /vless
+    headers:
+      Host: de2.niekotin.de
+- name: 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
+  type: vless
+  server: 72.56.18.179
+  port: 443
+  uuid: a2415a12-3f92-4636-9823-9828d3ceb818
+  udp: true
+  tls: true
+  servername: www.ya.ru
+  client-fingerprint: firefox
   reality-opts:
-    public-key: ivgTfLR13A6xBsicIA28OPoav2tXlsstTTmGuETfnSk
-    short-id: 6d6f13013d3e1d0c
+    public-key: 8xufuXmVTmxmM9SKIN1P6x3CFstZdl1mfSxr_LfOkDQ
+    short-id: 2af15d98
   skip-cert-verify: false
   network: tcp
-- name: 🇳🇱 The Netherlands, Doetinchem | [BL]
+- name: 🇳🇱 The Netherlands, Doetinchem | 🌐 | [BL]
   type: vless
   server: g2.steptofsvo.com
   port: 443
@@ -147,7 +145,7 @@ proxies:
   type: vless
   server: 72.56.18.179
   port: 443
-  uuid: a2415a12-3f92-4636-9823-9828d3ceb818
+  uuid: 69a2af58-d74a-44ca-864a-e09b493f4274
   udp: true
   tls: true
   servername: www.ya.ru
@@ -157,99 +155,65 @@ proxies:
     short-id: 2af15d98
   skip-cert-verify: false
   network: tcp
-- name: 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
+- name: 🌐 Anycast-IP | 🇧🇷 🇩🇪 🇵🇱 [*CIDR] Beeline
   type: vless
-  server: 51.250.97.18
+  server: 78.159.240.174
   port: 443
-  uuid: 164eb072-3f10-46f7-be37-d0e89cce879a
+  uuid: ab268dc7-510f-4fb9-ace4-b7305a59c7bb
   udp: true
-  flow: xtls-rprx-vision
   tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
+  servername: 95.85.246.16.speed-storage.ru
+  client-fingerprint: chrome
+  alpn:
+  - h2
   skip-cert-verify: false
-  network: tcp
-- name: 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
+  network: grpc
+  grpc-opts:
+    grpc-service-name: /sequre/grpc/
+- name: 🌐 Anycast-IP | 🇧🇷 🇩🇪 🇵🇱 [*CIDR] Beeline
   type: vless
-  server: 51.250.24.222
+  server: 78.159.240.174
   port: 443
-  uuid: 164eb072-3f10-46f7-be37-d0e89cce879a
+  uuid: ab268dc7-510f-4fb9-ace4-b7305a59c7bb
   udp: true
-  flow: xtls-rprx-vision
   tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
+  servername: 95.85.246.16.speed-storage.ru
+  client-fingerprint: edge
   skip-cert-verify: false
-  network: tcp
-- name: 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
+  network: grpc
+  grpc-opts:
+    grpc-service-name: /sequre/grpc/
+- name: 🌐 Anycast-IP | 🇩🇪 🇵🇱 [*CIDR] Beeline
   type: vless
-  server: 51.250.106.87
+  server: 78.159.240.174
   port: 443
-  uuid: 164eb072-3f10-46f7-be37-d0e89cce879a
+  uuid: ab268dc7-510f-4fb9-ace4-b7305a59c7bb
   udp: true
-  flow: xtls-rprx-vision
   tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
+  servername: 95.85.246.16.speed-storage.ru
+  client-fingerprint: edge
+  alpn:
+  - h2
   skip-cert-verify: false
-  network: tcp
-- name: 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  type: vless
-  server: 51.250.108.162
-  port: 443
-  uuid: 164eb072-3f10-46f7-be37-d0e89cce879a
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
-  skip-cert-verify: false
-  network: tcp
-- name: 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  type: vless
-  server: 51.250.102.69
-  port: 443
-  uuid: 164eb072-3f10-46f7-be37-d0e89cce879a
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
-  skip-cert-verify: false
-  network: tcp
+  network: grpc
+  grpc-opts:
+    grpc-service-name: /sequre/grpc/
 proxy-groups:
 - name: 🚀 Авто (лучший пинг)
   type: url-test
   proxies: &id001
-  - 🇱🇻 Latvia | 🌐 | [BL]
   - 🇱🇻 Latvia, Riga | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇳🇱 The Netherlands, Doetinchem | [BL]
-  - 🇳🇱 The Netherlands, Doetinchem | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
+  - 🇩🇪 Germany, Berlin | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
+  - 🇳🇱 The Netherlands, Doetinchem | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Doetinchem | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇧🇷 🇩🇪 🇵🇱 [*CIDR] Beeline
+  - 🌐 Anycast-IP | 🇧🇷 🇩🇪 🇵🇱 [*CIDR] Beeline
+  - 🌐 Anycast-IP | 🇩🇪 🇵🇱 [*CIDR] Beeline
   url: https://api.telegram.org
   interval: 300
   tolerance: 50
@@ -258,20 +222,18 @@ proxy-groups:
   type: select
   proxies:
   - 🚀 Авто (лучший пинг)
-  - 🇱🇻 Latvia | 🌐 | [BL]
   - 🇱🇻 Latvia, Riga | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇳🇱 The Netherlands, Doetinchem | [BL]
-  - 🇳🇱 The Netherlands, Doetinchem | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
+  - 🇩🇪 Germany, Berlin | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
+  - 🇳🇱 The Netherlands, Doetinchem | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Doetinchem | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
-  - 🇬🇧 United Kingdom | 🌐 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇧🇷 🇩🇪 🇵🇱 [*CIDR] Beeline
+  - 🌐 Anycast-IP | 🇧🇷 🇩🇪 🇵🇱 [*CIDR] Beeline
+  - 🌐 Anycast-IP | 🇩🇪 🇵🇱 [*CIDR] Beeline
 - name: 🔄 Fallback
   type: fallback
   proxies: *id001
