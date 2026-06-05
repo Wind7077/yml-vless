@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-06-05 21:13:23.314223+00:00
-# proxies: 12
+# updated: 2026-06-05 22:53:30.314946+00:00
+# proxies: 16
 
 mixed-port: 7890
 allow-lan: false
@@ -56,11 +56,11 @@ proxies:
   httpupgrade-opts:
     path: /phpMyAdmin?q=一位處女在孫先生的農場工作。
     host: crj0p2x3yug5d5lv13en.1x.up.xn--1tq578b.com
-- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
+- name: 🇩🇪 Germany, Berlin | [BL]
   type: vless
-  server: de7.niekotin.de
+  server: de2.niekotin.de
   port: 80
-  uuid: 64297ec6-f701-49a7-8337-31af0561debc
+  uuid: f9558e6a-0447-48a0-94e9-cd69fc638d73
   udp: true
   tls: false
   skip-cert-verify: false
@@ -68,7 +68,7 @@ proxies:
   ws-opts:
     path: /vless
     headers:
-      Host: de7.niekotin.de
+      Host: de2.niekotin.de
 - name: 🇩🇪 Germany, Frankfurt am Main | [BL]
   type: vless
   server: 78.17.103.57.blanesik.space
@@ -84,11 +84,11 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: /sequre/grpc
-- name: 🇩🇪 Germany, Berlin | [BL]
+- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
   type: vless
-  server: de2.niekotin.de
+  server: de7.niekotin.de
   port: 80
-  uuid: f9558e6a-0447-48a0-94e9-cd69fc638d73
+  uuid: 64297ec6-f701-49a7-8337-31af0561debc
   udp: true
   tls: false
   skip-cert-verify: false
@@ -96,21 +96,7 @@ proxies:
   ws-opts:
     path: /vless
     headers:
-      Host: de2.niekotin.de
-- name: 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
-  type: vless
-  server: 72.56.18.179
-  port: 443
-  uuid: a2415a12-3f92-4636-9823-9828d3ceb818
-  udp: true
-  tls: true
-  servername: www.ya.ru
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: 8xufuXmVTmxmM9SKIN1P6x3CFstZdl1mfSxr_LfOkDQ
-    short-id: 2af15d98
-  skip-cert-verify: false
-  network: tcp
+      Host: de7.niekotin.de
 - name: 🇳🇱 The Netherlands, Doetinchem | 🌐 | [BL]
   type: vless
   server: g2.steptofsvo.com
@@ -155,65 +141,142 @@ proxies:
     short-id: 2af15d98
   skip-cert-verify: false
   network: tcp
-- name: 🌐 Anycast-IP | 🇧🇷 🇩🇪 🇵🇱 [*CIDR] Beeline
+- name: 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
   type: vless
-  server: 78.159.240.174
+  server: 72.56.18.179
   port: 443
-  uuid: ab268dc7-510f-4fb9-ace4-b7305a59c7bb
+  uuid: a2415a12-3f92-4636-9823-9828d3ceb818
   udp: true
   tls: true
-  servername: 95.85.246.16.speed-storage.ru
+  servername: www.ya.ru
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: 8xufuXmVTmxmM9SKIN1P6x3CFstZdl1mfSxr_LfOkDQ
+    short-id: 2af15d98
+  skip-cert-verify: false
+  network: tcp
+- name: 🇪🇪 Estonia | 🌐 [*CIDR] YA
+  type: vless
+  server: 51.250.43.93
+  port: 443
+  uuid: 91427003-38cb-473e-95f2-a4b500c91f7b
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: ads.x5.ru
   client-fingerprint: chrome
-  alpn:
-  - h2
+  reality-opts:
+    public-key: MXpxhnU1ctGMXbGGjIrtDfjRX-BbbpsjnS4-SUv3OFs
+    short-id: ''
   skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: /sequre/grpc/
-- name: 🌐 Anycast-IP | 🇧🇷 🇩🇪 🇵🇱 [*CIDR] Beeline
+  network: tcp
+- name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
   type: vless
-  server: 78.159.240.174
-  port: 443
-  uuid: ab268dc7-510f-4fb9-ace4-b7305a59c7bb
+  server: 89.208.208.92
+  port: 9443
+  uuid: cbc27e56-38a1-4b0d-bce3-f9e7dcb807a4
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: loadtest.dev.urent.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: aVu6XB9_RKR1xLtusyQ1_YOWCs4Ofi9GEJd6oERNH2Q
+    short-id: 689def22fcb54e86
+  skip-cert-verify: false
+  network: tcp
+- name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
+  type: vless
+  server: 89.208.208.92
+  port: 7443
+  uuid: cbc27e56-38a1-4b0d-bce3-f9e7dcb807a4
   udp: true
   tls: true
-  servername: 95.85.246.16.speed-storage.ru
-  client-fingerprint: edge
+  servername: loadtest.dev.urent.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: _AXs-QnufIq918tbb2pwM3MDbe7kQ6i0cIHDMLwPmGs
+    short-id: 3210e0eee6605048
   skip-cert-verify: false
   network: grpc
   grpc-opts:
-    grpc-service-name: /sequre/grpc/
-- name: 🌐 Anycast-IP | 🇩🇪 🇵🇱 [*CIDR] Beeline
+    grpc-service-name: grpc
+- name: 🇷🇺 Russia [*CIDR] VK
   type: vless
-  server: 78.159.240.174
+  server: ru02.goodmaximum.com
   port: 443
-  uuid: ab268dc7-510f-4fb9-ace4-b7305a59c7bb
+  uuid: 73d75a84-7c29-001f-92ca-cc2fd46c254c
   udp: true
   tls: true
-  servername: 95.85.246.16.speed-storage.ru
-  client-fingerprint: edge
-  alpn:
-  - h2
+  servername: ru-cloud.221131513.xyz
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: fPSR5GZpxhOV6Rh7VzMtS4AeRN7ipyNX4waG9JzJzxQ
+    short-id: 77778028b56c8704
   skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: /sequre/grpc/
+  network: tcp
+- name: 🇷🇺 Russia [*CIDR] VK
+  type: vless
+  server: ru02.goodmaximum.com
+  port: 443
+  uuid: db95b766-43a8-001f-9b5d-5ca6f2735188
+  udp: true
+  tls: true
+  servername: ru-cloud.221131513.xyz
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: fPSR5GZpxhOV6Rh7VzMtS4AeRN7ipyNX4waG9JzJzxQ
+    short-id: 77778028b56c8704
+  skip-cert-verify: false
+  network: tcp
+- name: 🇷🇺 Russia [*CIDR] VK
+  type: vless
+  server: ru01.goodmaximum.com
+  port: 443
+  uuid: 73d75a84-7c29-001e-92ca-cc2fd46c254c
+  udp: true
+  tls: true
+  servername: ru-cloud.221131513.xyz
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: fPSR5GZpxhOV6Rh7VzMtS4AeRN7ipyNX4waG9JzJzxQ
+    short-id: 31181028b56c8704
+  skip-cert-verify: false
+  network: tcp
+- name: 🇷🇺 Russia [*CIDR] VK
+  type: vless
+  server: ru01.goodmaximum.com
+  port: 443
+  uuid: 73d75a84-7c29-0024-92ca-cc2fd46c254c
+  udp: true
+  tls: true
+  servername: ru-cloud.221131513.xyz
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: fPSR5GZpxhOV6Rh7VzMtS4AeRN7ipyNX4waG9JzJzxQ
+    short-id: 31181028b56c8704
+  skip-cert-verify: false
+  network: tcp
 proxy-groups:
 - name: 🚀 Авто (лучший пинг)
   type: url-test
   proxies: &id001
   - 🇱🇻 Latvia, Riga | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇩🇪 Germany, Berlin | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇳🇱 The Netherlands, Doetinchem | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Doetinchem | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
-  - 🌐 Anycast-IP | 🇧🇷 🇩🇪 🇵🇱 [*CIDR] Beeline
-  - 🌐 Anycast-IP | 🇧🇷 🇩🇪 🇵🇱 [*CIDR] Beeline
-  - 🌐 Anycast-IP | 🇩🇪 🇵🇱 [*CIDR] Beeline
+  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
+  - 🇪🇪 Estonia | 🌐 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
+  - 🇷🇺 Russia [*CIDR] VK
+  - 🇷🇺 Russia [*CIDR] VK
+  - 🇷🇺 Russia [*CIDR] VK
+  - 🇷🇺 Russia [*CIDR] VK
   url: https://api.telegram.org
   interval: 300
   tolerance: 50
@@ -224,16 +287,20 @@ proxy-groups:
   - 🚀 Авто (лучший пинг)
   - 🇱🇻 Latvia, Riga | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇩🇪 Germany, Berlin | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
   - 🇳🇱 The Netherlands, Doetinchem | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Doetinchem | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
-  - 🌐 Anycast-IP | 🇧🇷 🇩🇪 🇵🇱 [*CIDR] Beeline
-  - 🌐 Anycast-IP | 🇧🇷 🇩🇪 🇵🇱 [*CIDR] Beeline
-  - 🌐 Anycast-IP | 🇩🇪 🇵🇱 [*CIDR] Beeline
+  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
+  - 🇪🇪 Estonia | 🌐 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
+  - 🇷🇺 Russia [*CIDR] VK
+  - 🇷🇺 Russia [*CIDR] VK
+  - 🇷🇺 Russia [*CIDR] VK
+  - 🇷🇺 Russia [*CIDR] VK
 - name: 🔄 Fallback
   type: fallback
   proxies: *id001
