@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-06-06 13:00:16.072506+00:00
-# proxies: 24
+# updated: 2026-06-06 15:02:38.020020+00:00
+# proxies: 23
 
 mixed-port: 7890
 allow-lan: false
@@ -73,32 +73,6 @@ proxies:
 - name: 🇩🇪 Germany, Falkenstein | 🌐 | [BL]
   type: vless
   server: www.lianchuang123.com
-  port: 80
-  uuid: 2c473bc0-484c-49d5-8cf3-c89d26b724fe
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /16838/c89d26b724fe/
-    headers:
-      Host: smtp.mmadcoffee.info
-- name: 🇩🇪 Germany, Falkenstein | 🌐 | [BL]
-  type: vless
-  server: cncdn.cc
-  port: 80
-  uuid: 2c473bc0-484c-49d5-8cf3-c89d26b724fe
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /16838/c89d26b724fe/
-    headers:
-      Host: smtp.mmadcoffee.info
-- name: 🇩🇪 Germany, Falkenstein | 🌐 | [BL]
-  type: vless
-  server: cncdn.cc
   port: 443
   uuid: 2c473bc0-484c-49d5-8cf3-c89d26b724fe
   udp: true
@@ -113,7 +87,33 @@ proxies:
       Host: smtp.mmadcoffee.info
 - name: 🇩🇪 Germany, Falkenstein | 🌐 | [BL]
   type: vless
+  server: cncdn.cc
+  port: 80
+  uuid: 2c473bc0-484c-49d5-8cf3-c89d26b724fe
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /16838/c89d26b724fe/
+    headers:
+      Host: smtp.mmadcoffee.info
+- name: 🇩🇪 Germany, Falkenstein | 🌐 | [BL]
+  type: vless
   server: www.lianchuang123.com
+  port: 80
+  uuid: 2c473bc0-484c-49d5-8cf3-c89d26b724fe
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /16838/c89d26b724fe/
+    headers:
+      Host: smtp.mmadcoffee.info
+- name: 🇩🇪 Germany, Falkenstein | 🌐 | [BL]
+  type: vless
+  server: cncdn.cc
   port: 443
   uuid: 2c473bc0-484c-49d5-8cf3-c89d26b724fe
   udp: true
@@ -142,19 +142,20 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: ''
-- name: 🇩🇪 Germany, Berlin | [BL]
+- name: 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
   type: vless
-  server: de2.niekotin.de
-  port: 80
-  uuid: 12e2b366-6426-4e09-9c6f-9c894262b923
+  server: 151.242.17.7
+  port: 443
+  uuid: 69a2af58-d74a-44ca-864a-e09b493f4274
   udp: true
-  tls: false
+  tls: true
+  servername: www.intel.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: SFTi7o1Gpk9-0ARSKhY65CS3oAd-KNnObjewhVek1TY
+    short-id: 7fc148e8e3
   skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /vless
-    headers:
-      Host: de2.niekotin.de
+  network: tcp
 - name: 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
   type: vless
   server: ru-2.videoproeditor.com
@@ -170,20 +171,19 @@ proxies:
     short-id: 6d6f13013d3e1d0c
   skip-cert-verify: false
   network: tcp
-- name: 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
+- name: 🇩🇪 Germany, Berlin | [BL]
   type: vless
-  server: 151.242.17.7
-  port: 443
-  uuid: 69a2af58-d74a-44ca-864a-e09b493f4274
+  server: de2.niekotin.de
+  port: 80
+  uuid: f9558e6a-0447-48a0-94e9-cd69fc638d73
   udp: true
-  tls: true
-  servername: www.intel.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: SFTi7o1Gpk9-0ARSKhY65CS3oAd-KNnObjewhVek1TY
-    short-id: 7fc148e8e3
+  tls: false
   skip-cert-verify: false
-  network: tcp
+  network: ws
+  ws-opts:
+    path: /vless
+    headers:
+      Host: de2.niekotin.de
 - name: 🇳🇱 The Netherlands, Amsterdam | [BL]
   type: vless
   server: leg.goodmaximum.com
@@ -196,51 +196,6 @@ proxies:
   reality-opts:
     public-key: fPSR5GZpxhOV6Rh7VzMtS4AeRN7ipyNX4waG9JzJzxQ
     short-id: ''
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: QToNrKDvQT5AfnFM
-- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
-  type: vless
-  server: roz1r.skystreamgame.com
-  port: 8443
-  uuid: 0468a043-e12c-466e-881c-7d685c1b3950
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: roz1r.skystreamgame.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: QHkXBS2ENHV0khgY9VBYi8_9bpfqnUYDcfQN4cW5Qg0
-    short-id: '4326'
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
-  type: vless
-  server: 72.56.18.179
-  port: 443
-  uuid: a2415a12-3f92-4636-9823-9828d3ceb818
-  udp: true
-  tls: true
-  servername: www.ya.ru
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: 8xufuXmVTmxmM9SKIN1P6x3CFstZdl1mfSxr_LfOkDQ
-    short-id: 2af15d98
-  skip-cert-verify: false
-  network: tcp
-- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
-  type: vless
-  server: leg.goodmaximum.com
-  port: 443
-  uuid: e653f585-9924-000f-8d5d-c15c3ab95270
-  udp: true
-  tls: true
-  servername: cloud.nimhogoa.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: fPSR5GZpxhOV6Rh7VzMtS4AeRN7ipyNX4waG9JzJzxQ
-    short-id: 99181028b56c8702
   skip-cert-verify: false
   network: grpc
   grpc-opts:
@@ -261,22 +216,22 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: QToNrKDvQT5AfnFM
-- name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
+- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
   type: vless
-  server: 144.31.237.74
-  port: 603
-  uuid: 8ed27b15-30a6-42a2-af38-e4dc675ee17e
+  server: leg.goodmaximum.com
+  port: 443
+  uuid: e653f585-9924-000f-8d5d-c15c3ab95270
   udp: true
   tls: true
-  servername: www.amd.com
+  servername: cloud.nimhogoa.com
   client-fingerprint: chrome
   reality-opts:
-    public-key: lWJaKBaMPs0NYHGCbfsrmn64R4juEQEvfmHNnL741Ek
-    short-id: ''
+    public-key: fPSR5GZpxhOV6Rh7VzMtS4AeRN7ipyNX4waG9JzJzxQ
+    short-id: 99181028b56c8702
   skip-cert-verify: false
   network: grpc
   grpc-opts:
-    grpc-service-name: ''
+    grpc-service-name: QToNrKDvQT5AfnFM
 - name: 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
   type: vless
   server: 194.150.220.93
@@ -291,22 +246,35 @@ proxies:
     short-id: ff53f754b209fff9
   skip-cert-verify: false
   network: tcp
-- name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
+- name: 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
   type: vless
-  server: 144.31.237.74
-  port: 603
-  uuid: 8ed27b15-30a6-42a2-af38-e4dc675ee17e
+  server: 72.56.18.179
+  port: 443
+  uuid: a2415a12-3f92-4636-9823-9828d3ceb818
   udp: true
   tls: true
-  servername: www.amd.com
-  client-fingerprint: edge
+  servername: www.ya.ru
+  client-fingerprint: firefox
   reality-opts:
-    public-key: lWJaKBaMPs0NYHGCbfsrmn64R4juEQEvfmHNnL741Ek
-    short-id: ''
+    public-key: 8xufuXmVTmxmM9SKIN1P6x3CFstZdl1mfSxr_LfOkDQ
+    short-id: 2af15d98
   skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: ''
+  network: tcp
+- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
+  type: vless
+  server: roz1r.skystreamgame.com
+  port: 8443
+  uuid: 0468a043-e12c-466e-881c-7d685c1b3950
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: roz1r.skystreamgame.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: QHkXBS2ENHV0khgY9VBYi8_9bpfqnUYDcfQN4cW5Qg0
+    short-id: '4326'
+  skip-cert-verify: false
+  network: tcp
 - name: 🇳🇱 The Netherlands, Amsterdam | [BL]
   type: vless
   server: 2.27.40.241
@@ -323,6 +291,38 @@ proxies:
   network: grpc
   grpc-opts:
     grpc-service-name: max.ru
+- name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
+  type: vless
+  server: 144.31.237.74
+  port: 603
+  uuid: 8ed27b15-30a6-42a2-af38-e4dc675ee17e
+  udp: true
+  tls: true
+  servername: www.amd.com
+  client-fingerprint: edge
+  reality-opts:
+    public-key: lWJaKBaMPs0NYHGCbfsrmn64R4juEQEvfmHNnL741Ek
+    short-id: ''
+  skip-cert-verify: false
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
+- name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
+  type: vless
+  server: 144.31.237.74
+  port: 603
+  uuid: 8ed27b15-30a6-42a2-af38-e4dc675ee17e
+  udp: true
+  tls: true
+  servername: www.amd.com
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: lWJaKBaMPs0NYHGCbfsrmn64R4juEQEvfmHNnL741Ek
+    short-id: ''
+  skip-cert-verify: false
+  network: grpc
+  grpc-opts:
+    grpc-service-name: ''
 - name: 🇳🇱 The Netherlands, Amsterdam | [BL]
   type: vless
   server: 89.124.69.82
@@ -336,49 +336,37 @@ proxies:
     path: /@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia
     headers:
       Host: play.google.com
-- name: 🇵🇱 Poland, Warsaw | [BL]
+- name: 🇨🇿 Czechia [*CIDR] VK
   type: vless
-  server: 104.165.244.183
-  port: 50095
-  uuid: 347a56c2-a453-4b32-86cd-7522943df88c
+  server: 146.185.211.107
+  port: 8444
+  uuid: 63a16ebb-8687-42ac-972a-5914cafad1d5
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: cdn.jsdelivr.net
+  servername: yandex.ru
+  client-fingerprint: chrome
+  reality-opts:
+    public-key: hL6rNCNtquIMhYV8V3WOrowSgIwko61yQIX2o1w6_lY
+    short-id: 0d62c138f2bf1ba8
+  skip-cert-verify: false
+  network: tcp
+- name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
+  type: vless
+  server: 89.208.208.92
+  port: 7443
+  uuid: cbc27e56-38a1-4b0d-bce3-f9e7dcb807a4
+  udp: true
+  tls: true
+  servername: loadtest.dev.urent.ru
   client-fingerprint: qq
   reality-opts:
-    public-key: vZuBWF0YzlKI0fJWxU6hmOLHHQ5Qb1kf35HbZDcFCH4
-    short-id: f2e1861359398ff2
+    public-key: _AXs-QnufIq918tbb2pwM3MDbe7kQ6i0cIHDMLwPmGs
+    short-id: 3210e0eee6605048
   skip-cert-verify: false
-  network: tcp
-- name: 🌐 Anycast-IP | 🇨🇦 🇷🇺 [*CIDR] VK
-  type: vless
-  server: ru02.goodmaximum.com
-  port: 443
-  uuid: 588ebd11-eca7-001f-b629-5bdae3bf7ad8
-  udp: true
-  tls: true
-  servername: ru-cloud.221131513.xyz
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: fPSR5GZpxhOV6Rh7VzMtS4AeRN7ipyNX4waG9JzJzxQ
-    short-id: 77778028b56c8704
-  skip-cert-verify: false
-  network: tcp
-- name: 🇷🇺 Russia [*CIDR] VK
-  type: vless
-  server: ru01.goodmaximum.com
-  port: 443
-  uuid: 588ebd11-eca7-001e-b629-5bdae3bf7ad8
-  udp: true
-  tls: true
-  servername: ru-cloud.221131513.xyz
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: fPSR5GZpxhOV6Rh7VzMtS4AeRN7ipyNX4waG9JzJzxQ
-    short-id: 77778028b56c8704
-  skip-cert-verify: false
-  network: tcp
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
 proxy-groups:
 - name: 🚀 Авто (лучший пинг)
   type: url-test
@@ -391,22 +379,21 @@ proxy-groups:
   - 🇩🇪 Germany, Falkenstein | 🌐 | [BL]
   - 🇩🇪 Germany, Falkenstein | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
-  - 🇩🇪 Germany, Berlin | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
+  - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
+  - 🇩🇪 Germany, Berlin | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Eygelshoven | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Eygelshoven | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇵🇱 Poland, Warsaw | [BL]
-  - 🌐 Anycast-IP | 🇨🇦 🇷🇺 [*CIDR] VK
-  - 🇷🇺 Russia [*CIDR] VK
+  - 🇨🇿 Czechia [*CIDR] VK
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
   url: https://api.telegram.org
   interval: 300
   tolerance: 50
@@ -423,22 +410,21 @@ proxy-groups:
   - 🇩🇪 Germany, Falkenstein | 🌐 | [BL]
   - 🇩🇪 Germany, Falkenstein | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
-  - 🇩🇪 Germany, Berlin | [BL]
-  - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
   - 🇩🇪 Germany, Frankfurt am Main (Innenstadt I) | [BL
+  - 🇩🇪 Germany, Frankfurt am Main | 🌐 | [BL]
+  - 🇩🇪 Germany, Berlin | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
   - 🇳🇱 The Netherlands, Eygelshoven | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | 🌐 | [BL]
   - 🇳🇱 The Netherlands, Eygelshoven | [BL]
   - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇵🇱 Poland, Warsaw | [BL]
-  - 🌐 Anycast-IP | 🇨🇦 🇷🇺 [*CIDR] VK
-  - 🇷🇺 Russia [*CIDR] VK
+  - 🇨🇿 Czechia [*CIDR] VK
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
 - name: 🔄 Fallback
   type: fallback
   proxies: *id001
