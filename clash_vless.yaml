@@ -1,6 +1,6 @@
 # Clash Meta / Mihomo VLESS config
-# updated: 2026-06-09 05:56:13.408220+00:00
-# proxies: 36
+# updated: 2026-06-09 08:58:55.411359+00:00
+# proxies: 29
 
 mixed-port: 7890
 allow-lan: false
@@ -56,267 +56,165 @@ proxies:
     short-id: 41774dc9dc721e
   skip-cert-verify: false
   network: tcp
-- name: 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
+- name: 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   type: vless
-  server: 89.19.223.149
-  port: 8443
-  uuid: d7790b85-9659-4558-a405-e0ab57d32984
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: tcp
-- name: 🇱🇻 Latvia, Riga | [BL]
-  type: vless
-  server: 31.42.120.240
-  port: 7443
-  uuid: 96e36192-a0e5-4491-9e88-d5a7a4be88fc
+  server: fl-modx.webedg.net
+  port: 443
+  uuid: b0276310-5e06-45b1-b2e5-1d74c429825d
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: www.icloud.com
+  servername: fl-modx.webedg.net
   client-fingerprint: firefox
   reality-opts:
-    public-key: 8scIVVv78H2lFNiBh4wbB0bnHJ2PVd91DO1WQYIsl1A
-    short-id: 0e8c77184f7fb76c
+    public-key: MuQH546CBdgYVBzNU_F5fimkbQ0srHxgLKDjl1Wz2Rw
+    short-id: ''
   skip-cert-verify: false
   network: tcp
-- name: 🇱🇹 Lithuania, Šiauliai | [BL]
+- name: 🇩🇪 Germany, Limburg an der Lahn | [BL]
   type: vless
-  server: ltr.moktana.app
-  port: 443
-  uuid: 2cfb47db-5b73-43cf-be67-6e28d73df7d4
+  server: speedtest.net
+  port: 80
+  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
   udp: true
-  tls: true
-  servername: ltr.moktana.app
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
-    short-id: 9e2a6f4c3b7d1e8a
+  tls: false
   skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: moktana.net.v1.StreamService
-- name: 🇱🇹 Lithuania, Šiauliai | [BL]
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-de1.global.ssl.fastly.net
+- name: 🇩🇪 Germany, Limburg an der Lahn | [BL]
   type: vless
-  server: ltr.moktana.app
-  port: 443
-  uuid: 2cc9f9ae-657b-43fc-916f-049690c4e07a
+  server: speedtest.net
+  port: 80
+  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
   udp: true
-  tls: true
-  servername: ltr.moktana.app
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
-    short-id: 3f8e2d1c9b4a7e6f
+  tls: false
   skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: moktana.net.v1.StreamService
-- name: 🇫🇮 Finland, Helsinki | 🌐 | [BL]
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-de1.global.ssl.fastly.net
+- name: 🇩🇪 Germany, Limburg an der Lahn | [BL]
   type: vless
-  server: 188.130.206.48
-  port: 50136
-  uuid: fab8af66-409e-4946-b263-1821882ef6ec
+  server: 199.232.197.131
+  port: 80
+  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
   udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-de1.global.ssl.fastly.net
+- name: 🇩🇪 Germany, Limburg an der Lahn | [BL]
+  type: vless
+  server: speedtest.net
+  port: 80
+  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-de1.global.ssl.fastly.net
+- name: 🇩🇪 Germany, Limburg an der Lahn | [BL]
+  type: vless
+  server: speedtest.net
+  port: 80
+  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-de1.global.ssl.fastly.net
+- name: 🇩🇪 Germany | 🌐 | [BL]
+  type: vless
+  server: speedtest.net
+  port: 80
+  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-gb1.global.ssl.fastly.net
+- name: 🇩🇪 Germany | 🌐 | [BL]
+  type: vless
+  server: 151.101.194.219
+  port: 80
+  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-gb1.global.ssl.fastly.net
+- name: 🇩🇪 Germany | 🌐 | [BL]
+  type: vless
+  server: 199.232.197.131
+  port: 80
+  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-gb1.global.ssl.fastly.net
+- name: 🇩🇪 Germany | 🌐 | [BL]
+  type: vless
+  server: 199.232.197.131
+  port: 80
+  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-gb1.global.ssl.fastly.net
+- name: 🇩🇪 Germany, Limburg an der Lahn | [BL]
+  type: vless
+  server: 199.232.197.131
+  port: 80
+  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
+  udp: true
+  tls: false
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: max-de1.global.ssl.fastly.net
+- name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
+  type: vless
+  server: desrv-res.noooo.win
+  port: 443
+  uuid: 7b241232-208d-4d36-857e-913f91b044f4
+  udp: true
+  flow: xtls-rprx-vision
   tls: true
-  servername: 188.130.206.48
+  servername: api-6a20f558.noooo.win
   client-fingerprint: chrome
   alpn:
   - h2
-  - http/1.1
   skip-cert-verify: false
   network: tcp
-- name: 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  type: vless
-  server: fl-modx.webedg.net
-  port: 443
-  uuid: b0276310-5e06-45b1-b2e5-1d74c429825d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: fl-modx.webedg.net
-  client-fingerprint: firefox
-  reality-opts:
-    public-key: MuQH546CBdgYVBzNU_F5fimkbQ0srHxgLKDjl1Wz2Rw
-    short-id: ''
-  skip-cert-verify: false
-  network: tcp
-- name: 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  type: vless
-  server: fl-modx.webedg.net
-  port: 443
-  uuid: b0276310-5e06-45b1-b2e5-1d74c429825d
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: fl-modx.webedg.net
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: MuQH546CBdgYVBzNU_F5fimkbQ0srHxgLKDjl1Wz2Rw
-    short-id: ''
-  skip-cert-verify: false
-  network: tcp
-- name: 🇩🇪 Germany, Limburg an der Lahn | [BL]
-  type: vless
-  server: speedtest.net
-  port: 80
-  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: max-de1.global.ssl.fastly.net
-- name: 🇩🇪 Germany | 🌐 | [BL]
-  type: vless
-  server: speedtest.net
-  port: 80
-  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: max-gb1.global.ssl.fastly.net
-- name: 🇩🇪 Germany, Limburg an der Lahn | [BL]
-  type: vless
-  server: 199.232.197.131
-  port: 80
-  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: max-de1.global.ssl.fastly.net
-- name: 🇩🇪 Germany, Limburg an der Lahn | [BL]
-  type: vless
-  server: 199.232.197.131
-  port: 80
-  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: max-de1.global.ssl.fastly.net
-- name: 🇩🇪 Germany, Limburg an der Lahn | [BL]
-  type: vless
-  server: speedtest.net
-  port: 80
-  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: max-de1.global.ssl.fastly.net
-- name: 🇩🇪 Germany | 🌐 | [BL]
-  type: vless
-  server: speedtest.net
-  port: 80
-  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: max-gb1.global.ssl.fastly.net
-- name: 🇩🇪 Germany, Limburg an der Lahn | [BL]
-  type: vless
-  server: speedtest.net
-  port: 80
-  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: max-de1.global.ssl.fastly.net
-- name: 🇩🇪 Germany | 🌐 | [BL]
-  type: vless
-  server: 199.232.197.131
-  port: 80
-  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: max-gb1.global.ssl.fastly.net
-- name: 🇩🇪 Germany, Nuremberg | 🌐 | [BL]
-  type: vless
-  server: 151.101.0.1
-  port: 80
-  uuid: cabbfe13-038b-4dbb-9c45-5079c829abfa
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: max-gb1.global.ssl.fastly.net
-- name: 🇩🇪 Germany, Limburg an der Lahn | [BL]
-  type: vless
-  server: speedtest.net
-  port: 80
-  uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
-  udp: true
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: max-de1.global.ssl.fastly.net
-- name: 🇸🇪 Sweden, Stockholm | [BL]
-  type: vless
-  server: sw.musicperec.ru
-  port: 443
-  uuid: 31216f81-3139-0021-bac4-646680314264
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: www.amd.com
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: b4n1pcO8ST3JkGtj8YymXVrW17LEe2EHec5wY7hMMR4
-    short-id: 6a2b5c9d
-  skip-cert-verify: false
-  network: tcp
-- name: 🇸🇪 Sweden, Stockholm | [BL]
-  type: vless
-  server: 72.56.34.198
-  port: 443
-  uuid: f7627a16-47bd-4900-a763-2802884064d0
-  udp: true
-  tls: true
-  servername: se.moktana.app
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
-    short-id: 6f3c1b8e5d2a4f7c
-  skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: moktana.net.v1.StreamService
 - name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
   type: vless
   server: desrv-res.noooo.win
@@ -343,37 +241,45 @@ proxies:
   - h2
   skip-cert-verify: false
   network: tcp
-- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
+- name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
   type: vless
-  server: yt6.safepass.click
+  server: desrv-res.noooo.win
   port: 443
-  uuid: 13bbbb75-2ec5-4262-9784-fe8b6e94510b
+  uuid: 7b241232-208d-4d36-857e-913f91b044f4
   udp: true
   flow: xtls-rprx-vision
   tls: true
-  servername: timeweb.cloud
-  client-fingerprint: random
-  reality-opts:
-    public-key: ELp9PUvVnkoFJYiscWrbnPXRnsYdELSCbIz9wNmMRRw
-    short-id: 965af8960474c29c
+  servername: api-6a20f558.noooo.win
+  client-fingerprint: chrome
   skip-cert-verify: false
   network: tcp
-- name: 🇳🇱 The Netherlands, Amsterdam | [BL]
+- name: 🇳🇱 The Netherlands, Eygelshoven | [BL]
   type: vless
-  server: 186.246.9.142
+  server: desrv-res.noooo.win
   port: 443
-  uuid: 2cfb47db-5b73-43cf-be67-6e28d73df7d4
+  uuid: 7b241232-208d-4d36-857e-913f91b044f4
   udp: true
+  flow: xtls-rprx-vision
   tls: true
-  servername: nl.moktana.app
+  servername: api-6a20f558.noooo.win
   client-fingerprint: chrome
-  reality-opts:
-    public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
-    short-id: a1b2c3d4e5f6a7b8
   skip-cert-verify: false
-  network: grpc
-  grpc-opts:
-    grpc-service-name: moktana.net.v1.StreamService
+  network: tcp
+- name: 🇵🇱 Poland, Warsaw | [BL]
+  type: vless
+  server: pol01.port-server.online
+  port: 443
+  uuid: dbfa97b8-f4fb-4687-96dc-a5a2aebfae11
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: pol01.port-server.online
+  client-fingerprint: firefox
+  reality-opts:
+    public-key: cc_O0Y2X8gIdbPzbp0CzRejf_LN1zOiuHD70GBs8e3M
+    short-id: 37919c8e74071571
+  skip-cert-verify: false
+  network: tcp
 - name: 🇵🇱 Poland, Warsaw | [BL]
   type: vless
   server: cdn.vpnifty.ru
@@ -383,26 +289,11 @@ proxies:
   tls: false
   skip-cert-verify: false
   network: tcp
-- name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
-  type: vless
-  server: 89.208.208.92
-  port: 9443
-  uuid: cbc27e56-38a1-4b0d-bce3-f9e7dcb807a4
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: loadtest.dev.urent.ru
-  client-fingerprint: chrome
-  reality-opts:
-    public-key: aVu6XB9_RKR1xLtusyQ1_YOWCs4Ofi9GEJd6oERNH2Q
-    short-id: 689def22fcb54e86
-  skip-cert-verify: false
-  network: tcp
 - name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   type: vless
-  server: 51.250.104.246
+  server: 51.250.24.222
   port: 443
-  uuid: 4de51b9d-6409-4624-acfd-09492027dd3c
+  uuid: d84d1e24-3eae-4fc2-8035-dedc68422f3e
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -415,9 +306,9 @@ proxies:
   network: tcp
 - name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   type: vless
-  server: 51.250.106.87
+  server: 51.250.108.162
   port: 443
-  uuid: 4de51b9d-6409-4624-acfd-09492027dd3c
+  uuid: d84d1e24-3eae-4fc2-8035-dedc68422f3e
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -430,39 +321,9 @@ proxies:
   network: tcp
 - name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   type: vless
-  server: 51.250.104.246
+  server: 51.250.102.69
   port: 443
-  uuid: 50999bd8-f319-489d-9892-b8f7d66b3ed3
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
-  skip-cert-verify: false
-  network: tcp
-- name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
-  type: vless
-  server: 51.250.24.232
-  port: 443
-  uuid: 4de51b9d-6409-4624-acfd-09492027dd3c
-  udp: true
-  flow: xtls-rprx-vision
-  tls: true
-  servername: cdp.x5.ru
-  client-fingerprint: safari
-  reality-opts:
-    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
-    short-id: 8ec792bfd725be8a
-  skip-cert-verify: false
-  network: tcp
-- name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
-  type: vless
-  server: 51.250.106.87
-  port: 443
-  uuid: 50999bd8-f319-489d-9892-b8f7d66b3ed3
+  uuid: d84d1e24-3eae-4fc2-8035-dedc68422f3e
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -477,7 +338,7 @@ proxies:
   type: vless
   server: 51.250.17.80
   port: 443
-  uuid: 4de51b9d-6409-4624-acfd-09492027dd3c
+  uuid: d84d1e24-3eae-4fc2-8035-dedc68422f3e
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -488,11 +349,44 @@ proxies:
     short-id: 8ec792bfd725be8a
   skip-cert-verify: false
   network: tcp
+- name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
+  type: vless
+  server: 51.250.104.246
+  port: 443
+  uuid: d84d1e24-3eae-4fc2-8035-dedc68422f3e
+  udp: true
+  flow: xtls-rprx-vision
+  tls: true
+  servername: cdp.x5.ru
+  client-fingerprint: safari
+  reality-opts:
+    public-key: wgXD4k3A16WR0aL63N9Mx8xoqFigJLyQWJXi-l3MPXI
+    short-id: 8ec792bfd725be8a
+  skip-cert-verify: false
+  network: tcp
+- name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
+  type: vless
+  server: 89.208.208.92
+  port: 7443
+  uuid: cbc27e56-38a1-4b0d-bce3-f9e7dcb807a4
+  udp: true
+  tls: true
+  servername: loadtest.dev.urent.ru
+  client-fingerprint: chrome
+  alpn:
+  - http/1.1
+  reality-opts:
+    public-key: _AXs-QnufIq918tbb2pwM3MDbe7kQ6i0cIHDMLwPmGs
+    short-id: 3210e0eee6605048
+  skip-cert-verify: false
+  network: grpc
+  grpc-opts:
+    grpc-service-name: grpc
 - name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   type: vless
   server: 51.250.97.18
   port: 443
-  uuid: 4de51b9d-6409-4624-acfd-09492027dd3c
+  uuid: d84d1e24-3eae-4fc2-8035-dedc68422f3e
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -505,9 +399,9 @@ proxies:
   network: tcp
 - name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   type: vless
-  server: 51.250.97.18
+  server: 51.250.24.232
   port: 443
-  uuid: 50999bd8-f319-489d-9892-b8f7d66b3ed3
+  uuid: d84d1e24-3eae-4fc2-8035-dedc68422f3e
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -520,9 +414,9 @@ proxies:
   network: tcp
 - name: 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   type: vless
-  server: 51.250.24.222
+  server: 51.250.106.87
   port: 443
-  uuid: 4de51b9d-6409-4624-acfd-09492027dd3c
+  uuid: d84d1e24-3eae-4fc2-8035-dedc68422f3e
   udp: true
   flow: xtls-rprx-vision
   tls: true
@@ -539,37 +433,30 @@ proxy-groups:
   proxies: &id001
   - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
   - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
-  - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
-  - 🇱🇻 Latvia, Riga | [BL]
-  - 🇱🇹 Lithuania, Šiauliai | [BL]
-  - 🇱🇹 Lithuania, Šiauliai | [BL]
-  - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇩🇪 Germany, Limburg an der Lahn | [BL]
-  - 🇩🇪 Germany | 🌐 | [BL]
+  - 🇩🇪 Germany, Limburg an der Lahn | [BL]
   - 🇩🇪 Germany, Limburg an der Lahn | [BL]
   - 🇩🇪 Germany, Limburg an der Lahn | [BL]
   - 🇩🇪 Germany, Limburg an der Lahn | [BL]
   - 🇩🇪 Germany | 🌐 | [BL]
-  - 🇩🇪 Germany, Limburg an der Lahn | [BL]
   - 🇩🇪 Germany | 🌐 | [BL]
-  - 🇩🇪 Germany, Nuremberg | 🌐 | [BL]
+  - 🇩🇪 Germany | 🌐 | [BL]
+  - 🇩🇪 Germany | 🌐 | [BL]
   - 🇩🇪 Germany, Limburg an der Lahn | [BL]
-  - 🇸🇪 Sweden, Stockholm | [BL]
-  - 🇸🇪 Sweden, Stockholm | [BL]
   - 🇳🇱 The Netherlands, Eygelshoven | [BL]
   - 🇳🇱 The Netherlands, Eygelshoven | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
+  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
+  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
   - 🇵🇱 Poland, Warsaw | [BL]
+  - 🇵🇱 Poland, Warsaw | [BL]
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
-  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
@@ -583,37 +470,30 @@ proxy-groups:
   - 🚀 Авто (лучший пинг)
   - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
   - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
-  - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
-  - 🇱🇻 Latvia, Riga | [BL]
-  - 🇱🇹 Lithuania, Šiauliai | [BL]
-  - 🇱🇹 Lithuania, Šiauliai | [BL]
-  - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
-  - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇫🇮 Finland, Helsinki | 🌐 | [BL]
   - 🇩🇪 Germany, Limburg an der Lahn | [BL]
-  - 🇩🇪 Germany | 🌐 | [BL]
+  - 🇩🇪 Germany, Limburg an der Lahn | [BL]
   - 🇩🇪 Germany, Limburg an der Lahn | [BL]
   - 🇩🇪 Germany, Limburg an der Lahn | [BL]
   - 🇩🇪 Germany, Limburg an der Lahn | [BL]
   - 🇩🇪 Germany | 🌐 | [BL]
-  - 🇩🇪 Germany, Limburg an der Lahn | [BL]
   - 🇩🇪 Germany | 🌐 | [BL]
-  - 🇩🇪 Germany, Nuremberg | 🌐 | [BL]
+  - 🇩🇪 Germany | 🌐 | [BL]
+  - 🇩🇪 Germany | 🌐 | [BL]
   - 🇩🇪 Germany, Limburg an der Lahn | [BL]
-  - 🇸🇪 Sweden, Stockholm | [BL]
-  - 🇸🇪 Sweden, Stockholm | [BL]
   - 🇳🇱 The Netherlands, Eygelshoven | [BL]
   - 🇳🇱 The Netherlands, Eygelshoven | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
-  - 🇳🇱 The Netherlands, Amsterdam | [BL]
+  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
+  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
+  - 🇳🇱 The Netherlands, Eygelshoven | [BL]
   - 🇵🇱 Poland, Warsaw | [BL]
+  - 🇵🇱 Poland, Warsaw | [BL]
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
+  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] VK
-  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
-  - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
   - 🌐 Anycast-IP | 🇩🇪 🇬🇧 [*CIDR] YA
