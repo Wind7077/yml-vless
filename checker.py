@@ -5,9 +5,9 @@ import urllib.parse
 import socket
 import ssl
 import time
-import sys
 import json
 import requests
+import yaml
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
@@ -18,7 +18,8 @@ RF_DOMAINS = [
     'mail.ru', 'list.ru', 'bk.ru', 'inbox.ru', 'rambler.ru',
     'sberbank.ru', 'sberbank.com', 'gosuslugi.ru', 'mos.ru', 'gov.ru',
     'tinkoff.ru', 'vtb.ru', 'mvideo.ru', 'rzd.ru', 'aeroflot.ru',
-    'wildberries.ru', 'ozon.ru', 'dns-shop.ru', 'citilink.ru'
+    'wildberries.ru', 'ozon.ru', 'dns-shop.ru', 'citilink.ru',
+    'avito.ru', 'hh.ru', 'pikabu.ru', 'habr.com', 'habr.ru'
 ]
 
 def is_rf_domain(domain):
@@ -30,7 +31,7 @@ def is_rf_domain(domain):
 
 def fetch_subscription(url):
     try:
-        headers = {'User-Agent': 'Mozilla/5.0'}
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
         response = requests.get(url, headers=headers, timeout=15)
         return response.text
     except Exception as e:
@@ -53,26 +54,43 @@ def parse_vless(link):
         name = "Unknown"
         if '#' in body:
             body, name = body.split('#', 1)
-            name = urllib.parse.unquote(name)
+            name = urllib.parse.unquote(name).strip()
         params = {}
         if '?' in body:
             base, params_str = body.split('?', 1)
-            params = urllib.parse.parse_qs(params_str)
+            params = {k: v[0] for k, v in urllib.parse.parse_qs(params_str).items()}
         else:
             base = body
         if '@' not in base: return None
         uuid, server_port = base.split('@', 1)
+        
         server, port = (server_port.rsplit(':', 1) + [443])[:2]
-        port = int(port)
+        try: port = int(port)
+        except: return None
+            
+        network = params.get('type', 'tcp')
+        sni = params.get('sni', params.get('host', server))
+        security = params.get('security', 'none')
+        
         return {
-            "name": name, "uuid": uuid, "server": server, "port": port,
-            "sni": params.get('sni', [server])[0],
-            "security": params.get('security', ['none'])[0],
+            "name": name or server,
+            "uuid": uuid,
+            "server": server,
+            "port": port,
+            "sni": sni,
+            "security": security,
+            "network": network,
+            "flow": params.get('flow', ''),
+            "path": params.get('path', ''),
+            "host": params.get('host', ''),
+            "fp": params.get('fp', 'chrome'),
+            "pbk": params.get('pbk', ''),
+            "sid": params.get('sid', ''),
             "link": link
         }
     except Exception: return None
 
-def test_node(node, timeout=4):
+def test_node(node, timeout=5):
     try:
         start_time = time.time()
         sock = socket.create_connection((node['server'], node['port']), timeout=timeout)
@@ -87,6 +105,35 @@ def test_node(node, timeout=4):
     except Exception:
         return {"node": node, "latency": None, "status": "Fail"}
 
+def build_clash_proxy(node):
+    proxy = {
+        'name': node['name'],
+        'type': 'vless',
+        'server': node['server'],
+        'port': node['port'],
+        'uuid': node['uuid'],
+        'udp': True,
+        'network': node['network'],
+        'tls': node['security'] in ['tls', 'xtls', 'reality'],
+    }
+    if node['security'] == 'reality':
+        proxy['reality-opts'] = {}
+        if node['pbk']: proxy['reality-opts']['public-key'] = node['pbk']
+        if node['sid']: proxy['reality-opts']['short-id'] = node['sid']
+    if node['flow']: proxy['flow'] = node['flow']
+    if node['sni']: proxy['servername'] = node['sni']
+    if node['fp']: proxy['client-fingerprint'] = node['fp']
+    
+    if node['network'] == 'ws':
+        proxy['ws-opts'] = {}
+        if node['path']: proxy['ws-opts']['path'] = node['path']
+        if node['host']: proxy['ws-opts']['headers'] = {'Host': node['host']}
+    elif node['network'] == 'grpc':
+        if node['path']: proxy['grpc-opts'] = {'grpc-service-name': node['path']}
+    elif node['network'] == 'tcp' and node['host']:
+        proxy['tcp-opts'] = {'headers': {'Host': node['host']}}
+    return proxy
+
 def main():
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Начало проверки...")
     try:
@@ -95,7 +142,7 @@ def main():
     except Exception as e:
         print(f"Ошибка чтения sub.txt: {e}")
         return
-    print(f"[*] Источников: {len(sources)}")
+        
     all_links = []
     for source in sources:
         if source.startswith('http'):
@@ -103,57 +150,88 @@ def main():
             all_links.extend(extract_vless_links(content))
         elif source.startswith('vless://'):
             all_links.append(source)
-    print(f"[*] Сырых ссылок: {len(all_links)}")
+            
+    print(f"[*] Найдено сырых ссылок: {len(all_links)}")
     parsed_nodes = [n for n in (parse_vless(l) for l in all_links) if n]
-    rf_nodes = [n for n in parsed_nodes if is_rf_domain(n['sni'])]
+    
+    # Убираем дубликаты по uuid+server+port
+    seen = set()
+    unique_nodes = []
+    for n in parsed_nodes:
+        key = (n['uuid'], n['server'], n['port'])
+        if key not in seen:
+            seen.add(key)
+            unique_nodes.append(n)
+    
+    rf_nodes = [n for n in unique_nodes if is_rf_domain(n['sni'])]
+    print(f"[*] Уникальных нод: {len(unique_nodes)}")
     print(f"[*] РФ SNI: {len(rf_nodes)}")
+    
     if not rf_nodes:
-        print("[!] РФ нод не найдено.")
+        print("[!] Нод с российским SNI не найдено. Очистка файлов.")
+        open('vless.txt', 'w').close()
+        with open('vless.yaml', 'w', encoding='utf-8') as f:
+            yaml.dump({'proxies': [], 'proxy-groups': []}, f, allow_unicode=True)
         return
-    print("[*] Проверка...")
+        
+    print("[*] Проверка TCP+TLS пингом...")
     results = []
     with ThreadPoolExecutor(max_workers=30) as executor:
         futures = {executor.submit(test_node, node): node for node in rf_nodes}
         for future in as_completed(futures):
             results.append(future.result())
+            
     ok_results = sorted([r for r in results if r['latency']], key=lambda x: x['latency'])
-    print(f"\nИтого живых: {len(ok_results)} из {len(rf_nodes)}")
+    print(f"[+] Живых: {len(ok_results)} из {len(rf_nodes)}")
     
-    os.makedirs('output', exist_ok=True)
-    with open('output/working.txt', 'w', encoding='utf-8') as f:
+    # --- Сохранение vless.txt ---
+    with open('vless.txt', 'w', encoding='utf-8') as f:
         for r in ok_results:
             f.write(r['node']['link'] + "\n")
+            
+    # --- Сохранение vless.yaml (Clash Meta) ---
+    proxies = [build_clash_proxy(r['node']) for r in ok_results]
+    proxy_names = [p['name'] for p in proxies]
     
-    report = {
-        "timestamp": datetime.now().isoformat(),
-        "total_sources": len(sources),
-        "total_links": len(all_links),
-        "rf_nodes": len(rf_nodes),
-        "working_nodes": len(ok_results),
-        "nodes": [{"name": r['node']['name'], "server": r['node']['server'],
-                   "port": r['node']['port'], "sni": r['node']['sni'],
-                   "latency": round(r['latency'], 2), "link": r['node']['link']}
-                  for r in ok_results]
+    clash_config = {
+        'mixed-port': 7890,
+        'allow-lan': False,
+        'mode': 'rule',
+        'log-level': 'info',
+        'unified-delay': True,
+        'tcp-concurrent': True,
+        'dns': {
+            'enable': True,
+            'listen': '0.0.0.0:1053',
+            'enhanced-mode': 'fake-ip',
+            'nameserver': ['https://dns.yandex.ru/dns-query', 'https://cloudflare-dns.com/dns-query']
+        },
+        'proxies': proxies,
+        'proxy-groups': [
+            {
+                'name': 'RF-Proxy',
+                'type': 'select',
+                'proxies': proxy_names + ['DIRECT']
+            },
+            {
+                'name': 'Auto-Optimal',
+                'type': 'url-test',
+                'proxies': proxy_names,
+                'url': 'https://yandex.ru',
+                'interval': 300
+            }
+        ],
+        'rules': [
+            'DOMAIN-SUFFIX,ru,RF-Proxy',
+            'DOMAIN-SUFFIX,xn--p1ai,RF-Proxy',
+            'MATCH,Auto-Optimal'
+        ]
     }
-    with open('output/report.json', 'w', encoding='utf-8') as f:
-        json.dump(report, f, ensure_ascii=False, indent=2)
     
-    with open('output/report.txt', 'w', encoding='utf-8') as f:
-        f.write(f"Отчёт от {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-        f.write("="*70 + "\n")
-        f.write(f"Источников: {len(sources)}\n")
-        f.write(f"Всего ссылок: {len(all_links)}\n")
-        f.write(f"РФ SNI: {len(rf_nodes)}\n")
-        f.write(f"Рабочих: {len(ok_results)}\n")
-        f.write("="*70 + "\n\n")
-        for r in ok_results:
-            n = r['node']
-            f.write(f"✓ {n['name'][:30]}\n")
-            f.write(f"  Сервер: {n['server']}:{n['port']}\n")
-            f.write(f"  SNI: {n['sni']}\n")
-            f.write(f"  Пинг: {r['latency']:.2f} ms\n\n")
-    print("[*] Результаты в output/")
+    with open('vless.yaml', 'w', encoding='utf-8') as f:
+        yaml.dump(clash_config, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
+        
+    print(f"[*] Файлы vless.txt и vless.yaml обновлены!")
 
 if __name__ == "__main__":
-    import os
     main()
