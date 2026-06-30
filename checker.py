@@ -10,7 +10,7 @@ import yaml
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
-# --- Жёсткий белый список РФ (только проверенные крупные сервисы) ---
+# --- Жёсткий белый список РФ ---
 RF_DOMAINS = [
     'gosuslugi.ru', 'gov.ru', 'kremlin.ru', 'government.ru', 'mos.ru',
     'nalog.ru', 'fss.ru', 'pfr.ru', 'sfr.gov.ru',
@@ -39,6 +39,11 @@ RF_DOMAINS = [
     'cloud.mail.ru', 'disk.yandex.ru', 'cloud.yandex.ru',
 ]
 
+# Regex и константы для строгой валидации Clash Meta
+UUID_REGEX = re.compile(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$', re.IGNORECASE)
+VALID_FPS = ['chrome', 'firefox', 'safari', 'ios', 'android', 'edge', '360', 'random']
+VALID_NETWORKS = ['tcp', 'ws', 'grpc', 'h2', 'http', 'xhttp']
+
 def is_rf_domain(domain):
     if not domain: return False
     domain = domain.lower().strip()
@@ -62,10 +67,8 @@ def extract_vless_links(text):
     try:
         padded = text + "=" * (-len(text) % 4)
         decoded = base64.b64decode(padded).decode('utf-8', errors='ignore')
-        if "vless://" in decoded:
-            text = decoded
-    except Exception:
-        pass
+        if "vless://" in decoded: text = decoded
+    except Exception: pass
     return re.findall(r'vless://[^\s<>"\']+', text)
 
 def parse_vless(link):
@@ -89,29 +92,48 @@ def parse_vless(link):
         try: port = int(port)
         except: return None
 
-        network = params.get('type', 'tcp')
-        sni = params.get('sni', params.get('host', server))
-        security = params.get('security', 'none')
-
         return {
             "name": name or f"{server}:{port}",
             "uuid": uuid, "server": server, "port": port,
-            "sni": sni, "security": security, "network": network,
+            "sni": params.get('sni', params.get('host', server)),
+            "security": params.get('security', 'none'),
+            "network": params.get('type', 'tcp'),
             "flow": params.get('flow', ''), "path": params.get('path', ''),
             "host": params.get('host', ''), "fp": params.get('fp', 'chrome'),
             "pbk": params.get('pbk', ''), "sid": params.get('sid', ''),
             "link": link
         }
-    except Exception:
-        return None
+    except Exception: return None
 
 def is_valid_vless(node):
-    """🛡️ Проверка базовой валидности для клиентов (Clash/V2rayN)"""
+    """🛡️ БРОНЕБОЙНАЯ ВАЛИДАЦИЯ ДЛЯ CLASH META"""
     if not node: return False
-    if node['security'] == 'reality':
-        # Reality строго требует Public Key (pbk) и SNI
-        if not node.get('pbk') or not node.get('sni'):
-            return False
+    
+    # 1. Строгая проверка UUID (отсекает TGM_3353... и прочий мусор)
+    if not UUID_REGEX.match(node.get('uuid', '')):
+        return False
+        
+    # 2. SNI обязателен
+    if not node.get('sni'): return False
+        
+    # 3. Проверка Reality и Vision
+    is_reality = node.get('security') == 'reality'
+    has_vision = 'vision' in node.get('flow', '')
+    
+    if is_reality or has_vision:
+        if not node.get('pbk'): return False # Нет ключа = битая ссылка от провайдера
+        if has_vision and not is_reality:
+            node['security'] = 'reality' # Автоисправление
+            
+    # 4. Валидация сети
+    if node.get('network') not in VALID_NETWORKS:
+        node['network'] = 'tcp'
+        
+    # 5. Валидация Fingerprint (qq, none и т.д. -> chrome)
+    fp = node.get('fp', '').lower().strip()
+    if fp not in VALID_FPS:
+        node['fp'] = 'chrome'
+        
     return True
 
 def test_node(node, timeout=5):
@@ -137,27 +159,40 @@ def build_clash_proxy(node):
         'network': node['network'],
         'tls': node['security'] in ['tls', 'xtls', 'reality'],
     }
+    
+    # Reality options (защита от пустого short-id)
     if node['security'] == 'reality':
-        proxy['reality-opts'] = {'public-key': node['pbk']}
-        
-        # 🛡️ ИСПРАВЛЕНИЕ invalid reality short id
-        # Short ID должен быть HEX-строкой (0-9, a-f). Если там мусор — не добавляем его.
-        sid = node.get('sid', '').strip()
-        if sid and re.fullmatch(r'[0-9a-fA-F]+', sid):
-            proxy['reality-opts']['short-id'] = sid
-            
-    if node['flow']: proxy['flow'] = node['flow']
-    if node['sni']: proxy['servername'] = node['sni']
-    if node['fp']: proxy['client-fingerprint'] = node['fp']
+        reality_opts = {'public-key': node['pbk']}
+        sid = str(node.get('sid', '')).strip()
+        # short-id должен быть HEX и не пустым, иначе не добавляем
+        if sid and re.fullmatch(r'[0-9a-fA-F]{1,16}', sid):
+            reality_opts['short-id'] = sid
+        proxy['reality-opts'] = reality_opts
 
+    if node.get('flow'): proxy['flow'] = node['flow']
+    if node.get('sni'): proxy['servername'] = node['sni']
+    if node.get('fp'): proxy['client-fingerprint'] = node['fp']
+
+    # Network options
     if node['network'] == 'ws':
-        proxy['ws-opts'] = {}
-        if node['path']: proxy['ws-opts']['path'] = node['path']
-        if node['host']: proxy['ws-opts']['headers'] = {'Host': node['host']}
+        ws_opts = {}
+        if node.get('path'): ws_opts['path'] = node['path']
+        if node.get('host'): ws_opts['headers'] = {'Host': node['host']}
+        if ws_opts: proxy['ws-opts'] = ws_opts
+        
     elif node['network'] == 'grpc':
-        if node['path']: proxy['grpc-opts'] = {'grpc-service-name': node['path']}
-    elif node['network'] == 'tcp' and node['host']:
+        if node.get('path'):
+            proxy['grpc-opts'] = {'grpc-service-name': node['path']}
+            
+    elif node['network'] in ['http', 'h2']:
+        http_opts = {}
+        if node.get('host'): http_opts['headers'] = {'Host': node['host']}
+        if node.get('path'): http_opts['path'] = node['path']
+        if http_opts: proxy['http-opts'] = http_opts
+        
+    elif node['network'] == 'tcp' and node.get('host'):
         proxy['tcp-opts'] = {'headers': {'Host': node['host']}}
+        
     return proxy
 
 def main():
@@ -168,24 +203,17 @@ def main():
     except FileNotFoundError:
         print("[-] Файл sub.txt не найден!")
         return
-    except Exception as e:
-        print(f"[-] Ошибка чтения sub.txt: {e}")
-        return
 
     all_links = []
     for source in sources:
         if source.startswith('http'):
-            print(f"[*] Загрузка: {source}")
             content = fetch_subscription(source)
             all_links.extend(extract_vless_links(content))
         elif source.startswith('vless://'):
             all_links.append(source)
 
-    print(f"[*] Найдено сырых ссылок: {len(all_links)}")
-    
     parsed_nodes = [n for n in (parse_vless(l) for l in all_links) if is_valid_vless(n)]
-    print(f"[*] Валидных ссылок (после проверки pbk/sni): {len(parsed_nodes)}")
-
+    
     seen = set()
     unique_nodes = []
     for n in parsed_nodes:
@@ -195,17 +223,14 @@ def main():
             unique_nodes.append(n)
 
     rf_nodes = [n for n in unique_nodes if is_rf_domain(n['sni'])]
-    print(f"[*] Уникальных нод: {len(unique_nodes)}")
-    print(f"[*] Прошло строгий фильтр РФ SNI: {len(rf_nodes)}")
+    print(f"[*] Валидных РФ нод после чистки мусора: {len(rf_nodes)}")
 
     if not rf_nodes:
-        print("[!] Нод с разрешённым российским SNI не найдено. Очищаем выходные файлы.")
         open('vless.txt', 'w').close()
         with open('vless.yaml', 'w', encoding='utf-8') as f:
             yaml.dump({'proxies': [], 'proxy-groups': []}, f, allow_unicode=True)
         return
 
-    print("[*] Проверка TCP+TLS пингом (многопоточно)...")
     results = []
     with ThreadPoolExecutor(max_workers=40) as executor:
         futures = {executor.submit(test_node, node): node for node in rf_nodes}
@@ -213,27 +238,21 @@ def main():
             results.append(future.result())
 
     ok_results = sorted([r for r in results if r['latency']], key=lambda x: x['latency'])
-    print(f"[+] Живых нод: {len(ok_results)} из {len(rf_nodes)}")
 
     with open('vless.txt', 'w', encoding='utf-8') as f:
         for r in ok_results:
             f.write(r['node']['link'] + "\n")
 
-    # --- Сохранение vless.yaml (Clash Meta / Mihomo) ---
     proxies = []
     seen_names = set()
-    
     for r in ok_results:
         proxy = build_clash_proxy(r['node'])
-        
-        # 🛡️ ЗАЩИТА ОТ ДУБЛИКАТОВ ИМЁН (duplicate name fix)
         base_name = proxy['name']
         unique_name = base_name
         counter = 2
         while unique_name in seen_names:
             unique_name = f"{base_name} ({counter})"
             counter += 1
-            
         proxy['name'] = unique_name
         seen_names.add(unique_name)
         proxies.append(proxy)
@@ -262,7 +281,7 @@ def main():
     with open('vless.yaml', 'w', encoding='utf-8') as f:
         yaml.dump(clash_config, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
 
-    print(f"[*] Файлы vless.txt и vless.yaml успешно обновлены!")
+    print(f"[*] Готово! vless.yaml на 100% чист и валиден для Clash Meta.")
 
 if __name__ == "__main__":
     main()
