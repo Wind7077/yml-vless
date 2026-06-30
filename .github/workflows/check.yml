@@ -3,15 +3,17 @@ name: Check VLESS Subscriptions
 on:
   schedule:
     - cron: '0 */6 * * *'  # Каждые 6 часов
-  workflow_dispatch:      # Возможность запустить вручную кнопкой
+  workflow_dispatch:
   push:
     branches: [ main ]
-    paths: [ 'sub.txt' ]  # Запуск при изменении списка подписок
+    paths: [ 'sub.txt' ]
 
 jobs:
   check:
     runs-on: ubuntu-latest
-    
+    permissions:
+      contents: write  # Важно: разрешаем экшну коммитить обратно
+      
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -22,14 +24,21 @@ jobs:
         python-version: '3.11'
         
     - name: Install dependencies
-      run: pip install requests
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests pyyaml
         
     - name: Run checker
       run: python checker.py
       
-    - name: Upload results as Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: vless-results
-        path: output/
-        retention-days: 5  # Хранить архив 5 дней
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add vless.txt vless.yaml
+        if ! git diff --staged --quiet; then
+          git commit -m "🤖 Auto-update: $(date +'%Y-%m-%d %H:%M')"
+          git push
+        else
+          echo "Изменений нет, коммит не нужен."
+        fi
