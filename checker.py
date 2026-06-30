@@ -5,45 +5,69 @@ import urllib.parse
 import socket
 import ssl
 import time
-import json
 import requests
 import yaml
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
-# Белый список доменов РФ
-RF_TLDS = ['.ru', '.su', '.xn--p1ai', '.rf']
+# --- Жёсткий белый список РФ (только проверенные крупные сервисы) ---
+# Обычные .ru домены больше НЕ проходят. Только точные совпадения или поддомены.
 RF_DOMAINS = [
-    'yandex.ru', 'yandex.com', 'ya.ru', 'vk.com', 'vk.ru',
+    'gosuslugi.ru', 'gov.ru', 'kremlin.ru', 'government.ru', 'mos.ru',
+    'nalog.ru', 'fss.ru', 'pfr.ru', 'sfr.gov.ru',
+    'yandex.ru', 'yandex.com', 'yandex.net', 'ya.ru', 'yandex-team.ru',
+    'yandexcloud.net', 'kinopoisk.ru', 'auto.ru', 'avito.ru',
+    'vk.com', 'vk.ru', 'vk.me', 'vk.link', 'vk.team',
     'mail.ru', 'list.ru', 'bk.ru', 'inbox.ru', 'rambler.ru',
-    'sberbank.ru', 'sberbank.com', 'gosuslugi.ru', 'mos.ru', 'gov.ru',
-    'tinkoff.ru', 'vtb.ru', 'mvideo.ru', 'rzd.ru', 'aeroflot.ru',
+    'ok.ru', 'my.mail.ru',
+    'sberbank.ru', 'sberbank.com', 'sberbank.com.ru',
+    'tinkoff.ru', 'tinkoff.com', 'tbank.ru',
+    'vtb.ru', 'vtb.com', 'alfabank.ru', 'alfabank.com',
+    'gazprombank.ru', 'raiffeisen.ru', 'rosbank.ru',
+    'qiwi.com', 'qiwi.ru', 'yoomoney.ru',
+    'mts.ru', 'beeline.ru', 'megafon.ru', 'tele2.ru',
+    'rostelecom.ru', 'rt.ru', 'dom.ru',
+    'rzd.ru', 'aeroflot.ru', 's7.ru', 'pobeda.aero', 'tutu.ru',
+    'ria.ru', 'tass.ru', 'interfax.ru', 'rbc.ru',
+    'vedomosti.ru', 'kommersant.ru', 'iz.ru',
+    'ntv.ru', '1tv.ru', 'vgtrk.com', 'smotrim.ru',
     'wildberries.ru', 'ozon.ru', 'dns-shop.ru', 'citilink.ru',
-    'avito.ru', 'hh.ru', 'pikabu.ru', 'habr.com', 'habr.ru'
+    'mvideo.ru', 'eldorado.ru', 'leroymerlin.ru',
+    'pikabu.ru', 'habr.com', 'habr.ru',
+    'hh.ru', 'superjob.ru', 'rabota.ru',
+    'cian.ru', 'domclick.ru',
+    'kaspersky.ru', 'kaspersky.com', 'drweb.ru',
+    'cloud.mail.ru', 'disk.yandex.ru', 'cloud.yandex.ru',
 ]
 
 def is_rf_domain(domain):
+    """Строгая проверка: только домены из белого списка или их поддомены."""
     if not domain: return False
-    domain = domain.lower()
-    for tld in RF_TLDS:
-        if domain.endswith(tld): return True
-    return domain in RF_DOMAINS
+    domain = domain.lower().strip()
+    for allowed in RF_DOMAINS:
+        if domain == allowed or domain.endswith('.' + allowed):
+            return True
+    return False
 
 def fetch_subscription(url):
     try:
         headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
         response = requests.get(url, headers=headers, timeout=15)
+        response.raise_for_status()
         return response.text
     except Exception as e:
-        print(f"Ошибка загрузки {url}: {e}")
+        print(f"[-] Ошибка загрузки {url}: {e}")
         return ""
 
 def extract_vless_links(text):
+    if not text: return []
     try:
-        padded_text = text + "=" * (-len(text) % 4)
-        decoded = base64.b64decode(padded_text).decode('utf-8')
-        if "vless://" in decoded: text = decoded
-    except Exception: pass
+        padded = text + "=" * (-len(text) % 4)
+        decoded = base64.b64decode(padded).decode('utf-8', errors='ignore')
+        if "vless://" in decoded:
+            text = decoded
+    except Exception:
+        pass
     return re.findall(r'vless://[^\s<>"\']+', text)
 
 def parse_vless(link):
@@ -63,32 +87,25 @@ def parse_vless(link):
             base = body
         if '@' not in base: return None
         uuid, server_port = base.split('@', 1)
-        
         server, port = (server_port.rsplit(':', 1) + [443])[:2]
         try: port = int(port)
         except: return None
-            
+
         network = params.get('type', 'tcp')
         sni = params.get('sni', params.get('host', server))
         security = params.get('security', 'none')
-        
+
         return {
-            "name": name or server,
-            "uuid": uuid,
-            "server": server,
-            "port": port,
-            "sni": sni,
-            "security": security,
-            "network": network,
-            "flow": params.get('flow', ''),
-            "path": params.get('path', ''),
-            "host": params.get('host', ''),
-            "fp": params.get('fp', 'chrome'),
-            "pbk": params.get('pbk', ''),
-            "sid": params.get('sid', ''),
+            "name": name or f"{server}:{port}",
+            "uuid": uuid, "server": server, "port": port,
+            "sni": sni, "security": security, "network": network,
+            "flow": params.get('flow', ''), "path": params.get('path', ''),
+            "host": params.get('host', ''), "fp": params.get('fp', 'chrome'),
+            "pbk": params.get('pbk', ''), "sid": params.get('sid', ''),
             "link": link
         }
-    except Exception: return None
+    except Exception:
+        return None
 
 def test_node(node, timeout=5):
     try:
@@ -107,12 +124,9 @@ def test_node(node, timeout=5):
 
 def build_clash_proxy(node):
     proxy = {
-        'name': node['name'],
-        'type': 'vless',
-        'server': node['server'],
-        'port': node['port'],
-        'uuid': node['uuid'],
-        'udp': True,
+        'name': node['name'], 'type': 'vless',
+        'server': node['server'], 'port': node['port'],
+        'uuid': node['uuid'], 'udp': True,
         'network': node['network'],
         'tls': node['security'] in ['tls', 'xtls', 'reality'],
     }
@@ -123,7 +137,7 @@ def build_clash_proxy(node):
     if node['flow']: proxy['flow'] = node['flow']
     if node['sni']: proxy['servername'] = node['sni']
     if node['fp']: proxy['client-fingerprint'] = node['fp']
-    
+
     if node['network'] == 'ws':
         proxy['ws-opts'] = {}
         if node['path']: proxy['ws-opts']['path'] = node['path']
@@ -139,22 +153,26 @@ def main():
     try:
         with open('sub.txt', 'r', encoding='utf-8') as f:
             sources = [line.strip() for line in f if line.strip() and not line.startswith('#')]
-    except Exception as e:
-        print(f"Ошибка чтения sub.txt: {e}")
+    except FileNotFoundError:
+        print("[-] Файл sub.txt не найден!")
         return
-        
+    except Exception as e:
+        print(f"[-] Ошибка чтения sub.txt: {e}")
+        return
+
     all_links = []
     for source in sources:
         if source.startswith('http'):
+            print(f"[*] Загрузка: {source}")
             content = fetch_subscription(source)
             all_links.extend(extract_vless_links(content))
         elif source.startswith('vless://'):
             all_links.append(source)
-            
+
     print(f"[*] Найдено сырых ссылок: {len(all_links)}")
     parsed_nodes = [n for n in (parse_vless(l) for l in all_links) if n]
-    
-    # Убираем дубликаты по uuid+server+port
+
+    # Дедупликация по uuid+server+port
     seen = set()
     unique_nodes = []
     for n in parsed_nodes:
@@ -162,64 +180,49 @@ def main():
         if key not in seen:
             seen.add(key)
             unique_nodes.append(n)
-    
+
+    # Строгий фильтр по белому списку РФ
     rf_nodes = [n for n in unique_nodes if is_rf_domain(n['sni'])]
     print(f"[*] Уникальных нод: {len(unique_nodes)}")
-    print(f"[*] РФ SNI: {len(rf_nodes)}")
-    
+    print(f"[*] Прошло строгий фильтр РФ SNI: {len(rf_nodes)}")
+
     if not rf_nodes:
-        print("[!] Нод с российским SNI не найдено. Очистка файлов.")
+        print("[!] Нод с разрешённым российским SNI не найдено. Очищаем выходные файлы.")
         open('vless.txt', 'w').close()
         with open('vless.yaml', 'w', encoding='utf-8') as f:
             yaml.dump({'proxies': [], 'proxy-groups': []}, f, allow_unicode=True)
         return
-        
-    print("[*] Проверка TCP+TLS пингом...")
+
+    print("[*] Проверка TCP+TLS пингом (многопоточно)...")
     results = []
-    with ThreadPoolExecutor(max_workers=30) as executor:
+    with ThreadPoolExecutor(max_workers=40) as executor:
         futures = {executor.submit(test_node, node): node for node in rf_nodes}
         for future in as_completed(futures):
             results.append(future.result())
-            
+
     ok_results = sorted([r for r in results if r['latency']], key=lambda x: x['latency'])
-    print(f"[+] Живых: {len(ok_results)} из {len(rf_nodes)}")
-    
-    # --- Сохранение vless.txt ---
+    print(f"[+] Живых нод: {len(ok_results)} из {len(rf_nodes)}")
+
+    # Сохранение vless.txt
     with open('vless.txt', 'w', encoding='utf-8') as f:
         for r in ok_results:
             f.write(r['node']['link'] + "\n")
-            
-    # --- Сохранение vless.yaml (Clash Meta) ---
+
+    # Сохранение vless.yaml (Clash Meta / Mihomo)
     proxies = [build_clash_proxy(r['node']) for r in ok_results]
     proxy_names = [p['name'] for p in proxies]
-    
+
     clash_config = {
-        'mixed-port': 7890,
-        'allow-lan': False,
-        'mode': 'rule',
-        'log-level': 'info',
-        'unified-delay': True,
-        'tcp-concurrent': True,
+        'mixed-port': 7890, 'allow-lan': False, 'mode': 'rule',
+        'log-level': 'info', 'unified-delay': True, 'tcp-concurrent': True,
         'dns': {
-            'enable': True,
-            'listen': '0.0.0.0:1053',
-            'enhanced-mode': 'fake-ip',
+            'enable': True, 'listen': '0.0.0.0:1053', 'enhanced-mode': 'fake-ip',
             'nameserver': ['https://dns.yandex.ru/dns-query', 'https://cloudflare-dns.com/dns-query']
         },
         'proxies': proxies,
         'proxy-groups': [
-            {
-                'name': 'RF-Proxy',
-                'type': 'select',
-                'proxies': proxy_names + ['DIRECT']
-            },
-            {
-                'name': 'Auto-Optimal',
-                'type': 'url-test',
-                'proxies': proxy_names,
-                'url': 'https://yandex.ru',
-                'interval': 300
-            }
+            {'name': 'RF-Proxy', 'type': 'select', 'proxies': proxy_names + ['DIRECT']},
+            {'name': 'Auto-Optimal', 'type': 'url-test', 'proxies': proxy_names, 'url': 'https://yandex.ru', 'interval': 300}
         ],
         'rules': [
             'DOMAIN-SUFFIX,ru,RF-Proxy',
@@ -227,11 +230,11 @@ def main():
             'MATCH,Auto-Optimal'
         ]
     }
-    
+
     with open('vless.yaml', 'w', encoding='utf-8') as f:
         yaml.dump(clash_config, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
-        
-    print(f"[*] Файлы vless.txt и vless.yaml обновлены!")
+
+    print(f"[*] Файлы vless.txt и vless.yaml успешно обновлены в корне репозитория!")
 
 if __name__ == "__main__":
     main()
