@@ -105,6 +105,15 @@ def parse_vless(link):
     except Exception:
         return None
 
+def is_valid_vless(node):
+    """🛡️ Проверка базовой валидности для клиентов (Clash/V2rayN)"""
+    if not node: return False
+    # VLESS Reality строго требует Public Key (pbk) и SNI
+    if node['security'] == 'reality':
+        if not node.get('pbk') or not node.get('sni'):
+            return False
+    return True
+
 def test_node(node, timeout=5):
     try:
         start_time = time.time()
@@ -129,9 +138,11 @@ def build_clash_proxy(node):
         'tls': node['security'] in ['tls', 'xtls', 'reality'],
     }
     if node['security'] == 'reality':
-        proxy['reality-opts'] = {}
-        if node['pbk']: proxy['reality-opts']['public-key'] = node['pbk']
-        if node['sid']: proxy['reality-opts']['short-id'] = node['sid']
+        # Так как мы уже отфильтровали пустые pbk, здесь они точно есть
+        proxy['reality-opts'] = {'public-key': node['pbk']}
+        if node['sid']: 
+            proxy['reality-opts']['short-id'] = node['sid']
+            
     if node['flow']: proxy['flow'] = node['flow']
     if node['sni']: proxy['servername'] = node['sni']
     if node['fp']: proxy['client-fingerprint'] = node['fp']
@@ -168,7 +179,10 @@ def main():
             all_links.append(source)
 
     print(f"[*] Найдено сырых ссылок: {len(all_links)}")
-    parsed_nodes = [n for n in (parse_vless(l) for l in all_links) if n]
+    
+    # Парсинг и строгая проверка валидности (фильтр битых Reality ссылок)
+    parsed_nodes = [n for n in (parse_vless(l) for l in all_links) if is_valid_vless(n)]
+    print(f"[*] Валидных ссылок (после проверки pbk/sni): {len(parsed_nodes)}")
 
     seen = set()
     unique_nodes = []
