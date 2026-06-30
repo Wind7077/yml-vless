@@ -11,7 +11,6 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 
 # --- Жёсткий белый список РФ (только проверенные крупные сервисы) ---
-# Обычные .ru домены больше НЕ проходят. Только точные совпадения или поддомены.
 RF_DOMAINS = [
     'gosuslugi.ru', 'gov.ru', 'kremlin.ru', 'government.ru', 'mos.ru',
     'nalog.ru', 'fss.ru', 'pfr.ru', 'sfr.gov.ru',
@@ -41,7 +40,6 @@ RF_DOMAINS = [
 ]
 
 def is_rf_domain(domain):
-    """Строгая проверка: только домены из белого списка или их поддомены."""
     if not domain: return False
     domain = domain.lower().strip()
     for allowed in RF_DOMAINS:
@@ -172,7 +170,6 @@ def main():
     print(f"[*] Найдено сырых ссылок: {len(all_links)}")
     parsed_nodes = [n for n in (parse_vless(l) for l in all_links) if n]
 
-    # Дедупликация по uuid+server+port
     seen = set()
     unique_nodes = []
     for n in parsed_nodes:
@@ -181,7 +178,6 @@ def main():
             seen.add(key)
             unique_nodes.append(n)
 
-    # Строгий фильтр по белому списку РФ
     rf_nodes = [n for n in unique_nodes if is_rf_domain(n['sni'])]
     print(f"[*] Уникальных нод: {len(unique_nodes)}")
     print(f"[*] Прошло строгий фильтр РФ SNI: {len(rf_nodes)}")
@@ -203,13 +199,29 @@ def main():
     ok_results = sorted([r for r in results if r['latency']], key=lambda x: x['latency'])
     print(f"[+] Живых нод: {len(ok_results)} из {len(rf_nodes)}")
 
-    # Сохранение vless.txt
     with open('vless.txt', 'w', encoding='utf-8') as f:
         for r in ok_results:
             f.write(r['node']['link'] + "\n")
 
-    # Сохранение vless.yaml (Clash Meta / Mihomo)
-    proxies = [build_clash_proxy(r['node']) for r in ok_results]
+    # --- Сохранение vless.yaml (Clash Meta / Mihomo) ---
+    proxies = []
+    seen_names = set()
+    
+    for r in ok_results:
+        proxy = build_clash_proxy(r['node'])
+        
+        # 🛡️ ЗАЩИТА ОТ ДУБЛИКАТОВ ИМЁН (duplicate name fix)
+        base_name = proxy['name']
+        unique_name = base_name
+        counter = 2
+        while unique_name in seen_names:
+            unique_name = f"{base_name} ({counter})"
+            counter += 1
+            
+        proxy['name'] = unique_name
+        seen_names.add(unique_name)
+        proxies.append(proxy)
+        
     proxy_names = [p['name'] for p in proxies]
 
     clash_config = {
@@ -234,7 +246,7 @@ def main():
     with open('vless.yaml', 'w', encoding='utf-8') as f:
         yaml.dump(clash_config, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
 
-    print(f"[*] Файлы vless.txt и vless.yaml успешно обновлены в корне репозитория!")
+    print(f"[*] Файлы vless.txt и vless.yaml успешно обновлены!")
 
 if __name__ == "__main__":
     main()
