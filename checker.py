@@ -100,6 +100,7 @@ def parse_vless(link):
             "flow": params.get('flow', ''), "path": params.get('path', ''),
             "host": params.get('host', ''), "fp": params.get('fp', 'randomized'),
             "pbk": params.get('pbk', ''), "sid": params.get('sid', ''),
+            "mode": params.get('mode', ''),
             "link": link
         }
     except Exception: return None
@@ -148,7 +149,7 @@ def build_clash_proxy(node):
         'network': node['network'],
         'tls': node['security'] in ['tls', 'xtls', 'reality'],
     }
-    
+
     if node['security'] == 'reality':
         reality_opts = {'public-key': node['pbk']}
         sid = str(node.get('sid', '')).strip()
@@ -163,37 +164,62 @@ def build_clash_proxy(node):
     if node.get('sni'): proxy['servername'] = node['sni']
     if node.get('fp'): proxy['client-fingerprint'] = node['fp']
 
-    # --- ИСПРАВЛЕНИЕ OPTS ---
-    if node['network'] == 'ws':
+    net = node['network']
+
+    # path может прийти списком (на всякий случай) - всегда сводим к одной строке
+    p = node.get('path', '')
+    if isinstance(p, list):
+        p = p[0] if p else ''
+    p = str(p).strip()
+    host = str(node.get('host', '') or '').strip()
+
+    # --- ИСПРАВЛЕНИЕ OPTS: типы полей строго по структурам mihomo (адаптер VLESS) ---
+    if net == 'ws':
+        # ws-opts: path -> string, headers -> map[string]string
         ws_opts = {}
-        p = node.get('path', '')
-        # Для WS path должен быть СТРОКОЙ
-        if isinstance(p, list): p = p[0] if p else ''
-        if p: ws_opts['path'] = str(p)
-        if node.get('host'): ws_opts['headers'] = {'Host': node['host']}
+        if p: ws_opts['path'] = p
+        if host: ws_opts['headers'] = {'Host': host}
         if ws_opts: proxy['ws-opts'] = ws_opts
-        
-    elif node['network'] == 'grpc':
-        p = node.get('path', '')
-        # Для gRPC service-name должен быть СТРОКОЙ
-        if isinstance(p, list): p = p[0] if p else ''
-        if p: proxy['grpc-opts'] = {'grpc-service-name': str(p)}
-            
-    elif node['network'] in ['http', 'h2']:
+
+    elif net == 'grpc':
+        # grpc-opts: grpc-service-name -> string
+        if p: proxy['grpc-opts'] = {'grpc-service-name': p}
+
+    elif net == 'http':
+        # http-opts (HTTP/1.1 "disguise"): path -> []string, headers -> map[string][]string
+        # ВАЖНО: оба поля - именно СПИСКИ, в т.ч. headers - список значений на каждый заголовок.
+        # Раньше headers писался как {'Host': host} (просто строка) - это и давало
+        # ошибку парсера "cannot unmarshal !!str into []string" при импорте в FlClash.
         http_opts = {}
-        if node.get('host'): http_opts['headers'] = {'Host': node['host']}
-        # ВНИМАНИЕ: Для http/h2 path ОБЯЗАТЕЛЬНО должен быть СПИСКОМ (slice)!
-        p = node.get('path', '')
-        if p:
-            if isinstance(p, str):
-                http_opts['path'] = [str(p)]
-            elif isinstance(p, list):
-                http_opts['path'] = [str(x) for x in p if x]
+        if p: http_opts['path'] = [p]
+        if host: http_opts['headers'] = {'Host': [host]}
         if http_opts: proxy['http-opts'] = http_opts
-        
-    elif node['network'] == 'tcp' and node.get('host'):
-        proxy['tcp-opts'] = {'headers': {'Host': node['host']}}
-        
+
+    elif net == 'h2':
+        # h2-opts (настоящий HTTP/2): host -> []string, path -> string (НЕ список!)
+        # Раньше h2 ошибочно писался в http-opts с path-списком - mihomo при
+        # network: h2 этот блок вообще не читает (читает h2-opts), в итоге
+        # транспорт уходил с дефолтными path "/" и пустым host.
+        h2_opts = {}
+        if host: h2_opts['host'] = [host]
+        if p: h2_opts['path'] = p
+        if h2_opts: proxy['h2-opts'] = h2_opts
+
+    elif net == 'xhttp':
+        # xhttp-opts (Xray-совместимый SplitHTTP): path/host -> string, mode -> string
+        # Раньше xhttp вообще никак не обрабатывался - блок opts не создавался,
+        # нода уходила без path/host/mode и просто не коннектилась.
+        xhttp_opts = {}
+        if p: xhttp_opts['path'] = p
+        if host: xhttp_opts['host'] = host
+        xhttp_opts['mode'] = node.get('mode') or 'auto'
+        proxy['xhttp-opts'] = xhttp_opts
+
+    # network == 'tcp': никаких *-opts для VLESS в mihomo не предусмотрено.
+    # Раньше сюда ошибочно писался 'tcp-opts' - такого поля у VLESS-прокси в
+    # mihomo вообще нет (это легаси-поле VMess), могло провоцировать ошибки
+    # парсинга в более строгих сборках/версиях.
+
     return proxy
 
 def main():
