@@ -152,33 +152,45 @@ def build_clash_proxy(node):
     if node['security'] == 'reality':
         reality_opts = {'public-key': node['pbk']}
         sid = str(node.get('sid', '')).strip()
-        
-        # 🛡️ XTLS-Reality требует, чтобы short-id был HEX и ЧЕТНОЙ длины (2,4,8,16)
         if sid and re.fullmatch(r'[0-9a-fA-F]+', sid):
             if len(sid) % 2 != 0:
-                sid = '0' + sid # Паддим нечетную длину нулем
+                sid = '0' + sid
             if len(sid) <= 16:
                 reality_opts['short-id'] = sid
-                
         proxy['reality-opts'] = reality_opts
 
     if node.get('flow'): proxy['flow'] = node['flow']
     if node.get('sni'): proxy['servername'] = node['sni']
     if node.get('fp'): proxy['client-fingerprint'] = node['fp']
 
+    # --- ИСПРАВЛЕНИЕ OPTS ---
     if node['network'] == 'ws':
         ws_opts = {}
-        if node.get('path'): ws_opts['path'] = node['path']
+        p = node.get('path', '')
+        # Для WS path должен быть СТРОКОЙ
+        if isinstance(p, list): p = p[0] if p else ''
+        if p: ws_opts['path'] = str(p)
         if node.get('host'): ws_opts['headers'] = {'Host': node['host']}
         if ws_opts: proxy['ws-opts'] = ws_opts
+        
     elif node['network'] == 'grpc':
-        if node.get('path'):
-            proxy['grpc-opts'] = {'grpc-service-name': node['path']}
+        p = node.get('path', '')
+        # Для gRPC service-name должен быть СТРОКОЙ
+        if isinstance(p, list): p = p[0] if p else ''
+        if p: proxy['grpc-opts'] = {'grpc-service-name': str(p)}
+            
     elif node['network'] in ['http', 'h2']:
         http_opts = {}
         if node.get('host'): http_opts['headers'] = {'Host': node['host']}
-        if node.get('path'): http_opts['path'] = node['path']
+        # ВНИМАНИЕ: Для http/h2 path ОБЯЗАТЕЛЬНО должен быть СПИСКОМ (slice)!
+        p = node.get('path', '')
+        if p:
+            if isinstance(p, str):
+                http_opts['path'] = [str(p)]
+            elif isinstance(p, list):
+                http_opts['path'] = [str(x) for x in p if x]
         if http_opts: proxy['http-opts'] = http_opts
+        
     elif node['network'] == 'tcp' and node.get('host'):
         proxy['tcp-opts'] = {'headers': {'Host': node['host']}}
         
@@ -267,22 +279,21 @@ def main():
         ]
     }
 
-    # Генерируем YAML строку
+    # Генерируем YAML
     yaml_str = yaml.dump(clash_config, allow_unicode=True, sort_keys=False, default_flow_style=False)
     
-    # 🛡️ БРОНЕБОЙНАЯ ЗАЩИТА ОТ ПАРСИНГА YAML (Исправляет "invalid short id" и "invalid uuid")
-    # PyYAML убирает кавычки у чисел, из-за чего Clash Meta падает. Принудительно возвращаем кавычки.
+    # 🛡️ БРОНЯ ОТ ПАРСЕРА YAML (Принудительные кавычки для чисел/хешей)
     yaml_str = re.sub(r'(?m)^(\s*short-id:\s*)([0-9a-fA-F]+)$', r'\1"\2"', yaml_str)
     yaml_str = re.sub(r'(?m)^(\s*public-key:\s*)([0-9a-zA-Z_\-]+)$', r'\1"\2"', yaml_str)
     yaml_str = re.sub(r'(?m)^(\s*uuid:\s*)([0-9a-fA-F\-]+)$', r'\1"\2"', yaml_str)
     
-    # Вычищаем пустые или null short-id, если они вдруг просочились
+    # Удаление пустых short-id, если они просочились
     yaml_str = re.sub(r'(?m)^\s*short-id:\s*(null|None|)\s*$', '', yaml_str)
 
     with open('vless.yaml', 'w', encoding='utf-8') as f:
         f.write(yaml_str)
 
-    print(f"[*] Готово! vless.yaml на 100% защищен от ошибок парсинга Clash Meta.")
+    print(f"[*] Готово! Конфиг на 100% совместим с Mihomo (Clash Meta).")
 
 if __name__ == "__main__":
     main()
