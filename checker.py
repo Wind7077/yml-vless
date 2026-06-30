@@ -39,9 +39,8 @@ RF_DOMAINS = [
     'cloud.mail.ru', 'disk.yandex.ru', 'cloud.yandex.ru',
 ]
 
-# Regex и константы для строгой валидации Clash Meta
 UUID_REGEX = re.compile(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$', re.IGNORECASE)
-VALID_FPS = ['chrome', 'firefox', 'safari', 'ios', 'android', 'edge', '360', 'random']
+VALID_FPS = ['chrome', 'firefox', 'safari', 'ios', 'android', 'edge', '360', 'random', 'randomized']
 VALID_NETWORKS = ['tcp', 'ws', 'grpc', 'h2', 'http', 'xhttp']
 
 def is_rf_domain(domain):
@@ -99,40 +98,30 @@ def parse_vless(link):
             "security": params.get('security', 'none'),
             "network": params.get('type', 'tcp'),
             "flow": params.get('flow', ''), "path": params.get('path', ''),
-            "host": params.get('host', ''), "fp": params.get('fp', 'chrome'),
+            "host": params.get('host', ''), "fp": params.get('fp', 'randomized'),
             "pbk": params.get('pbk', ''), "sid": params.get('sid', ''),
             "link": link
         }
     except Exception: return None
 
 def is_valid_vless(node):
-    """🛡️ БРОНЕБОЙНАЯ ВАЛИДАЦИЯ ДЛЯ CLASH META"""
     if not node: return False
-    
-    # 1. Строгая проверка UUID (отсекает TGM_3353... и прочий мусор)
-    if not UUID_REGEX.match(node.get('uuid', '')):
-        return False
-        
-    # 2. SNI обязателен
+    if not UUID_REGEX.match(node.get('uuid', '')): return False
     if not node.get('sni'): return False
-        
-    # 3. Проверка Reality и Vision
+    
     is_reality = node.get('security') == 'reality'
     has_vision = 'vision' in node.get('flow', '')
-    
     if is_reality or has_vision:
-        if not node.get('pbk'): return False # Нет ключа = битая ссылка от провайдера
+        if not node.get('pbk'): return False
         if has_vision and not is_reality:
-            node['security'] = 'reality' # Автоисправление
+            node['security'] = 'reality'
             
-    # 4. Валидация сети
     if node.get('network') not in VALID_NETWORKS:
         node['network'] = 'tcp'
         
-    # 5. Валидация Fingerprint (qq, none и т.д. -> chrome)
     fp = node.get('fp', '').lower().strip()
     if fp not in VALID_FPS:
-        node['fp'] = 'chrome'
+        node['fp'] = 'randomized'
         
     return True
 
@@ -160,36 +149,36 @@ def build_clash_proxy(node):
         'tls': node['security'] in ['tls', 'xtls', 'reality'],
     }
     
-    # Reality options (защита от пустого short-id)
     if node['security'] == 'reality':
         reality_opts = {'public-key': node['pbk']}
         sid = str(node.get('sid', '')).strip()
-        # short-id должен быть HEX и не пустым, иначе не добавляем
-        if sid and re.fullmatch(r'[0-9a-fA-F]{1,16}', sid):
-            reality_opts['short-id'] = sid
+        
+        # 🛡️ XTLS-Reality требует, чтобы short-id был HEX и ЧЕТНОЙ длины (2,4,8,16)
+        if sid and re.fullmatch(r'[0-9a-fA-F]+', sid):
+            if len(sid) % 2 != 0:
+                sid = '0' + sid # Паддим нечетную длину нулем
+            if len(sid) <= 16:
+                reality_opts['short-id'] = sid
+                
         proxy['reality-opts'] = reality_opts
 
     if node.get('flow'): proxy['flow'] = node['flow']
     if node.get('sni'): proxy['servername'] = node['sni']
     if node.get('fp'): proxy['client-fingerprint'] = node['fp']
 
-    # Network options
     if node['network'] == 'ws':
         ws_opts = {}
         if node.get('path'): ws_opts['path'] = node['path']
         if node.get('host'): ws_opts['headers'] = {'Host': node['host']}
         if ws_opts: proxy['ws-opts'] = ws_opts
-        
     elif node['network'] == 'grpc':
         if node.get('path'):
             proxy['grpc-opts'] = {'grpc-service-name': node['path']}
-            
     elif node['network'] in ['http', 'h2']:
         http_opts = {}
         if node.get('host'): http_opts['headers'] = {'Host': node['host']}
         if node.get('path'): http_opts['path'] = node['path']
         if http_opts: proxy['http-opts'] = http_opts
-        
     elif node['network'] == 'tcp' and node.get('host'):
         proxy['tcp-opts'] = {'headers': {'Host': node['host']}}
         
@@ -223,12 +212,12 @@ def main():
             unique_nodes.append(n)
 
     rf_nodes = [n for n in unique_nodes if is_rf_domain(n['sni'])]
-    print(f"[*] Валидных РФ нод после чистки мусора: {len(rf_nodes)}")
+    print(f"[*] Валидных РФ нод после чистки: {len(rf_nodes)}")
 
     if not rf_nodes:
         open('vless.txt', 'w').close()
         with open('vless.yaml', 'w', encoding='utf-8') as f:
-            yaml.dump({'proxies': [], 'proxy-groups': []}, f, allow_unicode=True)
+            f.write("proxies: []\nproxy-groups: []\n")
         return
 
     results = []
@@ -278,10 +267,22 @@ def main():
         ]
     }
 
-    with open('vless.yaml', 'w', encoding='utf-8') as f:
-        yaml.dump(clash_config, f, allow_unicode=True, sort_keys=False, default_flow_style=False)
+    # Генерируем YAML строку
+    yaml_str = yaml.dump(clash_config, allow_unicode=True, sort_keys=False, default_flow_style=False)
+    
+    # 🛡️ БРОНЕБОЙНАЯ ЗАЩИТА ОТ ПАРСИНГА YAML (Исправляет "invalid short id" и "invalid uuid")
+    # PyYAML убирает кавычки у чисел, из-за чего Clash Meta падает. Принудительно возвращаем кавычки.
+    yaml_str = re.sub(r'(?m)^(\s*short-id:\s*)([0-9a-fA-F]+)$', r'\1"\2"', yaml_str)
+    yaml_str = re.sub(r'(?m)^(\s*public-key:\s*)([0-9a-zA-Z_\-]+)$', r'\1"\2"', yaml_str)
+    yaml_str = re.sub(r'(?m)^(\s*uuid:\s*)([0-9a-fA-F\-]+)$', r'\1"\2"', yaml_str)
+    
+    # Вычищаем пустые или null short-id, если они вдруг просочились
+    yaml_str = re.sub(r'(?m)^\s*short-id:\s*(null|None|)\s*$', '', yaml_str)
 
-    print(f"[*] Готово! vless.yaml на 100% чист и валиден для Clash Meta.")
+    with open('vless.yaml', 'w', encoding='utf-8') as f:
+        f.write(yaml_str)
+
+    print(f"[*] Готово! vless.yaml на 100% защищен от ошибок парсинга Clash Meta.")
 
 if __name__ == "__main__":
     main()
