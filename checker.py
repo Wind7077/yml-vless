@@ -33,8 +33,10 @@ _port_counter = itertools.count(20000)
 try:
     import socks  # noqa: F401  -- из пакета PySocks (requests[socks])
     SOCKS_SUPPORT = True
-except ImportError:
+    _SOCKS_IMPORT_ERROR = None
+except ImportError as e:
     SOCKS_SUPPORT = False
+    _SOCKS_IMPORT_ERROR = str(e)
 
 # --- Жёсткий белый список РФ ---
 RF_DOMAINS = [
@@ -530,8 +532,11 @@ def main():
 
     xray_available = ensure_xray_binary()
     if xray_available and not SOCKS_SUPPORT:
-        print("[-] Не найден пакет PySocks (нужен для socks5h:// в requests). "
-              "Установите: pip install pysocks --break-system-packages")
+        import sys
+        print(f"[-] Не найден пакет PySocks (нужен для socks5h:// в requests). "
+              f"Установите: pip install pysocks --break-system-packages")
+        print(f"[-] Debug: python executable = {sys.executable}")
+        print(f"[-] Debug: import error = {_SOCKS_IMPORT_ERROR}")
         xray_available = False
     if xray_available:
         print(f"[*] Stage 2: реальное скачивание файла через каждую ноду (xray, {DOWNLOAD_WORKERS} потоков)...")
