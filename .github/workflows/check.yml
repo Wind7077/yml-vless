@@ -1,5 +1,4 @@
 name: Check VLESS Subscriptions
-
 on:
   schedule:
     - cron: '0 */6 * * *'  # Каждые 6 часов
@@ -7,30 +6,29 @@ on:
   push:
     branches: [ main ]
     paths: [ 'sub.txt' ]
-
 jobs:
   check:
     runs-on: ubuntu-latest
     permissions:
       contents: write  # Важно: разрешаем экшну коммитить обратно
-      
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.11'
-        
-- name: Install dependencies
+
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install requests pyyaml pysocks
-        
+
     - name: Run checker
       run: python checker.py
-      
+
     - name: Commit and push changes
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
