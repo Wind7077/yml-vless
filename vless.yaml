@@ -12,7 +12,21 @@ dns:
   - https://dns.yandex.ru/dns-query
   - https://cloudflare-dns.com/dns-query
 proxies:
-- name: 🇳🇱  Netherlands  [08]  MIFA
+- name: 🇩🇪 Germany, Frankfurt am Main | [BL]
+  type: vless
+  server: 154.222.9.208
+  port: 443
+  uuid: "ea68ea3d-b2f7-47f8-97d5-04cad78dd226"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "ISa-DZOI4LRRb9DHMFYm5oFqBXDjYzz0hVWUfWvzLmo"
+    short-id: "dc8109baf0f607ea"
+  flow: xtls-rprx-vision
+  servername: storage.yandex.net
+  client-fingerprint: firefox
+- name: '🇳🇱 [VL] Нидерланды #3056 | РосТуннель t.me/rjsxrd'
   type: vless
   server: 5.35.34.181
   port: 443
@@ -24,7 +38,7 @@ proxies:
     public-key: "rAMn0lQ0hcsZ0ZnUWwe022bU8pMXYWViV_XSpQ1NKXU"
     short-id: "48a458b7e7cb52ae"
   servername: music.yandex.ru
-  client-fingerprint: firefox
+  client-fingerprint: chrome
 - name: By EbraSha
   type: vless
   server: 144.31.87.16
@@ -38,19 +52,23 @@ proxies:
     short-id: "3b802dad547b0847"
   servername: yandex.ru
   client-fingerprint: firefox
-- name: https://t.me/ForceRunVPN-🇩🇪-FrankfurtamMain-668ms-Play2go International Limited
+- name: 🇷🇺 Russia [*CIDR]
   type: vless
-  server: 178.215.238.148
-  port: 8443
-  uuid: "21c1132b-068c-46fb-880e-3268f6a30e7f"
+  server: 92.53.99.72
+  port: 443
+  uuid: "4392b776-41a2-4300-b545-a3d2724b605b"
   udp: true
-  network: tcp
+  network: xhttp
   tls: true
   reality-opts:
-    public-key: "Crjd0I6hcasRXZcfNf7cs-YtJLpQ8u-t1CbwHIDAciU"
-    short-id: "478dc6"
-  servername: eh.vk.com
-  client-fingerprint: randomized
+    public-key: "SRHaGdtnkRYMKRlJPAIlk3gXKNH9lEo_qCzF5BOBdB4"
+    short-id: "bc1aa344"
+  servername: cdn.tracker.yandex.net
+  client-fingerprint: firefox
+  xhttp-opts:
+    path: /static/js/main.js
+    host: cdn.tracker.yandex.net
+    mode: auto
 - name: By EbraSha (2)
   type: vless
   server: 91.84.117.29
@@ -67,6 +85,53 @@ proxies:
   xhttp-opts:
     path: /
     mode: auto
+- name: https://t.me/ForceRunVPN-🇩🇪-FrankfurtamMain-399ms-Play2go International Limited
+  type: vless
+  server: 178.215.238.148
+  port: 8443
+  uuid: "21c1132b-068c-46fb-880e-3268f6a30e7f"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "Crjd0I6hcasRXZcfNf7cs-YtJLpQ8u-t1CbwHIDAciU"
+    short-id: "478dc6"
+  servername: eh.vk.com
+  client-fingerprint: randomized
+- name: 🇷🇺 Russia [*CIDR] (2)
+  type: vless
+  server: 94.250.252.5
+  port: 443
+  uuid: "4392b776-41a2-4300-b545-a3d2724b605b"
+  udp: true
+  network: xhttp
+  tls: true
+  reality-opts:
+    public-key: "SRHaGdtnkRYMKRlJPAIlk3gXKNH9lEo_qCzF5BOBdB4"
+    short-id: "cdb4e56c"
+  servername: cdn.tracker.yandex.net
+  client-fingerprint: firefox
+  xhttp-opts:
+    path: /static/js/main.js
+    host: cdn.tracker.yandex.net
+    mode: auto
+- name: 🇷🇺 Russia [*CIDR] (3)
+  type: vless
+  server: 185.43.5.51
+  port: 443
+  uuid: "4392b776-41a2-4300-b545-a3d2724b605b"
+  udp: true
+  network: xhttp
+  tls: true
+  reality-opts:
+    public-key: "SRHaGdtnkRYMKRlJPAIlk3gXKNH9lEo_qCzF5BOBdB4"
+    short-id: "0d74c324"
+  servername: cdn.tracker.yandex.net
+  client-fingerprint: firefox
+  xhttp-opts:
+    path: /static/js/main.js
+    host: cdn.tracker.yandex.net
+    mode: auto
 - name: 🇸🇪[openproxylist.com] vless-SE
   type: vless
   server: 148.253.211.10
@@ -81,71 +146,11 @@ proxies:
   flow: xtls-rprx-vision
   servername: vk.me
   client-fingerprint: chrome
-- name: '🇫🇷 France — #254'
-  type: vless
-  server: 84.201.177.246
-  port: 3000
-  uuid: "0c0e36ce-69cb-4773-937b-05afa21f60c3"
-  udp: true
-  network: xhttp
-  tls: true
-  reality-opts:
-    public-key: "XQR4nMq5aBnJ4h1RTCRRJdkdtO0Mtitt1cDtY0whkBI"
-    short-id: "83ae6b6bb4899039"
-  servername: eda.yandex.ru
-  client-fingerprint: safari
-  xhttp-opts:
-    path: /api/v2/config/sync
-    mode: auto
-- name: '🇳🇱 The Netherlands — #369'
-  type: vless
-  server: 87.228.101.57
-  port: 8443
-  uuid: "96c408f1-120f-4c61-809a-26fb9447c88d"
-  udp: true
-  network: xhttp
-  tls: true
-  reality-opts:
-    public-key: "razU6QTL659hzCH6GUbA8icGt7J4MtOF19Wz5IrumGg"
-    short-id: "e3a6a0ee012466b3"
-  servername: api-maps.yandex.ru
-  client-fingerprint: firefox
-  xhttp-opts:
-    path: /
-    mode: auto
-- name: '🇳🇱 The Netherlands — #377'
-  type: vless
-  server: 51.250.40.74
-  port: 443
-  uuid: "96c408f1-120f-4c61-809a-26fb9447c88d"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "5QEC0YA__ppxXOhC_nMbA0lwi3BSO-PxCySRkWTXXGk"
-    short-id: "5b1dde1bbe5b42b4"
-  flow: xtls-rprx-vision
-  servername: smartcaptcha.yandexcloud.net
-  client-fingerprint: firefox
-- name: '🇭🇺 Hungary — #287'
-  type: vless
-  server: 46.254.19.52
-  port: 443
-  uuid: "95ffdbea-6fcb-4e1e-bf22-a4c01ed3901b"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "7zd9mJilgjOrg_ohtw23Vmio-pdnYqeP_r-kiWt87Cg"
-    short-id: "f4b4a6365558ea2e"
-  flow: xtls-rprx-vision
-  servername: storage.yandex.net
-  client-fingerprint: firefox
-- name: '🇩🇪 Germany — #203'
+- name: '🇩🇪 Germany — #248'
   type: vless
   server: 158.160.128.13
   port: 443
-  uuid: "54f08092-7fca-4533-be3f-22a6fa1b5889"
+  uuid: "5d2566a7-a112-4199-8e29-f876a53062f8"
   udp: true
   network: tcp
   tls: true
@@ -154,11 +159,38 @@ proxies:
   flow: xtls-rprx-vision
   servername: yandex.ru
   client-fingerprint: safari
-- name: '🇩🇪 Germany — #204'
+- name: 4FreeIran-9858
   type: vless
-  server: 51.250.47.219
+  server: 78.159.245.72
+  port: 2032
+  uuid: "af22dd57-fda0-422f-87b5-edb332450156"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "EApxy12MeXpqt-78odxizwcXT6hX9f8XeAcbMDVRAV0"
+    short-id: "6ba7b8109dad11d1"
+  flow: xtls-rprx-vision
+  servername: eh1.vk.com
+  client-fingerprint: randomized
+- name: '🇩🇪 Germany — #253'
+  type: vless
+  server: 158.160.199.174
   port: 443
-  uuid: "54f08092-7fca-4533-be3f-22a6fa1b5889"
+  uuid: "5d2566a7-a112-4199-8e29-f876a53062f8"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "CF49-iS9dsHBwvqYFoDs_T3Me8TT0FpNW2kibGBkVXY"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
+  client-fingerprint: safari
+- name: '🇩🇪 Germany — #246'
+  type: vless
+  server: 5.178.85.132
+  port: 443
+  uuid: "5d2566a7-a112-4199-8e29-f876a53062f8"
   udp: true
   network: tcp
   tls: true
@@ -166,70 +198,40 @@ proxies:
     public-key: "WrPShaEtQUXeKeyWDuELzBsd_ygDsU-k2bL1Avi13xI"
   flow: xtls-rprx-vision
   servername: yandex.ru
-  client-fingerprint: chrome
-- name: '🇫🇷 France — #252'
-  type: vless
-  server: 84.201.177.246
-  port: 3002
-  uuid: "0c0e36ce-69cb-4773-937b-05afa21f60c3"
-  udp: true
-  network: xhttp
-  tls: true
-  reality-opts:
-    public-key: "XQR4nMq5aBnJ4h1RTCRRJdkdtO0Mtitt1cDtY0whkBI"
-    short-id: "83ae6b6bb4899039"
-  servername: cloud.mail.ru
-  client-fingerprint: safari
-  xhttp-opts:
-    path: /api/v2/config/sync
-    mode: auto
-- name: '🇩🇪 Germany — #184'
-  type: vless
-  server: 185.229.9.222
-  port: 443
-  uuid: "db867691-1c65-4fb3-99d4-240031be443c"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "8GvAwYlFFIEIJdTTDiwxr6-ePowH3zG4rUpNxUCvf0c"
-    short-id: "27e53bbcab7593d7"
-  flow: xtls-rprx-vision
-  servername: www.vk.com
-  client-fingerprint: randomized
-- name: '🇳🇱 The Netherlands — #374'
-  type: vless
-  server: 158.160.208.250
-  port: 443
-  uuid: "96c408f1-120f-4c61-809a-26fb9447c88d"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "5QEC0YA__ppxXOhC_nMbA0lwi3BSO-PxCySRkWTXXGk"
-    short-id: "5b1dde1bbe5b42b4"
-  flow: xtls-rprx-vision
-  servername: smartcaptcha.yandexcloud.net
   client-fingerprint: firefox
-- name: '🇩🇪 Germany — #179'
+- name: '🇩🇪 Germany — #191'
   type: vless
-  server: 185.229.9.32
-  port: 443
-  uuid: "db867691-1c65-4fb3-99d4-240031be443c"
+  server: 217.19.122.188
+  port: 25567
+  uuid: "1db3cf89-7ca0-4d7d-8c7c-4f57ae2a29da"
   udp: true
   network: tcp
   tls: true
   reality-opts:
-    public-key: "r6LKP3g2W5ruKICTDfH8rwM1PbMjdcgHU7cG6jppxTs"
-    short-id: "27e53bbcab7593d7"
+    public-key: "tsxzBG6xHNl1Nu8XPpd3hWk_zPGrpFrv2Z-difc3nGY"
+    short-id: "a5bd715847213387"
   flow: xtls-rprx-vision
-  servername: yandex.ru
+  servername: iv.kommersant.ru
   client-fingerprint: randomized
-- name: '🇩🇪 Germany — #209'
+- name: '🇩🇪 Germany — #219'
+  type: vless
+  server: 151.236.114.151
+  port: 25567
+  uuid: "1db3cf89-7ca0-4d7d-8c7c-4f57ae2a29da"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "tsxzBG6xHNl1Nu8XPpd3hWk_zPGrpFrv2Z-difc3nGY"
+    short-id: "a5bd715847213387"
+  flow: xtls-rprx-vision
+  servername: iv.kommersant.ru
+  client-fingerprint: firefox
+- name: '🇩🇪 Germany — #252'
   type: vless
   server: 89.208.210.216
   port: 443
-  uuid: "54f08092-7fca-4533-be3f-22a6fa1b5889"
+  uuid: "5d2566a7-a112-4199-8e29-f876a53062f8"
   udp: true
   network: tcp
   tls: true
@@ -238,158 +240,34 @@ proxies:
   flow: xtls-rprx-vision
   servername: yandex.ru
   client-fingerprint: safari
-- name: '🇳🇱 The Netherlands — #382'
+- name: '[🇸🇪]'
   type: vless
-  server: 178.154.214.111
+  server: 62.60.228.89
   port: 443
-  uuid: "96c408f1-120f-4c61-809a-26fb9447c88d"
+  uuid: "2ea1a3c8-2581-4ead-8291-43fee2f8be3d"
   udp: true
   network: tcp
   tls: true
   reality-opts:
-    public-key: "yX1E6fqEpS0oU3efsyAc0x6hXsl7w5iBTnZkbzG7JB8"
-    short-id: "22730c666bd10642"
-  flow: xtls-rprx-vision
-  servername: api-maps.yandex.ru
-  client-fingerprint: firefox
-- name: '🇳🇱 The Netherlands — #371'
-  type: vless
-  server: 84.201.180.178
-  port: 443
-  uuid: "96c408f1-120f-4c61-809a-26fb9447c88d"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "5QEC0YA__ppxXOhC_nMbA0lwi3BSO-PxCySRkWTXXGk"
-    short-id: "5b1dde1bbe5b42b4"
-  flow: xtls-rprx-vision
-  servername: smartcaptcha.yandexcloud.net
-  client-fingerprint: firefox
-- name: '🇩🇪 Germany — #202'
-  type: vless
-  server: 185.130.114.211
-  port: 443
-  uuid: "54f08092-7fca-4533-be3f-22a6fa1b5889"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "CF49-iS9dsHBwvqYFoDs_T3Me8TT0FpNW2kibGBkVXY"
-  flow: xtls-rprx-vision
-  servername: yandex.ru
+    public-key: "ydoxmw5pH_JPRTbjeNKnsF-MfVybjnAYLnhwRj3n3yE"
+    short-id: "cf2d"
+  servername: api.ok.ru
   client-fingerprint: chrome
-- name: '🇩🇪 Germany — #210'
+- name: 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
   type: vless
-  server: 185.130.115.132
-  port: 443
-  uuid: "54f08092-7fca-4533-be3f-22a6fa1b5889"
+  server: netherlands1.banovano.space
+  port: 24382
+  uuid: "57f05fdc-8615-4082-9fc5-7f759bbd51d0"
   udp: true
   network: tcp
   tls: true
   reality-opts:
-    public-key: "CF49-iS9dsHBwvqYFoDs_T3Me8TT0FpNW2kibGBkVXY"
+    public-key: "Slau4DRZkIFgAeKGsPz5MWOp5xB1ecTNzLtbCBUGeQM"
+    short-id: "8059df"
   flow: xtls-rprx-vision
-  servername: yandex.ru
-  client-fingerprint: chrome
-- name: '🇩🇪 Germany — #200'
-  type: vless
-  server: 89.208.210.165
-  port: 443
-  uuid: "54f08092-7fca-4533-be3f-22a6fa1b5889"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "WrPShaEtQUXeKeyWDuELzBsd_ygDsU-k2bL1Avi13xI"
-  flow: xtls-rprx-vision
-  servername: yandex.ru
-  client-fingerprint: safari
-- name: https://t.me/ForceRunVPN-🇫🇷-Paris-985ms-GTHost
-  type: vless
-  server: bypass.fr-gt-01.com
-  port: 8443
-  uuid: "356ccb34-22cc-4446-a137-072bc60d65ca"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "1oUeBtHH4DskTM_jCh-6enWRkFMDX9l1OU5kWYl4kxA"
-    short-id: "f34818a561dfd1fe"
-  flow: xtls-rprx-vision
-  servername: storage.yandex.net
-  client-fingerprint: chrome
-- name: '🇳🇱 The Netherlands — #370'
-  type: vless
-  server: 87.228.101.211
-  port: 443
-  uuid: "96c408f1-120f-4c61-809a-26fb9447c88d"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "kDGigLxn2RUJ8HqhPVUb8pRAcjn5zMhR0-QrORmbIDk"
-    short-id: "be6abde66d48cd13"
-  flow: xtls-rprx-vision
-  servername: api-maps.yandex.ru
-  client-fingerprint: firefox
-- name: '🇩🇪 Germany — #192'
-  type: vless
-  server: 5.188.115.159
-  port: 8446
-  uuid: "80c23713-0a29-4917-96cd-4ce9281d3b7c"
-  udp: true
-  network: grpc
-  tls: true
-  reality-opts:
-    public-key: "rUCHk3_64Wv_f_v46OfVNYldKu9fUqHpX937bmGeeDs"
-  servername: 360.yandex.ru
-  client-fingerprint: firefox
-- name: '🇩🇪 Germany — #180'
-  type: vless
-  server: 51.250.30.235
-  port: 443
-  uuid: "db867691-1c65-4fb3-99d4-240031be443c"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "bwuT_tpimT_uUeWpSn-HbRztfol4o4uCcUHcdvkeFx0"
-    short-id: "27e53bbcab7593d7"
-  flow: xtls-rprx-vision
-  servername: www.vk.com
-  client-fingerprint: random
-- name: '🇳🇱 The Netherlands — #380'
-  type: vless
-  server: 87.228.101.211
-  port: 8443
-  uuid: "96c408f1-120f-4c61-809a-26fb9447c88d"
-  udp: true
-  network: xhttp
-  tls: true
-  reality-opts:
-    public-key: "4rOkMPLt9aMOXiDmXkPX6RQP6jd6qBLBvGJx45JFWFk"
-    short-id: "ee82aca370f4428b"
-  servername: m.vk.com
-  client-fingerprint: firefox
-  xhttp-opts:
-    path: /
-    mode: auto
-- name: https://t.me/ForceRunVPN-🇫🇷-Paris-480ms-GTHost
-  type: vless
-  server: 45.196.224.79
-  port: 8443
-  uuid: "356ccb34-22cc-4446-a137-072bc60d65ca"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "1oUeBtHH4DskTM_jCh-6enWRkFMDX9l1OU5kWYl4kxA"
-    short-id: "f34818a561dfd1fe"
-  flow: xtls-rprx-vision
-  servername: storage.yandex.net
-  client-fingerprint: firefox
-- name: '🇩🇪 Germany — #175'
+  servername: www.yandex.ru
+  client-fingerprint: edge
+- name: 4FreeIran-5961
   type: vless
   server: 78.159.250.189
   port: 1111
@@ -402,7 +280,158 @@ proxies:
   flow: xtls-rprx-vision
   servername: api-maps.yandex.ru
   client-fingerprint: chrome
-- name: By EbraSha (3)
+- name: '🇩🇪 Germany — #240'
+  type: vless
+  server: 185.130.114.211
+  port: 443
+  uuid: "5d2566a7-a112-4199-8e29-f876a53062f8"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "CF49-iS9dsHBwvqYFoDs_T3Me8TT0FpNW2kibGBkVXY"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
+  client-fingerprint: chrome
+- name: '🇩🇪 Germany — #247'
+  type: vless
+  server: 185.130.115.132
+  port: 443
+  uuid: "5d2566a7-a112-4199-8e29-f876a53062f8"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "CF49-iS9dsHBwvqYFoDs_T3Me8TT0FpNW2kibGBkVXY"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
+  client-fingerprint: chrome
+- name: '🇩🇪 Germany — #244'
+  type: vless
+  server: 84.201.157.147
+  port: 443
+  uuid: "5d2566a7-a112-4199-8e29-f876a53062f8"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "WrPShaEtQUXeKeyWDuELzBsd_ygDsU-k2bL1Avi13xI"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
+  client-fingerprint: chrome
+- name: '🇩🇪 Germany — #249'
+  type: vless
+  server: 89.208.210.165
+  port: 443
+  uuid: "5d2566a7-a112-4199-8e29-f876a53062f8"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "WrPShaEtQUXeKeyWDuELzBsd_ygDsU-k2bL1Avi13xI"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
+  client-fingerprint: safari
+- name: '🇩🇪 Germany — #242'
+  type: vless
+  server: 51.250.47.219
+  port: 443
+  uuid: "5d2566a7-a112-4199-8e29-f876a53062f8"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "WrPShaEtQUXeKeyWDuELzBsd_ygDsU-k2bL1Avi13xI"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
+  client-fingerprint: chrome
+- name: '🇫🇷 France — #314'
+  type: vless
+  server: 84.201.177.246
+  port: 3002
+  uuid: "03219e5d-84f7-4740-9fd1-101ab58eee41"
+  udp: true
+  network: xhttp
+  tls: true
+  reality-opts:
+    public-key: "XQR4nMq5aBnJ4h1RTCRRJdkdtO0Mtitt1cDtY0whkBI"
+    short-id: "83ae6b6bb4899039"
+  servername: cloud.mail.ru
+  client-fingerprint: safari
+  xhttp-opts:
+    path: /api/v2/config/sync
+    mode: auto
+- name: '🇩🇪 Germany — #250'
+  type: vless
+  server: 84.201.172.121
+  port: 443
+  uuid: "5d2566a7-a112-4199-8e29-f876a53062f8"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "CF49-iS9dsHBwvqYFoDs_T3Me8TT0FpNW2kibGBkVXY"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
+  client-fingerprint: safari
+- name: '🇩🇪 Germany — #241'
+  type: vless
+  server: 158.160.192.93
+  port: 443
+  uuid: "5d2566a7-a112-4199-8e29-f876a53062f8"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "WrPShaEtQUXeKeyWDuELzBsd_ygDsU-k2bL1Avi13xI"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
+  client-fingerprint: safari
+- name: 4FreeIran-9710
+  type: vless
+  server: 78.159.250.245
+  port: 8443
+  uuid: "a982c357-ae92-40ce-9dad-0e3c3b393ac2"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "gK4nP4pGndlg1SwYVO4AMhOZQGsmGLbu1ScR4SIP-Gw"
+    short-id: '76394756'
+  flow: xtls-rprx-vision
+  servername: ya.ru
+  client-fingerprint: firefox
+- name: '🇫🇷 France — #313'
+  type: vless
+  server: 84.201.177.246
+  port: 3000
+  uuid: "03219e5d-84f7-4740-9fd1-101ab58eee41"
+  udp: true
+  network: xhttp
+  tls: true
+  reality-opts:
+    public-key: "XQR4nMq5aBnJ4h1RTCRRJdkdtO0Mtitt1cDtY0whkBI"
+    short-id: "83ae6b6bb4899039"
+  servername: eda.yandex.ru
+  client-fingerprint: safari
+  xhttp-opts:
+    path: /api/v2/config/sync
+    mode: auto
+- name: By EbraSha 🌀
+  type: vless
+  server: netherlands1.banovano.space
+  port: 48561
+  uuid: "fd1e18f6-e7d1-4e1c-8d2d-f51cd7f5d22f"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "Slau4DRZkIFgAeKGsPz5MWOp5xB1ecTNzLtbCBUGeQM"
+    short-id: "8059df"
+  flow: xtls-rprx-vision
+  servername: www.yandex.ru
+  client-fingerprint: edge
+- name: '🇫🇮 [VL] Финляндия #3258 | РосТуннель t.me/rjsxrd'
   type: vless
   server: 185.79.138.127
   port: 2053
@@ -416,7 +445,62 @@ proxies:
   flow: xtls-rprx-vision
   servername: vk.ru
   client-fingerprint: firefox
-- name: '@meliproxyy'
+- name: '🇩🇪 Germany — #228'
+  type: vless
+  server: 84.201.164.23
+  port: 443
+  uuid: "c50d2ca7-d131-4561-b293-b143e47f1daa"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "vyzsQLMRAuySJxAg0sNHXzgJuT8PGRakCay3rzUbT3k"
+    short-id: "27e53bbcab7593d7"
+  flow: xtls-rprx-vision
+  servername: smartcaptcha.yandexcloud.net
+  client-fingerprint: random
+- name: '🇪🇪 Estonia — #262'
+  type: vless
+  server: 158.160.252.95
+  port: 443
+  uuid: "e806fecb-af6c-4256-94ec-078c5ff3a700"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "G6ekEx_2qJMHo-DzjF7ww8UPbPiVSd8A6LY5yn-i3XU"
+    short-id: "83915e401341"
+  flow: xtls-rprx-vision
+  servername: ya.ru
+  client-fingerprint: randomized
+- name: '🇵🇱 Poland — #477'
+  type: vless
+  server: 185.42.14.46
+  port: 443
+  uuid: "e806fecb-af6c-4256-94ec-078c5ff3a700"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "G9uQu7GdqkkvE6WH0gZ1kfzt2J50s6VgddYnqck5tjw"
+    short-id: "a29991b068641259"
+  flow: xtls-rprx-vision
+  servername: api-maps.yandex.ru
+  client-fingerprint: randomized
+- name: 🇵🇱 Poland [*CIDR]
+  type: vless
+  server: 45.11.26.63
+  port: 443
+  uuid: "967b2fad-bb2a-46d1-8efb-3bfda81f7f92"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "zggn0nHMsa9RHxqYEGwf4X24grSSAqVQ8uaRW3UKBTU"
+  flow: xtls-rprx-vision
+  servername: id.vk.ru
+  client-fingerprint: firefox
+- name: https://t.me/ForceRunVPN-🇫🇮-Helsinki-5166ms-Baykov Ilya Sergeevich
   type: vless
   server: five.neobo-tooth.ru
   port: 2053
@@ -429,90 +513,192 @@ proxies:
     short-id: "e0331b94eb540116"
   flow: xtls-rprx-vision
   servername: vk.ru
-  client-fingerprint: randomized
-- name: 🇸🇪 Швеция 11 t.me/rjsxrd
+  client-fingerprint: chrome
+- name: '🇩🇪 Germany — #211'
   type: vless
-  server: 62.60.228.89
+  server: 5.188.115.159
+  port: 8446
+  uuid: "ad5387fe-88ff-4ffc-aeaf-c025497cd7e1"
+  udp: true
+  network: grpc
+  tls: true
+  reality-opts:
+    public-key: "rUCHk3_64Wv_f_v46OfVNYldKu9fUqHpX937bmGeeDs"
+  servername: 360.yandex.ru
+  client-fingerprint: firefox
+- name: '🇩🇪 Germany — #236'
+  type: vless
+  server: 5.188.115.159
+  port: 8446
+  uuid: "5d1acdb8-5706-4757-ae47-efa77412c2f8"
+  udp: true
+  network: grpc
+  tls: true
+  reality-opts:
+    public-key: "rUCHk3_64Wv_f_v46OfVNYldKu9fUqHpX937bmGeeDs"
+  servername: 360.yandex.ru
+  client-fingerprint: firefox
+- name: 🇵🇱 Poland | 🌐 [*CIDR]
+  type: vless
+  server: tw1.serviceoda.ru
   port: 443
-  uuid: "2ea1a3c8-2581-4ead-8291-43fee2f8be3d"
+  uuid: "e806fecb-af6c-4256-94ec-078c5ff3a700"
   udp: true
   network: tcp
   tls: true
   reality-opts:
-    public-key: "ydoxmw5pH_JPRTbjeNKnsF-MfVybjnAYLnhwRj3n3yE"
-    short-id: "cf2d0000"
+    public-key: "G9uQu7GdqkkvE6WH0gZ1kfzt2J50s6VgddYnqck5tjw"
+    short-id: "a29991b068641259"
+  flow: xtls-rprx-vision
+  servername: api-maps.yandex.ru
+  client-fingerprint: randomized
+- name: 4FreeIran-7901
+  type: vless
+  server: 45.12.75.242
+  port: 26424
+  uuid: "633f424e-2b11-48da-a6b3-a849dd71456f"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0"
+    short-id: "23103e1e"
+  servername: ya.ru
+  client-fingerprint: randomized
+- name: 4FreeIran-9047
+  type: vless
+  server: 188.68.218.101
+  port: 443
+  uuid: "967b2fad-bb2a-46d1-8efb-3bfda81f7f92"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "A41b2Th15KC7t1hSRTvkA3-CzZfv1DD1XOV2L5ICuA0"
+  flow: xtls-rprx-vision
+  servername: cloud.mail.ru
+  client-fingerprint: randomized
+- name: 4FreeIran-10501
+  type: vless
+  server: 212.22.82.138
+  port: 8443
+  uuid: "d0069ea4-18b3-4af1-bc64-f525d0fac759"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "GoARpHEm6UEmBN9i78FnpQw4qcQDgn6FoIIQZ1yBOxI"
+    short-id: "01b3e33129"
+  servername: api-maps.yandex.ru
+  client-fingerprint: chrome
+- name: '🇩🇪 Germany — #223'
+  type: vless
+  server: 185.229.9.32
+  port: 443
+  uuid: "c50d2ca7-d131-4561-b293-b143e47f1daa"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "I_mMGeQ8r529dq2LjFUzv0nb74zuux2zGWT2RfKuE14"
+    short-id: "27e53bbcab7593d7"
+  flow: xtls-rprx-vision
   servername: api.ok.ru
-  client-fingerprint: firefox
+  client-fingerprint: randomized
 proxy-groups:
 - name: RF-Proxy
   type: select
   proxies:
-  - 🇳🇱  Netherlands  [08]  MIFA
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
+  - '🇳🇱 [VL] Нидерланды #3056 | РосТуннель t.me/rjsxrd'
   - By EbraSha
-  - https://t.me/ForceRunVPN-🇩🇪-FrankfurtamMain-668ms-Play2go International Limited
+  - 🇷🇺 Russia [*CIDR]
   - By EbraSha (2)
+  - https://t.me/ForceRunVPN-🇩🇪-FrankfurtamMain-399ms-Play2go International Limited
+  - 🇷🇺 Russia [*CIDR] (2)
+  - 🇷🇺 Russia [*CIDR] (3)
   - 🇸🇪[openproxylist.com] vless-SE
-  - '🇫🇷 France — #254'
-  - '🇳🇱 The Netherlands — #369'
-  - '🇳🇱 The Netherlands — #377'
-  - '🇭🇺 Hungary — #287'
-  - '🇩🇪 Germany — #203'
-  - '🇩🇪 Germany — #204'
-  - '🇫🇷 France — #252'
-  - '🇩🇪 Germany — #184'
-  - '🇳🇱 The Netherlands — #374'
-  - '🇩🇪 Germany — #179'
-  - '🇩🇪 Germany — #209'
-  - '🇳🇱 The Netherlands — #382'
-  - '🇳🇱 The Netherlands — #371'
-  - '🇩🇪 Germany — #202'
-  - '🇩🇪 Germany — #210'
-  - '🇩🇪 Germany — #200'
-  - https://t.me/ForceRunVPN-🇫🇷-Paris-985ms-GTHost
-  - '🇳🇱 The Netherlands — #370'
-  - '🇩🇪 Germany — #192'
-  - '🇩🇪 Germany — #180'
-  - '🇳🇱 The Netherlands — #380'
-  - https://t.me/ForceRunVPN-🇫🇷-Paris-480ms-GTHost
-  - '🇩🇪 Germany — #175'
-  - By EbraSha (3)
-  - '@meliproxyy'
-  - 🇸🇪 Швеция 11 t.me/rjsxrd
+  - '🇩🇪 Germany — #248'
+  - 4FreeIran-9858
+  - '🇩🇪 Germany — #253'
+  - '🇩🇪 Germany — #246'
+  - '🇩🇪 Germany — #191'
+  - '🇩🇪 Germany — #219'
+  - '🇩🇪 Germany — #252'
+  - '[🇸🇪]'
+  - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
+  - 4FreeIran-5961
+  - '🇩🇪 Germany — #240'
+  - '🇩🇪 Germany — #247'
+  - '🇩🇪 Germany — #244'
+  - '🇩🇪 Germany — #249'
+  - '🇩🇪 Germany — #242'
+  - '🇫🇷 France — #314'
+  - '🇩🇪 Germany — #250'
+  - '🇩🇪 Germany — #241'
+  - 4FreeIran-9710
+  - '🇫🇷 France — #313'
+  - By EbraSha 🌀
+  - '🇫🇮 [VL] Финляндия #3258 | РосТуннель t.me/rjsxrd'
+  - '🇩🇪 Germany — #228'
+  - '🇪🇪 Estonia — #262'
+  - '🇵🇱 Poland — #477'
+  - 🇵🇱 Poland [*CIDR]
+  - https://t.me/ForceRunVPN-🇫🇮-Helsinki-5166ms-Baykov Ilya Sergeevich
+  - '🇩🇪 Germany — #211'
+  - '🇩🇪 Germany — #236'
+  - 🇵🇱 Poland | 🌐 [*CIDR]
+  - 4FreeIran-7901
+  - 4FreeIran-9047
+  - 4FreeIran-10501
+  - '🇩🇪 Germany — #223'
   - DIRECT
 - name: Auto-Optimal
   type: url-test
   proxies:
-  - 🇳🇱  Netherlands  [08]  MIFA
+  - 🇩🇪 Germany, Frankfurt am Main | [BL]
+  - '🇳🇱 [VL] Нидерланды #3056 | РосТуннель t.me/rjsxrd'
   - By EbraSha
-  - https://t.me/ForceRunVPN-🇩🇪-FrankfurtamMain-668ms-Play2go International Limited
+  - 🇷🇺 Russia [*CIDR]
   - By EbraSha (2)
+  - https://t.me/ForceRunVPN-🇩🇪-FrankfurtamMain-399ms-Play2go International Limited
+  - 🇷🇺 Russia [*CIDR] (2)
+  - 🇷🇺 Russia [*CIDR] (3)
   - 🇸🇪[openproxylist.com] vless-SE
-  - '🇫🇷 France — #254'
-  - '🇳🇱 The Netherlands — #369'
-  - '🇳🇱 The Netherlands — #377'
-  - '🇭🇺 Hungary — #287'
-  - '🇩🇪 Germany — #203'
-  - '🇩🇪 Germany — #204'
-  - '🇫🇷 France — #252'
-  - '🇩🇪 Germany — #184'
-  - '🇳🇱 The Netherlands — #374'
-  - '🇩🇪 Germany — #179'
-  - '🇩🇪 Germany — #209'
-  - '🇳🇱 The Netherlands — #382'
-  - '🇳🇱 The Netherlands — #371'
-  - '🇩🇪 Germany — #202'
-  - '🇩🇪 Germany — #210'
-  - '🇩🇪 Germany — #200'
-  - https://t.me/ForceRunVPN-🇫🇷-Paris-985ms-GTHost
-  - '🇳🇱 The Netherlands — #370'
-  - '🇩🇪 Germany — #192'
-  - '🇩🇪 Germany — #180'
-  - '🇳🇱 The Netherlands — #380'
-  - https://t.me/ForceRunVPN-🇫🇷-Paris-480ms-GTHost
-  - '🇩🇪 Germany — #175'
-  - By EbraSha (3)
-  - '@meliproxyy'
-  - 🇸🇪 Швеция 11 t.me/rjsxrd
+  - '🇩🇪 Germany — #248'
+  - 4FreeIran-9858
+  - '🇩🇪 Germany — #253'
+  - '🇩🇪 Germany — #246'
+  - '🇩🇪 Germany — #191'
+  - '🇩🇪 Germany — #219'
+  - '🇩🇪 Germany — #252'
+  - '[🇸🇪]'
+  - 🇪🇪 Estonia, Tallinn | 🌐 | [BL]
+  - 4FreeIran-5961
+  - '🇩🇪 Germany — #240'
+  - '🇩🇪 Germany — #247'
+  - '🇩🇪 Germany — #244'
+  - '🇩🇪 Germany — #249'
+  - '🇩🇪 Germany — #242'
+  - '🇫🇷 France — #314'
+  - '🇩🇪 Germany — #250'
+  - '🇩🇪 Germany — #241'
+  - 4FreeIran-9710
+  - '🇫🇷 France — #313'
+  - By EbraSha 🌀
+  - '🇫🇮 [VL] Финляндия #3258 | РосТуннель t.me/rjsxrd'
+  - '🇩🇪 Germany — #228'
+  - '🇪🇪 Estonia — #262'
+  - '🇵🇱 Poland — #477'
+  - 🇵🇱 Poland [*CIDR]
+  - https://t.me/ForceRunVPN-🇫🇮-Helsinki-5166ms-Baykov Ilya Sergeevich
+  - '🇩🇪 Germany — #211'
+  - '🇩🇪 Germany — #236'
+  - 🇵🇱 Poland | 🌐 [*CIDR]
+  - 4FreeIran-7901
+  - 4FreeIran-9047
+  - 4FreeIran-10501
+  - '🇩🇪 Germany — #223'
   url: https://yandex.ru
   interval: 300
 rules:
