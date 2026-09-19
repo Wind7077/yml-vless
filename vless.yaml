@@ -12,6 +12,33 @@ dns:
   - https://dns.yandex.ru/dns-query
   - https://cloudflare-dns.com/dns-query
 proxies:
+- name: '[OpenRay] 🇺🇸 US-27104'
+  type: vless
+  server: 104.234.24.13
+  port: 8088
+  uuid: "f7c74a35-1da0-5097-9fa7-a20735610ac1"
+  udp: true
+  network: ws
+  tls: false
+  servername: queuev4.vk.com
+  client-fingerprint: randomized
+  ws-opts:
+    path: /api
+    headers:
+      Host: queuev4.vk.com
+- name: 4Sarina-e39ee5e413
+  type: vless
+  server: 185.126.67.44
+  port: 1932
+  uuid: "bae8d9ba-9f5d-4802-bb5e-bc0956a472d6"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc"
+  flow: xtls-rprx-vision
+  servername: www.vk.com
+  client-fingerprint: randomized
 - name: '[OpenRay] 🇱🇻 LV-1416'
   type: vless
   server: 188.220.205.16
@@ -26,6 +53,19 @@ proxies:
     path: /api
     headers:
       Host: queuev4.vk.com
+- name: 🇩🇪 德国 | DEU
+  type: vless
+  server: 185.126.67.48
+  port: 1932
+  uuid: "8ff62004-b728-4be5-b7e9-5f5c85489921"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc"
+  flow: xtls-rprx-vision
+  servername: www.vk.com
+  client-fingerprint: randomized
 - name: '[OpenRay] 🇨🇿 CZ-224'
   type: vless
   server: 31.76.7.154
@@ -40,34 +80,7 @@ proxies:
   flow: xtls-rprx-vision
   servername: ya.ru
   client-fingerprint: firefox
-- name: '[382ms'
-  type: vless
-  server: 194.48.142.103
-  port: 443
-  uuid: "59d1cc91-38c9-4ea2-ac52-4aed672877ff"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "6IoebfcPVf_Mlr5uIpwIAPRSw10b--Nu-bMY5AT_ADw"
-    short-id: "08"
-  flow: xtls-rprx-vision
-  servername: www.ozon.ru
-  client-fingerprint: firefox
-- name: https://t.me/ForceRunVPN-🇩🇪-FrankfurtamMain-549ms-Tabunscic Anatoli
-  type: vless
-  server: 185.126.67.44
-  port: 1932
-  uuid: "bae8d9ba-9f5d-4802-bb5e-bc0956a472d6"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc"
-  flow: xtls-rprx-vision
-  servername: www.vk.com
-  client-fingerprint: randomized
-- name: '🇩🇪 Germany — #26'
+- name: '🇩🇪 Germany — #18'
   type: vless
   server: 185.229.9.175
   port: 443
@@ -81,34 +94,20 @@ proxies:
   flow: xtls-rprx-vision
   servername: api.ok.ru
   client-fingerprint: firefox
-- name: 🇸🇬SG_13|572KB/s|A004-260618 01
+- name: '🇫🇷 France — #54'
   type: vless
-  server: prep.wwwinternetvideo.click
-  port: 443
-  uuid: "1c332eae-7e02-4acd-996d-4eb3e652401c"
+  server: 87.242.95.210
+  port: 2443
+  uuid: "a8c1b6f0-bb8a-4af2-89f1-cdd6d44dd729"
   udp: true
   network: tcp
   tls: true
   reality-opts:
-    public-key: "uitO4Z8t9TplwwYaqwLqh5rfxDh_X8bOBiNuPbzvaEM"
-    short-id: "bbe46bd8f6b96839"
+    public-key: "uVBnwRHxC00G__KwRjBul-KLyS2F0PNwGQZJy5hwxEw"
+    short-id: "fcf86d4744cbe03f"
   flow: xtls-rprx-vision
-  servername: yandex.ru
-  client-fingerprint: chrome
-- name: ❓Other_226|320KB/s|B007-260618 01
-  type: vless
-  server: 193.163.203.253
-  port: 443
-  uuid: "441afe11-a180-4516-bb80-80a8a6b38705"
-  udp: true
-  network: tcp
-  tls: true
-  reality-opts:
-    public-key: "gE8LUmGFXik94SoDXNiAG5KprGyhjoRwDuhGebgAVWk"
-    short-id: "5ee019e02e6ed99a"
-  flow: xtls-rprx-vision
-  servername: yandex.ru
-  client-fingerprint: chrome
+  servername: cloudcdn-m9-9.cdn.yandex.net
+  client-fingerprint: firefox
 - name: 未知 VLESS-598 | free-nodes
   type: vless
   server: 144.31.50.236
@@ -120,6 +119,20 @@ proxies:
   reality-opts:
     public-key: "uitO4Z8t9TplwwYaqwLqh5rfxDh_X8bOBiNuPbzvaEM"
     short-id: "bbe46bd8f6b96839"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
+  client-fingerprint: firefox
+- name: '🇩🇪 Germany — #31'
+  type: vless
+  server: 185.229.9.175
+  port: 443
+  uuid: "ef6daba9-2efc-4d26-a2e1-447f9df8b94f"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "1ea_kTf2MvXh9PtpzQdjQWb5ls5BjyUtSbn-qiR8ZXk"
+    short-id: "cb0e256070ac91c7"
   flow: xtls-rprx-vision
   servername: yandex.ru
   client-fingerprint: firefox
@@ -137,19 +150,62 @@ proxies:
   flow: xtls-rprx-vision
   servername: yandex.ru
   client-fingerprint: chrome
-- name: 🇷🇺RU_2|370KB/s|S004-260618 01
+- name: ❓Other_226|320KB/s|B007-260618 01
   type: vless
-  server: 45.12.75.242
-  port: 26424
-  uuid: "633f424e-2b11-48da-a6b3-a849dd71456f"
+  server: 193.163.203.253
+  port: 443
+  uuid: "441afe11-a180-4516-bb80-80a8a6b38705"
   udp: true
   network: tcp
   tls: true
   reality-opts:
-    public-key: "l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0"
-    short-id: "23103e1e"
-  servername: ya.ru
+    public-key: "gE8LUmGFXik94SoDXNiAG5KprGyhjoRwDuhGebgAVWk"
+    short-id: "5ee019e02e6ed99a"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
   client-fingerprint: chrome
+- name: 未知 VLESS-587 | free-nodes
+  type: vless
+  server: 193.163.203.170
+  port: 443
+  uuid: "11aabba0-5fd1-4f15-8068-74c1a466cefc"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "GCCZ1ZZjB_nj7yxqFi22bIIWWr_G6rnWUzDcssN_40o"
+    short-id: "b28db60d77c50b4f"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
+  client-fingerprint: chrome
+- name: '🇩🇪 Germany — #27'
+  type: vless
+  server: 185.229.9.74
+  port: 443
+  uuid: "ef6daba9-2efc-4d26-a2e1-447f9df8b94f"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "fsyvGBPzzwpnSA0UnJML_cDqviNSEdj9zktpC1EeFhY"
+    short-id: "743541f932fa3959"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
+  client-fingerprint: firefox
+- name: '🇩🇪 Germany — #25'
+  type: vless
+  server: 91.240.86.12
+  port: 443
+  uuid: "ef6daba9-2efc-4d26-a2e1-447f9df8b94f"
+  udp: true
+  network: tcp
+  tls: true
+  reality-opts:
+    public-key: "2ZUQYIhUijdJ1vRL8iR8RxjmJvRVHYp-JoWevQ2LyR4"
+    short-id: "7bb730e3e6616d31"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
+  client-fingerprint: firefox
 - name: 未知 VLESS-606 | free-nodes
   type: vless
   server: 85.198.70.200
@@ -164,7 +220,7 @@ proxies:
   flow: xtls-rprx-vision
   servername: vk.ru
   client-fingerprint: randomized
-- name: '[639ms'
+- name: '[OpenRay] 🇫🇮 FI-5588'
   type: vless
   server: 2.27.123.221
   port: 42062
@@ -190,86 +246,79 @@ proxies:
     short-id: "9e"
   servername: api.vk.com
   client-fingerprint: firefox
-- name: 👉🆔@v2ray_configs_pool📡🇧🇾®️Belarus©️Minsk🅿️ping:47.41ms
+- name: 🇸🇬SG_13|572KB/s|A004-260618 01
   type: vless
-  server: bel.nvrsk-not-news.ru
-  port: 26146
-  uuid: "d95161a0-7453-472d-81eb-6de879024114"
+  server: prep.wwwinternetvideo.click
+  port: 443
+  uuid: "1c332eae-7e02-4acd-996d-4eb3e652401c"
   udp: true
   network: tcp
   tls: true
   reality-opts:
-    public-key: "gX3_zVtbvWNZH7lXyrsBBCcyCVKkkr_LMw9JRqpAmmQ"
-    short-id: "d4f2a3a536b962"
-  servername: www.vk.ru
-  client-fingerprint: firefox
-- name: '[OpenRay] 🇩🇪 DE-24335'
+    public-key: "uitO4Z8t9TplwwYaqwLqh5rfxDh_X8bOBiNuPbzvaEM"
+    short-id: "bbe46bd8f6b96839"
+  flow: xtls-rprx-vision
+  servername: yandex.ru
+  client-fingerprint: chrome
+- name: 🇷🇺RU_2|370KB/s|S004-260618 01
   type: vless
-  server: 144.31.159.174
-  port: 27439
-  uuid: "87b09dc0-468c-4453-b45c-c039a0837647"
+  server: 45.12.75.242
+  port: 26424
+  uuid: "633f424e-2b11-48da-a6b3-a849dd71456f"
   udp: true
   network: tcp
   tls: true
   reality-opts:
-    public-key: "Re0aWbYgk775QZ2eiIzh9fwPANq8HfLlrp9vbTC8vXQ"
-    short-id: "0472cdc53f"
-  servername: www.vk.com
-  client-fingerprint: firefox
-- name: '[OpenRay] 🇺🇸 US-27104'
-  type: vless
-  server: 104.234.24.13
-  port: 8088
-  uuid: "f7c74a35-1da0-5097-9fa7-a20735610ac1"
-  udp: true
-  network: ws
-  tls: false
-  servername: queuev4.vk.com
-  client-fingerprint: randomized
-  ws-opts:
-    path: /api
-    headers:
-      Host: queuev4.vk.com
+    public-key: "l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0"
+    short-id: "23103e1e"
+  servername: ya.ru
+  client-fingerprint: chrome
 proxy-groups:
 - name: RF-Proxy
   type: select
   proxies:
-  - '[OpenRay] 🇱🇻 LV-1416'
-  - '[OpenRay] 🇨🇿 CZ-224'
-  - '[382ms'
-  - https://t.me/ForceRunVPN-🇩🇪-FrankfurtamMain-549ms-Tabunscic Anatoli
-  - '🇩🇪 Germany — #26'
-  - 🇸🇬SG_13|572KB/s|A004-260618 01
-  - ❓Other_226|320KB/s|B007-260618 01
-  - 未知 VLESS-598 | free-nodes
-  - 🇩🇰DK_2|263KB/s|M003-260806 01
-  - 🇷🇺RU_2|370KB/s|S004-260618 01
-  - 未知 VLESS-606 | free-nodes
-  - '[639ms'
-  - '[OpenRay] 🇫🇮 FI-5580'
-  - 👉🆔@v2ray_configs_pool📡🇧🇾®️Belarus©️Minsk🅿️ping:47.41ms
-  - '[OpenRay] 🇩🇪 DE-24335'
   - '[OpenRay] 🇺🇸 US-27104'
+  - 4Sarina-e39ee5e413
+  - '[OpenRay] 🇱🇻 LV-1416'
+  - 🇩🇪 德国 | DEU
+  - '[OpenRay] 🇨🇿 CZ-224'
+  - '🇩🇪 Germany — #18'
+  - '🇫🇷 France — #54'
+  - 未知 VLESS-598 | free-nodes
+  - '🇩🇪 Germany — #31'
+  - 🇩🇰DK_2|263KB/s|M003-260806 01
+  - ❓Other_226|320KB/s|B007-260618 01
+  - 未知 VLESS-587 | free-nodes
+  - '🇩🇪 Germany — #27'
+  - '🇩🇪 Germany — #25'
+  - 未知 VLESS-606 | free-nodes
+  - '[OpenRay] 🇫🇮 FI-5588'
+  - '[OpenRay] 🇫🇮 FI-5580'
+  - 🇸🇬SG_13|572KB/s|A004-260618 01
+  - 🇷🇺RU_2|370KB/s|S004-260618 01
   - DIRECT
 - name: Auto-Optimal
   type: url-test
   proxies:
-  - '[OpenRay] 🇱🇻 LV-1416'
-  - '[OpenRay] 🇨🇿 CZ-224'
-  - '[382ms'
-  - https://t.me/ForceRunVPN-🇩🇪-FrankfurtamMain-549ms-Tabunscic Anatoli
-  - '🇩🇪 Germany — #26'
-  - 🇸🇬SG_13|572KB/s|A004-260618 01
-  - ❓Other_226|320KB/s|B007-260618 01
-  - 未知 VLESS-598 | free-nodes
-  - 🇩🇰DK_2|263KB/s|M003-260806 01
-  - 🇷🇺RU_2|370KB/s|S004-260618 01
-  - 未知 VLESS-606 | free-nodes
-  - '[639ms'
-  - '[OpenRay] 🇫🇮 FI-5580'
-  - 👉🆔@v2ray_configs_pool📡🇧🇾®️Belarus©️Minsk🅿️ping:47.41ms
-  - '[OpenRay] 🇩🇪 DE-24335'
   - '[OpenRay] 🇺🇸 US-27104'
+  - 4Sarina-e39ee5e413
+  - '[OpenRay] 🇱🇻 LV-1416'
+  - 🇩🇪 德国 | DEU
+  - '[OpenRay] 🇨🇿 CZ-224'
+  - '🇩🇪 Germany — #18'
+  - '🇫🇷 France — #54'
+  - 未知 VLESS-598 | free-nodes
+  - '🇩🇪 Germany — #31'
+  - 🇩🇰DK_2|263KB/s|M003-260806 01
+  - ❓Other_226|320KB/s|B007-260618 01
+  - 未知 VLESS-587 | free-nodes
+  - '🇩🇪 Germany — #27'
+  - '🇩🇪 Germany — #25'
+  - 未知 VLESS-606 | free-nodes
+  - '[OpenRay] 🇫🇮 FI-5588'
+  - '[OpenRay] 🇫🇮 FI-5580'
+  - 🇸🇬SG_13|572KB/s|A004-260618 01
+  - 🇷🇺RU_2|370KB/s|S004-260618 01
   url: https://yandex.ru
   interval: 300
 rules:
